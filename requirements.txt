@@ -1,2 +1,4 @@
 langchain
 langchain-cli
+google-generativeai
+langchain-google-genai

@@ -18,7 +18,11 @@ research-assistant = {path = "packages/research-assistant", develop = true}
 
 [tool.poetry.group.dev.dependencies]
 langchain-cli = ">=0.0.15"
+ipykernel = "^6.27.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[configurable]
+

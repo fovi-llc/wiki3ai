@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 from langserve import add_routes
+from research_assistant import chain as research_assistant_chain
+
 
 app = FastAPI()
 
@@ -9,6 +11,7 @@ app = FastAPI()
 async def redirect_root_to_docs():
     return RedirectResponse("/docs")
 
+add_routes(app, research_assistant_chain, path="/research-assistant")
 
 # Edit this to add the chain you want to add
 add_routes(app, NotImplemented)

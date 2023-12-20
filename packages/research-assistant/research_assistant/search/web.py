@@ -3,11 +3,12 @@ from typing import Any
 
 import requests
 from bs4 import BeautifulSoup
-from langchain.chat_models import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
+# BaseStringMessagePromptTemplate
 from langchain.retrievers.tavily_search_api import TavilySearchAPIRetriever
 from langchain.utilities import DuckDuckGoSearchAPIWrapper
-from langchain_core.messages import SystemMessage
+# from langchain_core.messages import SystemMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import (
     ConfigurableField,
@@ -16,6 +17,8 @@ from langchain_core.runnables import (
     RunnableParallel,
     RunnablePassthrough,
 )
+
+MODEL_NAME = 'gemini-pro'
 
 RESULTS_PER_QUESTION = 3
 
@@ -78,9 +81,10 @@ get_links: Runnable[Any, Any] = (
 
 SEARCH_PROMPT = ChatPromptTemplate.from_messages(
     [
-        ("system", "{agent_prompt}"),
+        # ("system", "{agent_prompt}"),
         (
             "user",
+            "{agent_prompt}\n\n"
             "Write 3 google search queries to search online that form an "
             "objective opinion from the following: {question}\n"
             "You must respond with a list of strings in the following format: "
@@ -114,9 +118,15 @@ response:
     "agent_role_prompt": "You are a world-travelled AI tour guide assistant. Your main purpose is to draft engaging, insightful, unbiased, and well-structured travel reports on given locations, including history, attractions, and cultural insights."
 }
 """  # noqa: E501
-CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_messages(
-    [SystemMessage(content=AUTO_AGENT_INSTRUCTIONS), ("user", "task: {task}")]
+CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_template(
+    # [SystemMessage(content=AUTO_AGENT_INSTRUCTIONS), ("user", "task: {task}")]
+    [("user", AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}")]
 )
+
+# CHOOSE_AGENT_PROMPT = BaseStringMessagePromptTemplate.from_template(template=AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}", template_format='jinja2')
+
+print(CHOOSE_AGENT_PROMPT)
+print(CHOOSE_AGENT_PROMPT.input_variables)
 
 SUMMARY_TEMPLATE = """{text} 
 
@@ -140,7 +150,7 @@ scrape_and_summarize: Runnable[Any, Any] = (
     )
     | RunnableParallel(
         {
-            "summary": SUMMARY_PROMPT | ChatOpenAI(temperature=0) | StrOutputParser(),
+            "summary": SUMMARY_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0) | StrOutputParser(),
             "url": lambda x: x["url"],
         }
     )
@@ -157,9 +167,9 @@ def load_json(s):
         return {}
 
 
-search_query = SEARCH_PROMPT | ChatOpenAI(temperature=0) | StrOutputParser() | load_json
+search_query = SEARCH_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0) | StrOutputParser() | load_json
 choose_agent = (
-    CHOOSE_AGENT_PROMPT | ChatOpenAI(temperature=0) | StrOutputParser() | load_json
+    CHOOSE_AGENT_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0) | StrOutputParser() | load_json
 )
 
 get_search_queries = (
