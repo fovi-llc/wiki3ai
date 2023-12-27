@@ -5,10 +5,9 @@ import requests
 from bs4 import BeautifulSoup
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
-# BaseStringMessagePromptTemplate
 from langchain.retrievers.tavily_search_api import TavilySearchAPIRetriever
 from langchain.utilities import DuckDuckGoSearchAPIWrapper
-# from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import (
     ConfigurableField,
@@ -78,31 +77,17 @@ get_links: Runnable[Any, Any] = (
     ),
 )
 
-
-# SEARCH_PROMPT = ChatPromptTemplate.from_messages(
-#     [
-#         # ("system", "{agent_prompt}"),
-#         (
-#             "user",
-#             "{agent_prompt}\n\n"
-#             "Write 3 google search queries to search online that form an "
-#             "objective opinion from the following: {question}\n"
-#             "You must respond with a list of strings in the following format: "
-#             '["query 1", "query 2", "query 3"].',
-#         ),
-#     ]
-# )
-
-SEARCH_PROMPT = ChatPromptTemplate.from_template(
-    template='''user
-{{agent_prompt}}
-
-Write 3 google search queries to search online that form an 
-objective opinion from the following: {{question}}
-
-You must respond with a list of strings in the following format: 
-["query 1", "query 2", "query 3"].''',
-    template_format='jinja2'
+SEARCH_PROMPT = ChatPromptTemplate.from_messages(
+    [
+        ("system", "{agent_prompt}"),
+        (
+            "user",
+            "Write 3 google search queries to search online that form an "
+            "objective opinion from the following: {question}\n"
+            "You must respond with a list of strings in the following format: "
+            '["query 1", "query 2", "query 3"].',
+        ),
+    ]
 )
 
 AUTO_AGENT_INSTRUCTIONS = """
@@ -113,45 +98,41 @@ The agent is determined by the field of the topic and the specific name of the a
 examples:
 task: "should I invest in apple stocks?"
 response: 
-{
+{open_bracket}
     "agent": "💰 Finance Agent",
     "agent_role_prompt: "You are a seasoned finance analyst AI assistant. Your primary goal is to compose comprehensive, astute, impartial, and methodically arranged financial reports based on provided data and trends."
-}
+{close_bracket}
 task: "could reselling sneakers become profitable?"
 response: 
-{ 
+{open_bracket} 
     "agent":  "📈 Business Analyst Agent",
     "agent_role_prompt": "You are an experienced AI business analyst assistant. Your main objective is to produce comprehensive, insightful, impartial, and systematically structured business reports based on provided business data, market trends, and strategic analysis."
-}
+{close_bracket}
 task: "what are the most interesting sites in Tel Aviv?"
 response:
-{
+{open_bracket}
     "agent:  "🌍 Travel Agent",
     "agent_role_prompt": "You are a world-travelled AI tour guide assistant. Your main purpose is to draft engaging, insightful, unbiased, and well-structured travel reports on given locations, including history, attractions, and cultural insights."
-}
+{close_bracket}
+
 """  # noqa: E501
-CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_template(
-    # [SystemMessage(content=AUTO_AGENT_INSTRUCTIONS), ("user", "task: {task}")]
-    [("user", AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}")],
-    template_format='jinja2'
+CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_messages(
+    [SystemMessage(content=AUTO_AGENT_INSTRUCTIONS), ("user", "task: {task}")]
+    # [("user", AUTO_AGENT_INSTRUCTIONS + "task: {task}")]
 )
 
-# CHOOSE_AGENT_PROMPT = BaseStringMessagePromptTemplate.from_template(template=AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}", template_format='jinja2')
-
-print(CHOOSE_AGENT_PROMPT)
-print(CHOOSE_AGENT_PROMPT.input_variables)
-
-SUMMARY_TEMPLATE = """{{text}} 
+SUMMARY_TEMPLATE = """{text} 
 
 -----------
 
 Using the above text, answer in short the following question: 
 
-> {{question}}
+> {question}
  
 -----------
 if the question cannot be answered using the text, imply summarize the text. Include all factual information, numbers, stats etc if available."""  # noqa: E501
-SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE, template_format='jinja2')
+SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE)
+
 
 scrape_and_summarize: Runnable[Any, Any] = (
     RunnableParallel(
@@ -163,7 +144,7 @@ scrape_and_summarize: Runnable[Any, Any] = (
     )
     | RunnableParallel(
         {
-            "summary": SUMMARY_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0) | StrOutputParser(),
+            "summary": SUMMARY_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0) | StrOutputParser(),
             "url": lambda x: x["url"],
         }
     )
@@ -180,14 +161,14 @@ def load_json(s):
         return {}
 
 
-search_query = SEARCH_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0) | StrOutputParser() | load_json
+search_query = SEARCH_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0) | StrOutputParser() | load_json
 choose_agent = (
-    CHOOSE_AGENT_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0) | StrOutputParser() | load_json
+    CHOOSE_AGENT_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0) | StrOutputParser() | load_json
 )
 
 get_search_queries = (
     RunnablePassthrough().assign(
-        agent_prompt=RunnableParallel({"task": lambda x: x})
+        agent_prompt=RunnableParallel({"task": lambda x: x, "open_bracket": lambda x: "{", "close_bracket": lambda x: "}"})
         | choose_agent
         | (lambda x: x.get("agent_role_prompt"))
     )

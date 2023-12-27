@@ -13,9 +13,6 @@ async def redirect_root_to_docs():
 
 add_routes(app, research_assistant_chain, path="/research-assistant")
 
-# Edit this to add the chain you want to add
-add_routes(app, NotImplemented)
-
 if __name__ == "__main__":
     import uvicorn
 

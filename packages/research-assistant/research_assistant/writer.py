@@ -52,28 +52,28 @@ Use appropriate Markdown syntax to format the outline and ensure readability.
 
 Please do your best, this is very important to my career."""  # noqa: E501
 
-model = ChatGoogleGenerativeAI(model=MODEL_NAME, temperature=0)
+model = ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0)
 prompt = ChatPromptTemplate.from_messages(
     [
-        # ("system", WRITER_SYSTEM_PROMPT),
-        # ("user", RESEARCH_REPORT_TEMPLATE),
-        ("user", f'{WRITER_SYSTEM_PROMPT}\n\n{RESEARCH_REPORT_TEMPLATE}'),
+        ("system", WRITER_SYSTEM_PROMPT),
+        ("user", RESEARCH_REPORT_TEMPLATE),
+        # ("user", f'{WRITER_SYSTEM_PROMPT}\n\n{RESEARCH_REPORT_TEMPLATE}'),
     ]
 ).configurable_alternatives(
     ConfigurableField("report_type"),
     default_key="research_report",
     resource_report=ChatPromptTemplate.from_messages(
         [
-            # ("system", WRITER_SYSTEM_PROMPT),
-            # ("user", RESOURCE_REPORT_TEMPLATE),
-            ("user", f'{WRITER_SYSTEM_PROMPT}\n\n{RESOURCE_REPORT_TEMPLATE}'),
+            ("system", WRITER_SYSTEM_PROMPT),
+            ("user", RESOURCE_REPORT_TEMPLATE),
+            # ("user", f'{WRITER_SYSTEM_PROMPT}\n\n{RESOURCE_REPORT_TEMPLATE}'),
         ]
     ),
     outline_report=ChatPromptTemplate.from_messages(
         [
-            # ("system", WRITER_SYSTEM_PROMPT),
-            # ("user", OUTLINE_REPORT_TEMPLATE),
-            ("user", f'{WRITER_SYSTEM_PROMPT}\n\n{OUTLINE_REPORT_TEMPLATE}'),
+            ("system", WRITER_SYSTEM_PROMPT),
+            ("user", OUTLINE_REPORT_TEMPLATE),
+            # ("user", f'{WRITER_SYSTEM_PROMPT}\n\n{OUTLINE_REPORT_TEMPLATE}'),
         ]
     ),
 )
