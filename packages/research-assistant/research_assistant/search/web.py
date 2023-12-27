@@ -79,18 +79,30 @@ get_links: Runnable[Any, Any] = (
 )
 
 
-SEARCH_PROMPT = ChatPromptTemplate.from_messages(
-    [
-        # ("system", "{agent_prompt}"),
-        (
-            "user",
-            "{agent_prompt}\n\n"
-            "Write 3 google search queries to search online that form an "
-            "objective opinion from the following: {question}\n"
-            "You must respond with a list of strings in the following format: "
-            '["query 1", "query 2", "query 3"].',
-        ),
-    ]
+# SEARCH_PROMPT = ChatPromptTemplate.from_messages(
+#     [
+#         # ("system", "{agent_prompt}"),
+#         (
+#             "user",
+#             "{agent_prompt}\n\n"
+#             "Write 3 google search queries to search online that form an "
+#             "objective opinion from the following: {question}\n"
+#             "You must respond with a list of strings in the following format: "
+#             '["query 1", "query 2", "query 3"].',
+#         ),
+#     ]
+# )
+
+SEARCH_PROMPT = ChatPromptTemplate.from_template(
+    template='''user
+{{agent_prompt}}
+
+Write 3 google search queries to search online that form an 
+objective opinion from the following: {{question}}
+
+You must respond with a list of strings in the following format: 
+["query 1", "query 2", "query 3"].''',
+    template_format='jinja2'
 )
 
 AUTO_AGENT_INSTRUCTIONS = """
@@ -120,7 +132,8 @@ response:
 """  # noqa: E501
 CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_template(
     # [SystemMessage(content=AUTO_AGENT_INSTRUCTIONS), ("user", "task: {task}")]
-    [("user", AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}")]
+    [("user", AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}")],
+    template_format='jinja2'
 )
 
 # CHOOSE_AGENT_PROMPT = BaseStringMessagePromptTemplate.from_template(template=AUTO_AGENT_INSTRUCTIONS + "\ntask: {{task}}", template_format='jinja2')
@@ -128,17 +141,17 @@ CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_template(
 print(CHOOSE_AGENT_PROMPT)
 print(CHOOSE_AGENT_PROMPT.input_variables)
 
-SUMMARY_TEMPLATE = """{text} 
+SUMMARY_TEMPLATE = """{{text}} 
 
 -----------
 
 Using the above text, answer in short the following question: 
 
-> {question}
+> {{question}}
  
 -----------
 if the question cannot be answered using the text, imply summarize the text. Include all factual information, numbers, stats etc if available."""  # noqa: E501
-SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE)
+SUMMARY_PROMPT = ChatPromptTemplate.from_template(SUMMARY_TEMPLATE, template_format='jinja2')
 
 scrape_and_summarize: Runnable[Any, Any] = (
     RunnableParallel(
