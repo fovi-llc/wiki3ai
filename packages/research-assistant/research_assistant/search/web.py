@@ -7,6 +7,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import ChatPromptTemplate
 from langchain.retrievers.tavily_search_api import TavilySearchAPIRetriever
 from langchain.utilities import DuckDuckGoSearchAPIWrapper
+from langchain.utilities.google_search import GoogleSearchAPIWrapper
 from langchain_core.messages import SystemMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import (
@@ -17,11 +18,12 @@ from langchain_core.runnables import (
     RunnablePassthrough,
 )
 
-MODEL_NAME = 'gemini-pro'
+MODEL_NAME = "gemini-pro"
 
 RESULTS_PER_QUESTION = 3
 
-ddg_search = DuckDuckGoSearchAPIWrapper()
+# ddg_search = DuckDuckGoSearchAPIWrapper()
+google_search = GoogleSearchAPIWrapper()
 
 
 def scrape_text(url: str):
@@ -47,7 +49,8 @@ def scrape_text(url: str):
 
 
 def web_search(query: str, num_results: int):
-    results = ddg_search.results(query, num_results)
+    # results = ddg_search.results(query, num_results)
+    results = google_search.results(query, num_results)
     return [r["link"] for r in results]
 
 
@@ -116,6 +119,7 @@ response:
 {close_bracket}
 
 """  # noqa: E501
+
 CHOOSE_AGENT_PROMPT = ChatPromptTemplate.from_messages(
     [SystemMessage(content=AUTO_AGENT_INSTRUCTIONS), ("user", "task: {task}")]
     # [("user", AUTO_AGENT_INSTRUCTIONS + "task: {task}")]
@@ -144,7 +148,11 @@ scrape_and_summarize: Runnable[Any, Any] = (
     )
     | RunnableParallel(
         {
-            "summary": SUMMARY_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0) | StrOutputParser(),
+            "summary": SUMMARY_PROMPT
+            | ChatGoogleGenerativeAI(
+                model=MODEL_NAME, convert_system_message_to_human=True, temperature=0
+            )
+            | StrOutputParser(),
             "url": lambda x: x["url"],
         }
     )
@@ -161,14 +169,33 @@ def load_json(s):
         return {}
 
 
-search_query = SEARCH_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0) | StrOutputParser() | load_json
+search_query = (
+    SEARCH_PROMPT
+    | ChatGoogleGenerativeAI(
+        model=MODEL_NAME, convert_system_message_to_human=True, temperature=0
+    )
+    | StrOutputParser()
+    | load_json
+)
+
 choose_agent = (
-    CHOOSE_AGENT_PROMPT | ChatGoogleGenerativeAI(model=MODEL_NAME, convert_system_message_to_human=True, temperature=0) | StrOutputParser() | load_json
+    CHOOSE_AGENT_PROMPT
+    | ChatGoogleGenerativeAI(
+        model=MODEL_NAME, convert_system_message_to_human=True, temperature=0
+    )
+    | StrOutputParser()
+    | load_json
 )
 
 get_search_queries = (
     RunnablePassthrough().assign(
-        agent_prompt=RunnableParallel({"task": lambda x: x, "open_bracket": lambda x: "{", "close_bracket": lambda x: "}"})
+        agent_prompt=RunnableParallel(
+            {
+                "task": lambda x: x,
+                "open_bracket": lambda x: "{",
+                "close_bracket": lambda x: "}",
+            }
+        )
         | choose_agent
         | (lambda x: x.get("agent_role_prompt"))
     )
