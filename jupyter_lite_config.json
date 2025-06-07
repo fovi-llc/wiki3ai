@@ -1,0 +1,14 @@
+{
+  "jupyterlite": {
+    "federated_extensions": [
+      {
+        "name": "ipfs-sidebar",
+        "load": "ipfs-sidebar.js"
+      },
+      {
+        "name": "webllm-extension",
+        "load": "webllm-extension.js"
+      }
+    ]
+  }
+}
