@@ -1,0 +1,1 @@
+// IPFS Sidebar placeholder
