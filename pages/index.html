@@ -15,194 +15,134 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            background: #f8f9fa;
+            padding: 40px 20px;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .hero {
-            text-align: center;
-            color: white;
-            padding: 80px 0;
-        }
-        
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            opacity: 0.9;
-        }
-        
-        .hero .tagline {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            margin-bottom: 40px;
-        }
-        
-        .content {
             background: white;
-            border-radius: 15px;
-            padding: 60px;
-            margin: 40px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
         }
         
         .intro {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #555;
             margin-bottom: 40px;
-            text-align: center;
             line-height: 1.7;
         }
         
-        .repos-section, .vision-section, .experiment-section, .tech-section {
-            margin: 40px 0;
-        }
-        
-        .repos-section h2, .vision-section h2, .experiment-section h2, .tech-section h2 {
+        h2 {
             color: #333;
-            margin-bottom: 15px;
-            font-size: 1.8rem;
-        }
-        
-        .repos-section p, .vision-section p, .experiment-section p, .tech-section p {
-            color: #666;
             margin-bottom: 20px;
+            font-size: 1.5rem;
         }
         
-        .repo-list, .vision-list, .experiment-list, .tech-list {
+        .project-list {
             list-style: none;
             padding: 0;
         }
         
-        .repo-list li, .vision-list li, .experiment-list li, .tech-list li {
+        .project-list li {
             margin: 15px 0;
-            padding: 10px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #eee;
         }
         
-        .repo-list li:last-child, .vision-list li:last-child, .experiment-list li:last-child, .tech-list li:last-child {
+        .project-list li:last-child {
             border-bottom: none;
         }
         
-        .repo-list a, .experiment-list a {
-            color: #667eea;
+        .project-list a {
+            color: #007acc;
             text-decoration: none;
             font-weight: 500;
         }
         
-        .repo-list a:hover, .experiment-list a:hover {
+        .project-list a:hover {
             text-decoration: underline;
         }
         
-        .footer {
-            text-align: center;
-            color: white;
-            padding: 40px 0;
-            opacity: 0.8;
+        .contact-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+        
+        .contact-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .contact-links li {
+            margin: 10px 0;
+        }
+        
+        .contact-links a {
+            color: #007acc;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .contact-links a:hover {
+            text-decoration: underline;
         }
         
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            body {
+                padding: 20px 10px;
             }
             
-            .hero .subtitle {
-                font-size: 1.2rem;
+            .container {
+                padding: 20px;
             }
             
-            .content {
-                padding: 30px;
-                margin: 20px 0;
-            }
-            
-            .features {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="hero">
-            <h1>Wiki3.ai</h1>
-            <div class="subtitle">Web3 Wikipedia by and for AI</div>
-            <div class="tagline">Decentralized knowledge, AI-powered intelligence</div>
+        <h1>Wiki3.ai</h1>
+        <div class="subtitle">Web3 Wikipedia by and for AI</div>
+        
+        <div class="intro">
+            We're exploring how Web3 technologies and artificial intelligence might work together to create 
+            a new kind of collaborative knowledge platform. Our goal is to experiment with decentralized, 
+            AI-enhanced content that could evolve through both human and machine contributions.
         </div>
         
-        <div class="content">
-            <div class="intro">
-                We're exploring how Web3 technologies and artificial intelligence might work together to create 
-                a new kind of collaborative knowledge platform. Our goal is to experiment with decentralized, 
-                AI-enhanced content that could evolve through both human and machine contributions.
-            </div>
-            
-            <div class="repos-section">
-                <h2>🔗 Key Projects</h2>
-                <p>Explore some of the foundational work and experiments:</p>
-                <ul class="repo-list">
-                    <li><a href="https://github.com/jimwhite/WikipediaSemanticSimilarity" target="_blank">Wikipedia Semantic Similarity</a> - Exploring semantic relationships in Wikipedia</li>
-                    <li><a href="https://github.com/jimwhite/babel" target="_blank">Babel</a> - Multi-language processing and analysis tools</li>
-                    <li><a href="https://github.com/jimwhite/ActionCLI" target="_blank">ActionCLI</a> - Command-line interface for GitHub Actions</li>
-                    <li><a href="https://github.com/jimwhite/Junto" target="_blank">Junto</a> - Graph-based semi-supervised learning</li>
-                    <li><a href="https://github.com/jimwhite/ParseyMcParseface" target="_blank">ParseyMcParseface</a> - Neural dependency parsing experiments</li>
-                    <li><a href="https://github.com/jimwhite/ExtractRC" target="_blank">ExtractRC</a> - Reading comprehension dataset tools</li>
-                </ul>
-                <p><a href="https://github.com/jimwhite" target="_blank">View all repositories →</a></p>
-            </div>
-            
-            <div class="vision-section">
-                <h2>� Research Areas</h2>
-                <p>We're investigating several promising directions:</p>
-                <ul class="vision-list">
-                    <li><strong>Decentralized Knowledge:</strong> Experimenting with Web3 infrastructure for distributed content ownership</li>
-                    <li><strong>AI-Enhanced Content:</strong> Exploring how AI might assist with content generation and fact-checking</li>
-                    <li><strong>Semantic Connections:</strong> Investigating automated relationship discovery between concepts</li>
-                    <li><strong>Interactive Computing:</strong> Building Jupyter-based environments for collaborative research</li>
-                    <li><strong>Content Integrity:</strong> Researching cryptographic approaches to content verification</li>
-                    <li><strong>Multi-Agent Systems:</strong> Studying how AI agents might collaborate with human contributors</li>
-                </ul>
-            </div>
-            
-            <div class="experiment-section">
-                <h2>� Current Experiments</h2>
-                <p>Try out our interactive research environment:</p>
-                <ul class="experiment-list">
-                    <li><a href="../_output/index.html">JupyterLite Environment</a> - Run Python notebooks in your browser</li>
-                    <li>WebLLM Integration - Experiment with local AI models</li>
-                    <li>IPFS Exploration - Test decentralized file storage</li>
-                    <li>Semantic Analysis Tools - Analyze text relationships</li>
-                </ul>
-            </div>
-            
-            <div class="tech-section">
-                <h2>� Technologies We're Exploring</h2>
-                <ul class="tech-list">
-                    <li><strong>JupyterLite:</strong> Browser-based Python environments for collaborative research</li>
-                    <li><strong>IPFS:</strong> Distributed file systems for decentralized content</li>
-                    <li><strong>WebLLM:</strong> Running language models directly in browsers</li>
-                    <li><strong>Natural Language Processing:</strong> Semantic analysis and text understanding</li>
-                    <li><strong>Graph Databases:</strong> Modeling knowledge relationships</li>
-                    <li><strong>Blockchain Technologies:</strong> Content integrity and provenance tracking</li>
-                </ul>
-            </div>
-        </div>
+        <h2>ACL2 for Verifiable AI</h2>
+        <ul class="project-list">
+            <li><a href="https://github.com/jimwhite/acl2-jupyter" target="_blank">ACL2 Jupyter</a> - Jupyter kernel for ACL2 theorem prover</li>
+            <li><a href="https://github.com/jimwhite/acl2-swf-experiments" target="_blank">ACL2 SWF Experiments</a> - Experiments with ACL2 and semantic web frameworks</li>
+            <li><a href="https://github.com/jimwhite/acl2-notebooks" target="_blank">ACL2 Notebooks</a> - Interactive notebooks for ACL2 theorem proving</li>
+            <li><a href="https://github.com/jimwhite/agent-client-kernel" target="_blank">Agent Client Kernel</a> - Client kernel for multi-agent systems</li>
+        </ul>
         
-        <div class="footer">
-            <p>&copy; 2025 Wiki3.ai - Exploring decentralized knowledge systems</p>
-            <p>An experimental project investigating AI and Web3 technologies</p>
+        <div class="contact-section">
+            <h2>Connect</h2>
+            <ul class="contact-links">
+                <li><a href="https://github.com/jimwhite" target="_blank">GitHub Profile</a></li>
+                <li><a href="https://www.linkedin.com/in/jamespaulwhite/" target="_blank">LinkedIn Profile</a></li>
+            </ul>
         </div>
     </div>
 </body>
