@@ -1,0 +1,71 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-06-08T01:06:00.121878Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-06-08T01:05:45Z",
+      "mimetype": null,
+      "name": "webllm-javascript.ipynb",
+      "path": "webllm-javascript.ipynb",
+      "size": 13414,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-06-08T00:50:53.114418Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-06-08T00:34:51Z",
+      "mimetype": null,
+      "name": "webllm-micropip.ipynb",
+      "path": "webllm-micropip.ipynb",
+      "size": 10561,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-06-08T00:50:53.113173Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-06-08T00:40:26Z",
+      "mimetype": null,
+      "name": "foo.ipynb",
+      "path": "foo.ipynb",
+      "size": 325,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-06-08T00:50:53.111833Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-06-07T21:45:58Z",
+      "mimetype": null,
+      "name": "example.ipynb",
+      "path": "example.ipynb",
+      "size": 3324,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2025-06-08T01:06:00.118222Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-06-08T01:06:00.118222Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
