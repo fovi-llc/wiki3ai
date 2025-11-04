@@ -1,0 +1,2 @@
+[jupyterlite.addon.v0]
+wiki = jupyterlite_wiki_addon.addon:WikiPageAddon

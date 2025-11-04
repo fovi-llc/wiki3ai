@@ -1,0 +1,10 @@
+    {
+      "image": "pyodide/pyodide-env",
+      "name": "Pyodide Dev Container",
+      "extensions": [
+          "ms-python.python"
+      ],
+      "settings": {
+          "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }

@@ -1,0 +1,21 @@
+{
+    "name": "JupyterLite",
+    "build": {
+        "dockerfile": "../Dockerfile"
+    },
+    // "remoteUser": "root",
+    "forwardPorts": [
+        8000
+    ],
+    "portsAttributes": {
+        "8000": {
+            "label": "Jupyter",
+            "requireLocalPort": true
+        }
+    },
+    "containerEnv": {
+        "JUPYTER_PORT": "8000"
+        // "GRANT_SUDO": "yes"
+        // "RESTARTABLE": "yes"
+    }
+}

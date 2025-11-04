@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: jupyterlite-wiki-addon
+Version: 0.1.0
+Summary: JupyterLite addon to generate wiki pages from notebooks
+License-File: LICENSE
+Requires-Dist: jupyterlite-core>=0.2.0
+Requires-Dist: nbconvert
+Requires-Dist: nbformat
+Dynamic: license-file
+Dynamic: requires-dist
+Dynamic: summary

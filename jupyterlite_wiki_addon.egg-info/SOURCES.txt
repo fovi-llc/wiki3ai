@@ -1,0 +1,10 @@
+LICENSE
+setup.py
+jupyterlite_wiki_addon/__init__.py
+jupyterlite_wiki_addon/addon.py
+jupyterlite_wiki_addon.egg-info/PKG-INFO
+jupyterlite_wiki_addon.egg-info/SOURCES.txt
+jupyterlite_wiki_addon.egg-info/dependency_links.txt
+jupyterlite_wiki_addon.egg-info/entry_points.txt
+jupyterlite_wiki_addon.egg-info/requires.txt
+jupyterlite_wiki_addon.egg-info/top_level.txt
