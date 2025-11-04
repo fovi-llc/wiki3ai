@@ -1,5 +1,9 @@
 {
   "LiteBuildConfig": {
-    "contents": ["notebooks/"]
+    "contents": ["notebooks/"],
+    "output_dir": "_output",
+    "extra_addons": [
+      "jupyterlite_wiki_addon.WikiPageAddon"
+    ]
   }
 }
