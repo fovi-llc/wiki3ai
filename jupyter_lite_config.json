@@ -3,7 +3,7 @@
     "contents": ["notebooks/"],
     "output_dir": "_output",
     "extra_addons": [
-      "jupyterlite_wiki_addon.WikiPageAddon"
+      "jupyterlite_wiki_addon.addon:WikiPageAddon"
     ]
   }
 }
