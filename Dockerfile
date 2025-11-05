@@ -7,11 +7,15 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyterlite jupyterlite-pyodide-kernel jupyter-server jupyterlab
+RUN pip install jupyterlite jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles
 # RUN pip install nbconvert nbformat
 
 WORKDIR /app
 COPY . /app
+
+# https://panel.holoviz.org/how_to/wasm/jupyterlite.html
+# cd lite
+# jupyter lite build --output-dir ../_output
 
 # RUN jupyter lite build
 
