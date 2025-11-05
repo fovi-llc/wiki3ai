@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-11-05T22:29:27.753858Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-05T22:13:19Z",
+      "mimetype": null,
+      "name": "webllm.ipynb",
+      "path": "webllm.ipynb",
+      "size": 8651,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2025-11-05T22:29:27.753177Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-11-05T22:29:27.753177Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}
