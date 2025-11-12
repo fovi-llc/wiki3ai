@@ -2,11 +2,17 @@
   "jupyter-config-data": {
     "appName": "JupyterLite",
     "appUrl": "./lab",
-    "appVersion": "0.6.4",
+    "appVersion": "0.7.0-beta.1",
     "baseUrl": "./",
     "defaultKernelName": "python",
     "faviconUrl": "./lab/favicon.ico",
     "federated_extensions": [
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.860fcd6d3f9e9300cdcf.js",
+        "name": "@jupyter-notebook/lab-extension",
+        "style": "./style"
+      },
       {
         "extension": "./extension",
         "load": "static/remoteEntry.9077b3d2deaffb329dfc.js",
@@ -14,19 +20,54 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.3745c44cbbd62cec9a73.js",
-        "name": "@jupyterlite/pyodide-kernel-extension"
+        "load": "static/remoteEntry.7678ccd5345e024633df.js",
+        "name": "@jupyterlite/ai",
+        "style": "./style"
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.b4a1f7d763389f060524.js",
-        "name": "@pyviz/jupyterlab_pyviz",
-        "style": "./style"
+        "load": "static/remoteEntry.5df361fc8941bb3d8639.js",
+        "name": "@jupyterlite/pyodide-kernel-extension"
       },
       {
         "extension": "./extension",
         "load": "./static/remoteEntry.a8e0a68d.js",
         "name": "anywidget"
+      },
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.6610dc2c9e0921c7f94a.js",
+        "name": "jupyter-secrets-manager",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.9f36c456def200311c3c.js",
+        "name": "jupyterlab-browser-ai",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.f80ac7a8e97b08d2a2fd.js",
+        "name": "jupyterlab-cell-input-footer-extension",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.0c974ce2f2617448e5a7.js",
+        "name": "jupyterlab-cursor-theme"
+      },
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.4830528fbe7c3ca55989.js",
+        "name": "jupyterlab-diff",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.5577376b289c1f9e2dc2.js",
+        "name": "jupyterlab-eventlistener-extension",
+        "style": "./style"
       },
       {
         "extension": "./extension",
@@ -36,6 +77,16 @@
       }
     ],
     "fileTypes": {
+      "avi": {
+        "extensions": [
+          ".avi"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "video/x-msvideo"
+        ],
+        "name": "avi"
+      },
       "css": {
         "extensions": [
           ".css"
@@ -65,6 +116,16 @@
           "text/plain"
         ],
         "name": "fasta"
+      },
+      "flac": {
+        "extensions": [
+          ".flac"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "audio/flac"
+        ],
+        "name": "flac"
       },
       "geojson": {
         "extensions": [
@@ -173,6 +234,16 @@
         ],
         "name": "json"
       },
+      "jupyterlab_workspace": {
+        "extensions": [
+          ".jupyterlab-workspace"
+        ],
+        "fileFormat": "json",
+        "mimeTypes": [
+          "application/json"
+        ],
+        "name": "jupyterlab_workspace"
+      },
       "manifest": {
         "extensions": [
           ".manifest"
@@ -193,6 +264,56 @@
           "text/markdown"
         ],
         "name": "md"
+      },
+      "mkv": {
+        "extensions": [
+          ".mkv"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "video/x-matroska"
+        ],
+        "name": "mkv"
+      },
+      "mov": {
+        "extensions": [
+          ".mov"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "video/quicktime"
+        ],
+        "name": "mov"
+      },
+      "mp3": {
+        "extensions": [
+          ".mp3"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "audio/mpeg"
+        ],
+        "name": "mp3"
+      },
+      "mp4": {
+        "extensions": [
+          ".mp4"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "video/mp4"
+        ],
+        "name": "mp4"
+      },
+      "ogg": {
+        "extensions": [
+          ".ogg"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "audio/ogg"
+        ],
+        "name": "ogg"
       },
       "pdf": {
         "extensions": [
@@ -275,6 +396,26 @@
         ],
         "name": "wasm"
       },
+      "wav": {
+        "extensions": [
+          ".wav"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "audio/wav"
+        ],
+        "name": "wav"
+      },
+      "webm": {
+        "extensions": [
+          ".webm"
+        ],
+        "fileFormat": "base64",
+        "mimeTypes": [
+          "video/webm"
+        ],
+        "name": "webm"
+      },
       "wheel": {
         "extensions": [
           ".whl"
@@ -314,8 +455,7 @@
     "litePluginSettings": {
       "@jupyterlite/pyodide-kernel-extension:kernel": {
         "pipliteUrls": [
-          "./pypi/all.json?sha256=e925a7110b674afb30d17ca55c8195588d62853a1331b2ba1da8c435ef8f8fd2",
-          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=6428e372c283ca4b67a641295c5d9c8abeed5cf341b24ffe41b313fcdcaf9be4"
+          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=aa1b598f39b51ccc2c1245006704454c1505587432535f68277dc406a2f8069a"
         ]
       }
     }
