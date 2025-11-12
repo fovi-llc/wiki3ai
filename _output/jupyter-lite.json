@@ -9,6 +9,11 @@
     "federated_extensions": [
       {
         "extension": "./extension",
+        "load": "static/remoteEntry.9077b3d2deaffb329dfc.js",
+        "name": "@jupyter-widgets/jupyterlab-manager"
+      },
+      {
+        "extension": "./extension",
         "load": "static/remoteEntry.3745c44cbbd62cec9a73.js",
         "name": "@jupyterlite/pyodide-kernel-extension"
       },
@@ -17,6 +22,11 @@
         "load": "static/remoteEntry.b4a1f7d763389f060524.js",
         "name": "@pyviz/jupyterlab_pyviz",
         "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "load": "./static/remoteEntry.a8e0a68d.js",
+        "name": "anywidget"
       },
       {
         "extension": "./extension",

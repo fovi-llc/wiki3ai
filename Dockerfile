@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyterlite jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles
+RUN pip install jupyterlite anywidget jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles
 # RUN pip install nbconvert nbformat
 
 WORKDIR /app

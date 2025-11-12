@@ -60,30 +60,30 @@ function render({ model, el }) {
     
     // Initialize Chrome AI session (async but doesn't block render)
     let session = null;
-    // (async () => {
-    // try {
-    //     model.set("status", "Initializing...");
-    //     model.save_changes();
+    (async () => {
+    try {
+        model.set("status", "Initializing...");
+        model.save_changes();
         
-    //     if (!window.ai || !window.ai.languageModel) {
-    //     model.set("status", "Chrome AI not available. Please enable chrome://flags/#prompt-api-for-gemini-nano");
-    //     model.save_changes();
-    //     button.disabled = true;
-    //     return;
-    //     }
+        if (!window.ai || !window.ai.languageModel) {
+        model.set("status", "Chrome AI not available. Please enable chrome://flags/#prompt-api-for-gemini-nano");
+        model.save_changes();
+        button.disabled = true;
+        return;
+        }
         
-    //     model.set("status", "Creating AI session...");
-    //     model.save_changes();
-    //     session = await window.ai.languageModel.create();
-    //     model.set("status", "Ready! Enter a prompt and press Submit or Enter.");
-    //     model.save_changes();
+        model.set("status", "Creating AI session...");
+        model.save_changes();
+        session = await window.ai.languageModel.create();
+        model.set("status", "Ready! Enter a prompt and press Submit or Enter.");
+        model.save_changes();
         
-    // } catch (error) {
-    //     model.set("status", `Error: ${error.message}`);
-    //     model.save_changes();
-    //     button.disabled = true;
-    // }
-    // })();
+    } catch (error) {
+        model.set("status", `Error: ${error.message}`);
+        model.save_changes();
+        button.disabled = true;
+    }
+    })();
     
     // Handle prompt changes - call Chrome AI
     model.on("change:prompt", async () => {
