@@ -20,12 +20,6 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.7678ccd5345e024633df.js",
-        "name": "@jupyterlite/ai",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
         "load": "static/remoteEntry.5df361fc8941bb3d8639.js",
         "name": "@jupyterlite/pyodide-kernel-extension"
       },
@@ -36,38 +30,8 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.6610dc2c9e0921c7f94a.js",
-        "name": "jupyter-secrets-manager",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "load": "static/remoteEntry.9f36c456def200311c3c.js",
-        "name": "jupyterlab-browser-ai",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "load": "static/remoteEntry.f80ac7a8e97b08d2a2fd.js",
-        "name": "jupyterlab-cell-input-footer-extension",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
         "load": "static/remoteEntry.0c974ce2f2617448e5a7.js",
         "name": "jupyterlab-cursor-theme"
-      },
-      {
-        "extension": "./extension",
-        "load": "static/remoteEntry.4830528fbe7c3ca55989.js",
-        "name": "jupyterlab-diff",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
-        "load": "static/remoteEntry.5577376b289c1f9e2dc2.js",
-        "name": "jupyterlab-eventlistener-extension",
-        "style": "./style"
       },
       {
         "extension": "./extension",

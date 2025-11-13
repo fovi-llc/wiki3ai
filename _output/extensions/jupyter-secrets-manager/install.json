@@ -1,5 +1,0 @@
-{
-  "packageManager": "python",
-  "packageName": "jupyter_secrets_manager",
-  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package jupyter_secrets_manager"
-}

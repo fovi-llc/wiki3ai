@@ -1,8 +1,0 @@
-{
-  "jupyter.lab.shortcuts": [],
-  "title": "jupyterlab-browser-ai",
-  "description": "jupyterlab-browser-ai settings.",
-  "type": "object",
-  "properties": {},
-  "additionalProperties": false
-}
