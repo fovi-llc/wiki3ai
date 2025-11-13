@@ -85,7 +85,7 @@ function render({ model, el }) {
     }
     })();
     
-    // Handle prompt changes - call Chrome AI
+    // Handle prompt changes - call Chrome AI with streaming
     model.on("change:prompt", async () => {
         const promptText = getPrompt().trim();
         if (!promptText || !session) return;
@@ -98,9 +98,16 @@ function render({ model, el }) {
             model.set("response", "");
             model.save_changes();
             
-            const result = await session.prompt(promptText);
+            // Use streaming API
+            const stream = session.promptStreaming(promptText);
+            let fullResponse = "";
             
-            model.set("response", result);
+            for await (const chunk of stream) {
+                fullResponse += chunk;
+                model.set("response", fullResponse);
+                model.save_changes();
+            }
+            
             model.set("status", "Response received! Enter another prompt.");
             model.save_changes();
             
