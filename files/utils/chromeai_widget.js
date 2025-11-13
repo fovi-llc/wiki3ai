@@ -1,4 +1,7 @@
 function render({ model, el }) {
+    // Get the LanguageModel interface from window.ai
+    const { languageModel: LanguageModel } = window.ai || {};
+    
     // Get accessor functions for traitlets
     let getPrompt = () => model.get("prompt");
     let getResponse = () => model.get("response");
@@ -65,16 +68,26 @@ function render({ model, el }) {
         model.set("status", "Initializing...");
         model.save_changes();
         
-        if (!self.ai || !self.ai.languageModel) {
+        // Check if LanguageModel API is available
+        if (!LanguageModel) {
         model.set("status", "Chrome AI not available. Please enable chrome://flags/#prompt-api-for-gemini-nano");
         model.save_changes();
         button.disabled = true;
         return;
         }
         
+        // Check availability before creating session
+        const availability = await LanguageModel.availability();
+        if (availability === 'no') {
+            model.set("status", "Chrome AI model not available on this device");
+            model.save_changes();
+            button.disabled = true;
+            return;
+        }
+        
         model.set("status", "Creating AI session...");
         model.save_changes();
-        session = await self.ai.languageModel.create();
+        session = await LanguageModel.create();
         model.set("status", "Ready! Enter a prompt and press Submit or Enter.");
         model.save_changes();
         
