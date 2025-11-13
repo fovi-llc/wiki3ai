@@ -18,6 +18,7 @@ COPY . /app
 # pip install uv
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
+# rm -rf _output
 # uv run jupyter lite build
 # uv run jupyter lite serve 
 
