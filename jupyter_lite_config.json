@@ -1,6 +1,5 @@
 {
   "LiteBuildConfig": {
-    "contents": ["notebooks/", "files/"],
     "output_dir": "_output"
   }
 }

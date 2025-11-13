@@ -1,0 +1,57 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-11-13T01:26:17.801420Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-12T05:28:33.357631Z",
+      "mimetype": "text/javascript",
+      "name": "test.js",
+      "path": "utils/test.js",
+      "size": 1502,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-11-13T01:26:17.801240Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-12T05:28:33.357219Z",
+      "mimetype": "text/javascript",
+      "name": "chromeai_widget.js",
+      "path": "utils/chromeai_widget.js",
+      "size": 4072,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-11-13T01:26:17.801050Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-12T05:28:33.356792Z",
+      "mimetype": "text/css",
+      "name": "chromeai_widget.css",
+      "path": "utils/chromeai_widget.css",
+      "size": 1300,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2025-11-13T01:26:17.801339Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-11-13T01:26:17.801339Z",
+  "mimetype": null,
+  "name": "utils",
+  "path": "utils",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -21,16 +21,16 @@ wheels = [
 
 [[package]]
 name = "anywidget"
-version = "0.9.19"
+version = "0.9.21"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "ipywidgets" },
     { name = "psygnal" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/96/3e/c15178c70554955be437c236f0539e66a0e846b1e908f6c141468fac74ed/anywidget-0.9.19.tar.gz", hash = "sha256:a868b3c92f9b083737628fc43dca53cceca6eac327c489282b9ceca445aa6037", size = 358669, upload-time = "2025-11-10T20:58:29.885Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/be/5e/cbea445bf062b81e4d366ca29dae4f0aedc7a64f384afc24670e07bec560/anywidget-0.9.21.tar.gz", hash = "sha256:b8d0172029ac426573053c416c6a587838661612208bb390fa0607862e594b27", size = 390517, upload-time = "2025-11-12T17:06:03.035Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/80/c1084779795b64755b750102f41564ff6150ca8bd15efe01ff6b1afcb9d8/anywidget-0.9.19-py3-none-any.whl", hash = "sha256:72d3fc458aceeea3144e9951d9ab770d1b31fdf477d7191004dffe8b128a7f0c", size = 189717, upload-time = "2025-11-10T20:58:26.549Z" },
+    { url = "https://files.pythonhosted.org/packages/5b/03/c17464bbf682ea87e7e3de2ddc63395e359a78ae9c01f55fc78759ecbd79/anywidget-0.9.21-py3-none-any.whl", hash = "sha256:78c268e0fbdb1dfd15da37fb578f9cf0a0df58a430e68d9156942b7a9391a761", size = 231797, upload-time = "2025-11-12T17:06:01.564Z" },
 ]
 
 [[package]]
@@ -2023,7 +2023,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "anywidget", specifier = "==0.9.19" },
+    { name = "anywidget", specifier = "==0.9.21" },
     { name = "ipywidgets" },
     { name = "jupyterlab", specifier = ">=4.5.0a3" },
     { name = "jupyterlab-browser-ai", specifier = ">=0.5.2" },

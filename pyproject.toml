@@ -5,7 +5,7 @@ description = "Wiki3.ai JupyterLite Site"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "anywidget==0.9.19",
+    "anywidget==0.9.21",
     "ipywidgets",
     "jupyterlab>=4.5.0a3",
     "jupyterlab-browser-ai>=0.5.2",
