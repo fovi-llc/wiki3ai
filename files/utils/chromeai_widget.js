@@ -65,7 +65,7 @@ function render({ model, el }) {
         model.set("status", "Initializing...");
         model.save_changes();
         
-        if (!window.ai || !window.ai.languageModel) {
+        if (!self.ai || !self.ai.languageModel) {
         model.set("status", "Chrome AI not available. Please enable chrome://flags/#prompt-api-for-gemini-nano");
         model.save_changes();
         button.disabled = true;
@@ -74,7 +74,7 @@ function render({ model, el }) {
         
         model.set("status", "Creating AI session...");
         model.save_changes();
-        session = await window.ai.languageModel.create();
+        session = await self.ai.languageModel.create();
         model.set("status", "Ready! Enter a prompt and press Submit or Enter.");
         model.save_changes();
         
