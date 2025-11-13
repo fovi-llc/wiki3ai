@@ -1,0 +1,19 @@
+[project]
+name = "wiki3ai"
+version = "0.2.0"
+description = "Wiki3.ai JupyterLite Site"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "anywidget==0.9.21",
+    "ipywidgets",
+    "jupyterlab>=4.5.0a3",
+    "jupyterlab-cursor-theme>=1.0.1",
+    "jupyterlite>=0.7.0a5",
+    "jupyterlite-core>=0.7.0b0",
+    "jupyterlite-pyodide-kernel>=0.7.0b0",
+    "matplotlib>=3.10.6",
+    "notebook>=7.5.0b0",
+    "numpy>=2.3.3",
+    "pandas>=2.3.2",
+]
