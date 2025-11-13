@@ -1,4 +1,7 @@
 function render({ model, el }) {
+    // Get the LanguageModel interface from window.ai
+    const { languageModel: LanguageModel } = window.ai || {};
+    
     // Get accessor functions for traitlets
     let getPrompt = () => model.get("prompt");
     let getResponse = () => model.get("response");
@@ -65,16 +68,26 @@ function render({ model, el }) {
         model.set("status", "Initializing...");
         model.save_changes();
         
-        if (!window.ai || !window.ai.languageModel) {
+        // Check if LanguageModel API is available
+        if (!LanguageModel) {
         model.set("status", "Chrome AI not available. Please enable chrome://flags/#prompt-api-for-gemini-nano");
         model.save_changes();
         button.disabled = true;
         return;
         }
         
+        // Check availability before creating session
+        const availability = await LanguageModel.availability();
+        if (availability === 'no') {
+            model.set("status", "Chrome AI model not available on this device");
+            model.save_changes();
+            button.disabled = true;
+            return;
+        }
+        
         model.set("status", "Creating AI session...");
         model.save_changes();
-        session = await window.ai.languageModel.create();
+        session = await LanguageModel.create();
         model.set("status", "Ready! Enter a prompt and press Submit or Enter.");
         model.save_changes();
         
@@ -85,7 +98,7 @@ function render({ model, el }) {
     }
     })();
     
-    // Handle prompt changes - call Chrome AI
+    // Handle prompt changes - call Chrome AI with streaming
     model.on("change:prompt", async () => {
         const promptText = getPrompt().trim();
         if (!promptText || !session) return;
@@ -98,9 +111,16 @@ function render({ model, el }) {
             model.set("response", "");
             model.save_changes();
             
-            const result = await session.prompt(promptText);
+            // Use streaming API
+            const stream = session.promptStreaming(promptText);
+            let fullResponse = "";
             
-            model.set("response", result);
+            for await (const chunk of stream) {
+                fullResponse += chunk;
+                model.set("response", fullResponse);
+                model.save_changes();
+            }
+            
             model.set("status", "Response received! Enter another prompt.");
             model.save_changes();
             
