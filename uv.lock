@@ -2289,6 +2289,19 @@ wheels = [
 ]
 
 [[package]]
+name = "wiki3-ai"
+version = "0.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anywidget" },
+    { name = "traitlets" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/16/63/5c76e2fc86b438062b30a52b65c27b18dd74a3f76235484f4d455c4fdbc0/wiki3_ai-0.3.0.tar.gz", hash = "sha256:b4987d8f53ed02fda0069d18a51f56066b91f48e01f42350e70c220f6b979215", size = 56093, upload-time = "2025-11-17T19:51:26.246Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/22/25/dc8b55dae008d967a501c7ab1099e7a9251034ca93fd2b701699a426a8f9/wiki3_ai-0.3.0-py3-none-any.whl", hash = "sha256:b2759abacf15009505070a22ca7afb5950b56180138eefea5b8e9f5745d19244", size = 17826, upload-time = "2025-11-17T19:51:25.087Z" },
+]
+
+[[package]]
 name = "wiki3ai"
 version = "0.2.0"
 source = { virtual = "." }
@@ -2305,7 +2318,9 @@ dependencies = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "panel" },
+    { name = "tornado" },
     { name = "watchfiles" },
+    { name = "wiki3-ai" },
 ]
 
 [package.metadata]
@@ -2322,7 +2337,9 @@ requires-dist = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "panel" },
+    { name = "tornado" },
     { name = "watchfiles" },
+    { name = "wiki3-ai", specifier = ">=0.3.0" },
 ]
 
 [[package]]

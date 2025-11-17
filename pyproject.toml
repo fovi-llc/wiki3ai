@@ -17,5 +17,7 @@ dependencies = [
     "numpy",
     "panel",
     "pandas",
+    "tornado",
     "watchfiles",
+    "wiki3-ai>=0.3.0",
 ]

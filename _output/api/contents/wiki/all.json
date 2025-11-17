@@ -2,11 +2,11 @@
   "content": [
     {
       "content": null,
-      "created": "2025-11-13T07:36:58.635940Z",
+      "created": "2025-11-15T00:24:58.855299Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-13T07:13:40.034537Z",
+      "last_modified": "2025-11-13T07:13:40Z",
       "mimetype": "text/html",
       "name": "index.html",
       "path": "wiki/index.html",
@@ -16,11 +16,11 @@
     },
     {
       "content": null,
-      "created": "2025-11-13T07:36:58.635701Z",
+      "created": "2025-11-15T00:24:58.854639Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-13T07:13:40.034479Z",
+      "last_modified": "2025-11-13T07:13:40Z",
       "mimetype": "text/html",
       "name": "about.html",
       "path": "wiki/about.html",
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-11-13T07:36:58.635831Z",
+  "created": "2025-11-15T00:24:58.855011Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-11-13T07:36:58.635831Z",
+  "last_modified": "2025-11-15T00:24:58.855011Z",
   "mimetype": null,
   "name": "wiki",
   "path": "wiki",

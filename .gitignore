@@ -1,3 +1,5 @@
-__pycache__
+__pycache__/
 wiki3ai.code-workspace
 .jupyterlite.doit.db
+.venv/
+.ipynb_checkpoints/

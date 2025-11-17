@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyterlite anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles
+RUN pip install jupyterlite anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles wiki3-ai
 # RUN pip install nbconvert nbformat
 
 WORKDIR /app
@@ -16,6 +16,7 @@ COPY . /app
 
 # brew install nodejs npm
 # pip install uv
+# uv sync --upgrade-package wiki3-ai
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
 # rm -rf _output
