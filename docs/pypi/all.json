@@ -1,0 +1,28 @@
+{
+  "wiki3-ai": {
+    "releases": {
+      "0.5.3": [
+        {
+          "comment_text": "",
+          "digests": {
+            "md5": "aa224cbc84e692373b6367ad20dcd017",
+            "sha256": "3fcf055c6d890f8ac57baa3e31e2a7c48eb2b8b45d5fe09c5566bf7a1d0edbb1"
+          },
+          "downloads": -1,
+          "filename": "wiki3_ai-0.5.3-py3-none-any.whl",
+          "has_sig": false,
+          "md5_digest": "aa224cbc84e692373b6367ad20dcd017",
+          "packagetype": "bdist_wheel",
+          "python_version": "py3",
+          "requires_python": ">=3.10",
+          "size": 16656,
+          "upload_time": "2025-11-20T01:32:28Z",
+          "upload_time_iso_8601": "2025-11-20T01:32:28Z",
+          "url": "./wiki3_ai-0.5.3-py3-none-any.whl",
+          "yanked": false,
+          "yanked_reason": null
+        }
+      ]
+    }
+  }
+}
