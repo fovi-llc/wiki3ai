@@ -19,5 +19,14 @@ dependencies = [
     "pandas",
     "tornado",
     "watchfiles",
-    "wiki3-ai>=0.3.0",
+    "wiki3-ai",
 ]
+
+[project.optional-dependencies]
+dev = [
+    "pip",
+    "jupyterlab",
+]
+
+[tool.uv.sources]
+wiki3-ai = { path = "python-ai", editable = true }

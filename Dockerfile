@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install jupyterlite anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles wiki3-ai
+RUN pip install -U jupyterlite anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles "wiki3-ai>=0.5.1"
 # RUN pip install nbconvert nbformat
 
 WORKDIR /app
@@ -20,6 +20,11 @@ COPY . /app
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
 # rm -rf _output
+# cd python-ai
+# uv build
+# cd ..
+# mkdir -p pypi/w/wiki3_ai
+# cp python-ai/dist/wiki3_ai-*-py3-none-any.whl pypi
 # uv run jupyter lite build
 # uv run jupyter lite serve 
 

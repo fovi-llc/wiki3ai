@@ -1583,6 +1583,15 @@ wheels = [
 ]
 
 [[package]]
+name = "pip"
+version = "25.3"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/fe/6e/74a3f0179a4a73a53d66ce57fdb4de0080a8baa1de0063de206d6167acc2/pip-25.3.tar.gz", hash = "sha256:8d0538dbbd7babbd207f261ed969c65de439f6bc9e5dbd3b3b9a77f25d95f343", size = 1803014, upload-time = "2025-10-25T00:55:41.394Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/44/3c/d717024885424591d5376220b5e836c2d5293ce2011523c9de23ff7bf068/pip-25.3-py3-none-any.whl", hash = "sha256:9655943313a94722b7774661c21049070f6bbb0a1516bf02f7c8d5d9201514cd", size = 1778622, upload-time = "2025-10-25T00:55:39.247Z" },
+]
+
+[[package]]
 name = "pkginfo"
 version = "1.12.1.2"
 source = { registry = "https://pypi.org/simple" }
@@ -2290,16 +2299,23 @@ wheels = [
 
 [[package]]
 name = "wiki3-ai"
-version = "0.3.0"
-source = { registry = "https://pypi.org/simple" }
+version = "0.5.1"
+source = { editable = "python-ai" }
 dependencies = [
     { name = "anywidget" },
     { name = "traitlets" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/16/63/5c76e2fc86b438062b30a52b65c27b18dd74a3f76235484f4d455c4fdbc0/wiki3_ai-0.3.0.tar.gz", hash = "sha256:b4987d8f53ed02fda0069d18a51f56066b91f48e01f42350e70c220f6b979215", size = 56093, upload-time = "2025-11-17T19:51:26.246Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/22/25/dc8b55dae008d967a501c7ab1099e7a9251034ca93fd2b701699a426a8f9/wiki3_ai-0.3.0-py3-none-any.whl", hash = "sha256:b2759abacf15009505070a22ca7afb5950b56180138eefea5b8e9f5745d19244", size = 17826, upload-time = "2025-11-17T19:51:25.087Z" },
+
+[package.metadata]
+requires-dist = [
+    { name = "anywidget", specifier = ">=0.9.0" },
+    { name = "black", marker = "extra == 'dev'", specifier = ">=23.0.0" },
+    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0.0" },
+    { name = "pytest-asyncio", marker = "extra == 'dev'", specifier = ">=0.21.0" },
+    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
+    { name = "traitlets", specifier = ">=5.0.0" },
 ]
+provides-extras = ["dev"]
 
 [[package]]
 name = "wiki3ai"
@@ -2323,12 +2339,19 @@ dependencies = [
     { name = "wiki3-ai" },
 ]
 
+[package.optional-dependencies]
+dev = [
+    { name = "jupyterlab" },
+    { name = "pip" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "anywidget", specifier = "==0.9.21" },
     { name = "ipywidgets" },
     { name = "jupyter-server" },
     { name = "jupyterlab" },
+    { name = "jupyterlab", marker = "extra == 'dev'" },
     { name = "jupyterlite" },
     { name = "jupyterlite-core" },
     { name = "jupyterlite-pyodide-kernel" },
@@ -2337,10 +2360,12 @@ requires-dist = [
     { name = "numpy" },
     { name = "pandas" },
     { name = "panel" },
+    { name = "pip", marker = "extra == 'dev'" },
     { name = "tornado" },
     { name = "watchfiles" },
-    { name = "wiki3-ai", specifier = ">=0.3.0" },
+    { name = "wiki3-ai", editable = "python-ai" },
 ]
+provides-extras = ["dev"]
 
 [[package]]
 name = "xyzservices"

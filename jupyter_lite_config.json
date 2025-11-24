@@ -1,5 +1,12 @@
 {
   "LiteBuildConfig": {
-    "output_dir": "_output"
-  }
+    "output_dir": "docs"
+  },
+  "piplite_urls": [
+    "files/pypi"
+  ],
+  "pyodide_packages": [
+    "micropip",
+    "files/pypi/w/wiki3_ai/wiki3_ai-0.1.0-py3-none-any.whl"
+  ]
 }
