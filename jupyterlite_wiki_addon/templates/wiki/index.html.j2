@@ -1,0 +1,128 @@
+{% extends 'lab/index.html.j2' %}
+
+{% block extra_css %}
+  {{ super() }}
+  <style>
+    :root { color-scheme: light dark; }
+    .jp-Button, .jp-Button:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid var(--jp-border-color2);
+      background: var(--jp-layout-color2);
+      color: inherit;
+      text-decoration: none;
+      font-size: var(--jp-ui-font-size1, 14px);
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    .jp-Button:hover,
+    .jp-Button:focus {
+      border-color: var(--jp-brand-color1);
+      text-decoration: none;
+    }
+    .jp-Button:focus-visible {
+      outline: 2px solid var(--jp-brand-color1);
+      outline-offset: 2px;
+    }
+    button.jp-Button {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    body.jp-mod-light,
+    body.jp-mod-dark {
+      background: var(--jp-layout-color0);
+      color: var(--jp-ui-font-color1);
+    }
+    .wiki-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--jp-layout-color1);
+      border-bottom: 1px solid var(--jp-border-color2);
+    }
+    .wiki-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+    .wiki-toolbar-title {
+      font-weight: 600;
+      font-size: var(--jp-ui-font-size2, 16px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .wiki-toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .wiki-main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+    .wiki-share-success {
+      box-shadow: 0 0 0 2px var(--jp-success-color1);
+    }
+    .wiki-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
+{% endblock extra_css %}
+
+{% block body_header %}
+  {% if resources.theme == 'dark' %}
+    <body class="jp-Notebook jp-mod-dark" data-jp-theme-light="false" data-jp-theme-name="JupyterLab Dark">
+  {% else %}
+    <body class="jp-Notebook jp-mod-light" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+  {% endif %}
+  <div class="wiki-toolbar" role="toolbar" aria-label="Notebook actions">
+    <div class="wiki-toolbar-left">
+      <a class="jp-Button" href="{{ resources.wiki_toolbar.home_href }}">home</a>
+      <span class="wiki-toolbar-title" title="{{ resources.wiki_toolbar.title }}">{{ resources.wiki_toolbar.title }}</span>
+    </div>
+    <div class="wiki-toolbar-actions" role="group" aria-label="File actions">
+      {% for action in resources.wiki_toolbar.actions %}
+        {% if action.kind == 'link' %}
+          <a class="jp-Button" href="{{ action.href }}"
+             {% if action.new_tab %} target="_blank" rel="noopener noreferrer"{% endif %}
+             {% if action.download %} download aria-label="Download" title="Download"{% endif %}>{{ action.label }}</a>
+        {% else %}
+          <button type="button" class="jp-Button" data-share="{{ action.share_href }}"
+                  aria-label="{{ action.aria_label }}">{{ action.label }}</button>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <main class="wiki-main">
+{% endblock body_header %}
+
+{% block body_footer %}
+  </main>
+  <div id="wiki-share-status" class="wiki-sr-only" aria-live="polite"></div>
+</body>
+{% endblock body_footer %}
+
+{% block footer_js %}
+  {{ super() }}
+  {{ resources.wiki_behavior_script | safe }}
+{% endblock footer_js %}
