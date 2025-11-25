@@ -189,7 +189,7 @@ class WikiPageAddon(BaseAddon):
                 "  <div class=\"wiki-toolbar\" role=\"toolbar\" aria-label=\"Wiki navigation\">\n"
                 "    <div class=\"wiki-toolbar-left\">\n"
                 "      <a class=\"jp-Button wiki-home\" href=\"/\">home</a>\n"
-                "      <span class=\"wiki-toolbar-title\">Wiki files</span>\n"
+                "      <span class=\"wiki-toolbar-title\">Wiki3.ai index</span>\n"
                 "    </div>\n"
                 "    <div class=\"wiki-toolbar-actions\" role=\"group\" aria-label=\"Global actions\">\n"
                 "      <a class=\"jp-Button wiki-action-button\" href=\"/files\">files</a>\n"
