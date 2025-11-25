@@ -1,0 +1,174 @@
+
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>Wiki3AI - Notebook Collection</title>
+                <style>
+                    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif; 
+                           margin: 40px; line-height: 1.6; background: #f8f9fa; }
+                    .container { max-width: 800px; margin: 0 auto; background: white; 
+                                padding: 40px; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+                    h1 { color: #007bff; border-bottom: 3px solid #007bff; padding-bottom: 10px; }
+                    .notebook-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                                   gap: 20px; margin: 30px 0; }
+                    .notebook-card { border: 1px solid #ddd; border-radius: 8px; padding: 20px; 
+                                   background: #f8f9fa; transition: transform 0.2s, box-shadow 0.2s; }
+                    .notebook-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,123,255,0.2); }
+                    .notebook-title { font-size: 1.2em; font-weight: bold; margin-bottom: 10px; color: #333; }
+                    .notebook-links { margin-top: 15px; }
+                    .notebook-links a { display: inline-block; margin-right: 10px; margin-bottom: 8px;
+                                      padding: 8px 16px; text-decoration: none; border-radius: 4px; font-size: 0.9em; }
+                    .btn-view { background: #007bff; color: white; }
+                    .btn-interactive { background: #28a745; color: white; }
+                    .btn-view:hover, .btn-interactive:hover { opacity: 0.8; }
+                    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; 
+                            text-align: center; color: #666; font-size: 0.9em; }
+                </style>
+            </head>
+            <body>
+                <div class="container">
+                    <h1>📚 Wiki3AI Notebook Collection</h1>
+                    <p>Welcome to the Wiki3AI notebook collection. Below you'll find interactive Jupyter notebooks 
+                       covering various topics including WebLLM, AI in the browser, and more.</p>
+                    
+                    <div class="notebook-grid">
+            
+                        <div class="notebook-card">
+                            <div class="notebook-title">Chrome Built-in AI Demo in JupyterLab and JupyterLite Python Notebook</div>
+                            <div class="notebook-description">This notebook demonstrates the Python wrapper for Chrome's built-in AI Prompt API.</div>
+                            <div class="notebook-links">
+                                <a href="prompt_ai.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=prompt_ai.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Chrome Built-in AI Demo in JupyterLab and JupyterLite Python Notebook</div>
+                            <div class="notebook-description">This notebook demonstrates the Python wrapper for Chrome's built-in AI Prompt API.</div>
+                            <div class="notebook-links">
+                                <a href="demo.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=demo.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Webllm</div>
+                            <div class="notebook-description">This [WebLLM](https://webllm.mlc.ai/) in a [JupyterLite](https://github.com/jupyterlite) demo notebook is from [Holoviz Panel App Gallery WebLLM](https://panel.holoviz.org/gallery/webllm.html).</div>
+                            <div class="notebook-links">
+                                <a href="webllm.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=webllm.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Chrome AI Built-in Prompt API Demo</div>
+                            <div class="notebook-description">This notebook demonstrates using Chrome's built-in AI (Gemini Nano) with the Prompt API.</div>
+                            <div class="notebook-links">
+                                <a href="chromeai.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=chromeai.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Installing WebLLM in Pyodide with Micropip</div>
+                            <div class="notebook-description">This notebook shows how to install and use WebLLM packages in Pyodide using micropip.</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/webllm-micropip-local.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/webllm-micropip-local.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">WebLLM with JavaScript Kernel</div>
+                            <div class="notebook-description">This notebook demonstrates how to load and use WebLLM directly in JavaScript, running in a Web Worker environment.</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/webllm-javascript.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/webllm-javascript.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Installing WebLLM in Pyodide with Micropip</div>
+                            <div class="notebook-description">This notebook shows how to install and use WebLLM packages in Pyodide using micropip.</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/webllm-micropip.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/webllm-micropip.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Prompt</div>
+                            <div class="notebook-description">Interactive Jupyter notebook</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/prompt.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/prompt.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Foo</div>
+                            <div class="notebook-description">Interactive Jupyter notebook</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/foo.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/foo.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">WebLLM + Pyodide Integration Example</div>
+                            <div class="notebook-description">This notebook demonstrates how to use WebLLM (Web Large Language Models) within Pyodide in JupyterLite.</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/example.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/example.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Create a Jupyter Widget with anywidget</div>
+                            <div class="notebook-description">*This notebook is heavily inspired by the "Getting Started" guide on the anywidget documentation: https://anywidget.dev/en/getting-started/*</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/anywidget copy.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/anywidget copy.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Create a Jupyter Widget with anywidget</div>
+                            <div class="notebook-description">*This notebook is heavily inspired by the "Getting Started" guide on the anywidget documentation: https://anywidget.dev/en/getting-started/*</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/anywidget.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/anywidget.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Chrome AI Built-in Prompt API Demo</div>
+                            <div class="notebook-description">This notebook demonstrates using Chrome's built-in AI (Gemini Nano) with the Prompt API.</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/test.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/test.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                        <div class="notebook-card">
+                            <div class="notebook-title">Webllm Comet</div>
+                            <div class="notebook-description">Interactive Jupyter notebook</div>
+                            <div class="notebook-links">
+                                <a href="notebooks/webllm-comet.html" class="btn-view">📖 View Static</a>
+                                <a href="/lab/index.html?path=notebooks/webllm-comet.ipynb" target="_blank" class="btn-interactive">🚀 Run Interactive</a>
+                            </div>
+                        </div>
+                    
+                    </div>
+                    
+                    <div class="footer">
+                        <p>Generated by Wiki3AI JupyterLite addon</p>
+                        <p>🚀 <a href="/lab/index.html" target="_blank">Open JupyterLite Lab</a> | 
+                           📁 <a href="/files" target="_blank">Browse Files</a></p>
+                    </div>
+                </div>
+            </body>
+            </html>
+            

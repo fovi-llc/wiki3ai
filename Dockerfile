@@ -25,6 +25,8 @@ COPY . /app
 # cd ..
 # mkdir -p pypi/w/wiki3_ai
 # cp python-ai/dist/wiki3_ai-*-py3-none-any.whl pypi
+# npm --prefix lite-kernel install
+# npm --prefix lite-kernel run build
 # uv run jupyter lite build
 # uv run jupyter lite serve 
 
