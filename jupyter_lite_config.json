@@ -1,6 +1,9 @@
 {
   "LiteBuildConfig": {
-    "output_dir": "docs"
+    "output_dir": "docs",
+    "federated_extensions": [
+      "lite-kernel/dist"
+    ]
   },
   "piplite_urls": [
     "files/pypi"

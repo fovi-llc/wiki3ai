@@ -15,7 +15,6 @@ dependencies = [
     "matplotlib",
     "notebook",
     "numpy",
-    "panel",
     "pandas",
     "tornado",
     "watchfiles",

@@ -19,12 +19,14 @@ COPY . /app
 # uv sync --upgrade-package wiki3-ai
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
-# rm -rf _output
+# rm -rf docs
 # cd python-ai
 # uv build
 # cd ..
 # mkdir -p pypi/w/wiki3_ai
 # cp python-ai/dist/wiki3_ai-*-py3-none-any.whl pypi
+# npm --prefix lite-kernel install
+# npm --prefix lite-kernel run build
 # uv run jupyter lite build
 # uv run jupyter lite serve 
 
