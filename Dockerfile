@@ -19,7 +19,7 @@ COPY . /app
 # uv sync --upgrade-package wiki3-ai
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
-# rm -rf _output
+# rm -rf docs
 # cd python-ai
 # uv build
 # cd ..

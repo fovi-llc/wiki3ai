@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # set -euo pipefail
 
-ROOT_DIR="$(pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 LITE_SITE_DIR="$ROOT_DIR"
 export LITE_OUTPUT_DIR="$LITE_SITE_DIR/docs"
 

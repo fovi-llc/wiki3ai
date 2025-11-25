@@ -33,7 +33,7 @@ def patch_file(path):
     return False
 
 count = 0
-for root, dirs, files in os.walk("lite-site/_output/build"):
+for root, dirs, files in os.walk("lite-site/docs/build"):
     for file in files:
         if file.endswith(".js"):
             if patch_file(os.path.join(root, file)):
