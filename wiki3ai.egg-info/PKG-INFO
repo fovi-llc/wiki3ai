@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: wiki3ai
+Version: 0.2.0
+Summary: Wiki3.ai JupyterLite Site
+Requires-Python: >=3.12
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: anywidget==0.9.21
+Requires-Dist: ipywidgets
+Requires-Dist: jupyterlab
+Requires-Dist: jupyterlite
+Requires-Dist: jupyterlite-core
+Requires-Dist: jupyterlite-pyodide-kernel
+Requires-Dist: jupyter-server
+Requires-Dist: matplotlib
+Requires-Dist: notebook
+Requires-Dist: numpy
+Requires-Dist: panel
+Requires-Dist: pandas
+Requires-Dist: tornado
+Requires-Dist: watchfiles
+Requires-Dist: wiki3-ai
+Dynamic: license-file

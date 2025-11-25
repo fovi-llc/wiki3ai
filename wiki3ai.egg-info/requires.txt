@@ -1,0 +1,15 @@
+anywidget==0.9.21
+ipywidgets
+jupyterlab
+jupyterlite
+jupyterlite-core
+jupyterlite-pyodide-kernel
+jupyter-server
+matplotlib
+notebook
+numpy
+panel
+pandas
+tornado
+watchfiles
+wiki3-ai

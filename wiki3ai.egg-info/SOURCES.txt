@@ -1,0 +1,11 @@
+LICENSE
+pyproject.toml
+setup.py
+jupyterlite_wiki_addon/__init__.py
+jupyterlite_wiki_addon/addon.py
+wiki3ai.egg-info/PKG-INFO
+wiki3ai.egg-info/SOURCES.txt
+wiki3ai.egg-info/dependency_links.txt
+wiki3ai.egg-info/entry_points.txt
+wiki3ai.egg-info/requires.txt
+wiki3ai.egg-info/top_level.txt
