@@ -25,7 +25,7 @@ export class ChatHttpKernel {
 
     this.modelName = opts.model ?? globalModel ?? "Llama-3.2-3B-Instruct-q4f16_1-MLC";
     this.model = webLLM(this.modelName, {
-      initProgressCallback: (report: any) => {
+      initProgressCallback: (report) => {
         if (typeof window !== "undefined") {
           window.dispatchEvent(
             new CustomEvent("webllm:model-progress", { detail: report })
@@ -43,7 +43,7 @@ export class ChatHttpKernel {
       throw new Error("Browser does not support WebLLM / WebGPU.");
     }
     if (availability === "downloadable" || availability === "downloading") {
-      await this.model.createSessionWithProgress((report: any) => {
+      await this.model.createSessionWithProgress((report) => {
         if (typeof window !== "undefined") {
           window.dispatchEvent(
             new CustomEvent("webllm:model-progress", { detail: report })

@@ -1,12 +1,10 @@
-"use strict";
 // lite-kernel/src/federation.ts
 // Module Federation container for JupyterLite
-Object.defineProperty(exports, "__esModule", { value: true });
-const ai_1 = require("ai");
-const web_llm_1 = require("@built-in-ai/web-llm");
-const models_js_1 = require("./models.js");
+import { streamText } from "ai";
+import { webLLM } from "@built-in-ai/web-llm";
+import { WEBLLM_MODELS, DEFAULT_WEBLLM_MODEL } from "./models.js";
 console.log("[lite-kernel/federation] Setting up Module Federation container");
-const scope = "lite-kernel";
+const scope = "@wiki3ai/lite-kernel";
 let sharedScope = null;
 // Helper to get a module from the shared scope
 async function importShared(pkg) {
@@ -85,12 +83,12 @@ const container = {
                      */
                     ensureModelUpToDate() {
                         const globalModel = typeof window !== "undefined" ? window.webllmModelId : undefined;
-                        const targetName = this.initialModelOverride ?? globalModel ?? models_js_1.DEFAULT_WEBLLM_MODEL;
+                        const targetName = this.initialModelOverride ?? globalModel ?? DEFAULT_WEBLLM_MODEL;
                         if (this.model && this.modelName === targetName) {
                             return;
                         }
                         this.modelName = targetName;
-                        this.model = (0, web_llm_1.webLLM)(this.modelName, {
+                        this.model = webLLM(this.modelName, {
                             initProgressCallback: (report) => {
                                 if (typeof window !== "undefined") {
                                     window.dispatchEvent(new CustomEvent("webllm:model-progress", { detail: report }));
@@ -113,7 +111,7 @@ const container = {
                                 }
                             });
                         }
-                        const result = await (0, ai_1.streamText)({
+                        const result = await streamText({
                             model: this.model,
                             messages: [{ role: "user", content: prompt }],
                         });
@@ -263,7 +261,7 @@ const container = {
                                     this.addClass("webllm-model-toolbar");
                                 }
                                 render() {
-                                    const saved = window.localStorage.getItem("webllm:modelId") ?? models_js_1.DEFAULT_WEBLLM_MODEL;
+                                    const saved = window.localStorage.getItem("webllm:modelId") ?? DEFAULT_WEBLLM_MODEL;
                                     const handleChange = (event) => {
                                         const value = event.target.value;
                                         if (!value) {
@@ -278,7 +276,7 @@ const container = {
                                         onChange: handleChange,
                                         "aria-label": "WebLLM model",
                                         title: "Select the WebLLM model",
-                                    }, models_js_1.WEBLLM_MODELS.map((id) => React.createElement("option", { key: id, value: id }, id)));
+                                    }, WEBLLM_MODELS.map((id) => React.createElement("option", { key: id, value: id }, id)));
                                 }
                             }
                             const webllmToolbarExtension = {

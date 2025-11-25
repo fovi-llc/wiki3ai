@@ -9,7 +9,7 @@ declare const window: any;
 
 console.log("[lite-kernel/federation] Setting up Module Federation container");
 
-const scope = "lite-kernel";
+const scope = "@wiki3ai/lite-kernel";
 let sharedScope: any = null;
 
 // Helper to get a module from the shared scope
@@ -113,13 +113,14 @@ const container = {
 
             const targetName =
               this.initialModelOverride ?? globalModel ?? DEFAULT_WEBLLM_MODEL;
+
             if (this.model && this.modelName === targetName) {
               return;
             }
 
             this.modelName = targetName;
             this.model = webLLM(this.modelName, {
-              initProgressCallback: (report: any) => {
+              initProgressCallback: (report) => {
                 if (typeof window !== "undefined") {
                   window.dispatchEvent(
                     new CustomEvent("webllm:model-progress", { detail: report })
@@ -144,7 +145,7 @@ const container = {
               throw new Error("Browser does not support WebLLM / WebGPU.");
             }
             if (availability === "downloadable" || availability === "downloading") {
-              await this.model.createSessionWithProgress((report: any) => {
+              await this.model.createSessionWithProgress((report) => {
                 if (typeof window !== "undefined") {
                   window.dispatchEvent(
                     new CustomEvent("webllm:model-progress", { detail: report })

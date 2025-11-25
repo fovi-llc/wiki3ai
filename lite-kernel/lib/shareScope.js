@@ -1,7 +1,3 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.setSharedScope = setSharedScope;
-exports.getSharedModule = getSharedModule;
 let sharedScope = null;
 const MINIMUM_VERSIONS = {
     "@jupyterlab/coreutils": "6.4.9",
@@ -12,7 +8,7 @@ const MINIMUM_VERSIONS = {
     "@jupyterlab/notebook": "4.4.9",
     "@jupyterlab/apputils": "4.5.9",
 };
-function setSharedScope(scope) {
+export function setSharedScope(scope) {
     sharedScope = scope;
     normalizeSharedScopeVersions();
 }
@@ -22,7 +18,7 @@ function ensureScope() {
     }
     return sharedScope;
 }
-function getSharedModule(moduleName) {
+export function getSharedModule(moduleName) {
     const scope = ensureScope();
     const versions = scope[moduleName];
     if (!versions) {

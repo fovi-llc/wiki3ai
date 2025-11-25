@@ -1,4 +1,3 @@
-"use strict";
 // lite-kernel/src/models.ts
 // Dynamically derive the list of WebLLM models from upstream WebLLM.
 //
@@ -6,12 +5,9 @@
 // - @built-in-ai/web-llm gives you the provider function `webLLM(...)`.
 // - @mlc-ai/web-llm exposes `prebuiltAppConfig.model_list`, which is the
 //   authoritative list of built-in models (see WebLLM docs).
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.DEFAULT_WEBLLM_MODEL = exports.WEBLLM_MODELS = void 0;
-exports.isValidWebLLMModel = isValidWebLLMModel;
-const web_llm_1 = require("@mlc-ai/web-llm");
+import { prebuiltAppConfig } from "@mlc-ai/web-llm";
 // All available model IDs from WebLLM (runtime list)
-exports.WEBLLM_MODELS = web_llm_1.prebuiltAppConfig.model_list.map((record) => record.model_id);
+export const WEBLLM_MODELS = prebuiltAppConfig.model_list.map((record) => record.model_id);
 // Preferred defaults in order of choice
 const PREFERRED_DEFAULTS = [
     "Llama-3.2-3B-Instruct-q4f16_1-MLC",
@@ -20,9 +16,9 @@ const PREFERRED_DEFAULTS = [
 ];
 // Pick the first preferred model that actually exists;
 // fall back to the first model in the list as a last resort.
-exports.DEFAULT_WEBLLM_MODEL = PREFERRED_DEFAULTS.find((m) => exports.WEBLLM_MODELS.includes(m)) ??
-    exports.WEBLLM_MODELS[0];
+export const DEFAULT_WEBLLM_MODEL = PREFERRED_DEFAULTS.find((m) => WEBLLM_MODELS.includes(m)) ??
+    WEBLLM_MODELS[0];
 // Validation helper: check if a string is one of the known model IDs
-function isValidWebLLMModel(id) {
-    return exports.WEBLLM_MODELS.includes(id);
+export function isValidWebLLMModel(id) {
+    return WEBLLM_MODELS.includes(id);
 }

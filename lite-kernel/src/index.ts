@@ -1,24 +1,31 @@
 import { JupyterFrontEnd, JupyterFrontEndPlugin } from "@jupyterlab/application";
-import type { IKernel } from "@jupyterlite/kernel";
-import { IKernelSpecs } from "@jupyterlite/kernel";
+import { WEBLLM_MODELS, DEFAULT_WEBLLM_MODEL } from "./models.js";
 
-import { createHttpLiteKernel } from "./kernel";
-import { DEFAULT_WEBLLM_MODEL, WEBLLM_MODELS } from "./models";
+import { HttpLiteKernel } from "./kernel.js";
+
+console.log("[lite-kernel] entrypoint loaded");
 
 declare global {
   interface Window {
     webllmModelId?: string;
+    __JUPYTERLITE_SHARED_SCOPE__?: Record<string, unknown>;
+    _JUPYTERLAB?: Record<string, any>;
   }
 }
 
-const KERNEL_ID = "http-chat";
-
+/**
+ * JupyterLite / JupyterLab plugin that registers our HTTP-backed kernel.
+ */
 const httpChatKernelPlugin: JupyterFrontEndPlugin<void> = {
   id: "http-chat-kernel:plugin",
   autoStart: true,
-  requires: [IKernelSpecs],
-  activate: async (app: JupyterFrontEnd, kernelspecs: IKernelSpecs) => {
+  // ❌ remove `requires: [IKernelSpecs]`,
+  activate: (app: JupyterFrontEnd) => {
     console.log("[http-chat-kernel] Activating plugin");
+
+    // Grab kernelspecs from the app's serviceManager
+    const anyApp = app as any;
+    const kernelspecs = anyApp.serviceManager?.kernelspecs;
 
     if (!kernelspecs || typeof kernelspecs.register !== "function") {
       console.warn(
@@ -28,105 +35,116 @@ const httpChatKernelPlugin: JupyterFrontEndPlugin<void> = {
       return;
     }
 
-    try {
-      const readiness: Promise<unknown>[] = [];
-      const serviceReady = (app.serviceManager as any)?.ready;
-      if (serviceReady) {
-        readiness.push(Promise.resolve(serviceReady));
-      }
-      if (app.restored) {
-        readiness.push(app.restored);
-      }
-      if (readiness.length) {
-        await Promise.all(readiness);
-      }
-    } catch (err) {
-      console.warn("[http-chat-kernel] Failed waiting for kernelspecs readiness", err);
-    }
-
     kernelspecs.register({
+      id: "http-chat",
       spec: {
-        name: KERNEL_ID,
+        name: "http-chat",
         display_name: "HTTP Chat (ACP)",
-        language: "python",
+        language: "python", // purely cosmetic; syntax highlighting
         argv: [],
-        resources: {},
+        resources: {}
       },
-      create: async (options: IKernel.IOptions) => {
+      create: (options: any) => {
         console.log("[http-chat-kernel] Creating HttpLiteKernel instance", options);
-        return Promise.resolve(createHttpLiteKernel(options as any));
-      },
-    });
-
-    console.log(`[http-chat-kernel] Kernel spec '${KERNEL_ID}' registered`);
-
-    if (typeof document === "undefined") {
-      return;
-    }
-
-    const bar = document.createElement("div");
-    bar.style.position = "fixed";
-    bar.style.top = "8px";
-    bar.style.right = "8px";
-    bar.style.zIndex = "9999";
-    bar.style.padding = "4px 8px";
-    bar.style.background = "rgba(0,0,0,0.7)";
-    bar.style.color = "#fff";
-    bar.style.fontSize = "12px";
-    bar.style.borderRadius = "4px";
-    bar.style.display = "flex";
-    bar.style.gap = "4px";
-    bar.style.alignItems = "center";
-
-    const label = document.createElement("span");
-    label.textContent = "WebLLM model:";
-    bar.appendChild(label);
-
-    const select = document.createElement("select");
-    const saved =
-      window.localStorage.getItem("webllm:modelId") ?? DEFAULT_WEBLLM_MODEL;
-    WEBLLM_MODELS.forEach((id) => {
-      const opt = document.createElement("option");
-      opt.value = id;
-      opt.textContent = id;
-      if (id === saved) {
-        opt.selected = true;
+        return new HttpLiteKernel(options);
       }
-      select.appendChild(opt);
     });
 
-    (window as any).webllmModelId = saved;
-    select.onchange = () => {
-      (window as any).webllmModelId = select.value;
-      window.localStorage.setItem("webllm:modelId", select.value);
-    };
-    bar.appendChild(select);
+    console.log("[http-chat-kernel] Kernel spec 'http-chat' registered");
 
-    const progress = document.createElement("progress");
-    progress.max = 1;
-    progress.value = 0;
-    progress.style.width = "120px";
-    progress.style.display = "none";
-    bar.appendChild(progress);
+    // --- WebLLM model selector + progress bar ---
+    if (typeof document !== "undefined") {
+      const bar = document.createElement("div");
+      bar.style.position = "fixed";
+      bar.style.top = "8px";
+      bar.style.right = "8px";
+      bar.style.zIndex = "9999";
+      bar.style.padding = "4px 8px";
+      bar.style.background = "rgba(0,0,0,0.7)";
+      bar.style.color = "#fff";
+      bar.style.fontSize = "12px";
+      bar.style.borderRadius = "4px";
+      bar.style.display = "flex";
+      bar.style.gap = "4px";
+      bar.style.alignItems = "center";
 
-    const status = document.createElement("span");
-    status.textContent = "";
-    bar.appendChild(status);
+      const label = document.createElement("span");
+      label.textContent = "WebLLM model:";
+      bar.appendChild(label);
 
-    window.addEventListener("webllm:model-progress", (ev: Event) => {
-      const { detail = {} } = ev as CustomEvent<{ progress?: number; text?: string }>;
-      const { progress: progressValue, text } = detail;
+      const select = document.createElement("select");
+      const saved =
+        window.localStorage.getItem("webllm:modelId") ?? DEFAULT_WEBLLM_MODEL;
+      WEBLLM_MODELS.forEach((id) => {
+        const opt = document.createElement("option");
+        opt.value = id;
+        opt.textContent = id;
+        if (id === saved) opt.selected = true;
+        select.appendChild(opt);
+      });
+      // expose current model globally so ChatHttpKernel can read it
+      window.webllmModelId = saved;
+      select.onchange = () => {
+        window.webllmModelId = select.value;
+        window.localStorage.setItem("webllm:modelId", select.value);
+      };
+      bar.appendChild(select);
 
-      const showProgress = progressValue !== undefined && progressValue > 0 && progressValue < 1;
-      progress.style.display = showProgress ? "inline-block" : "none";
-      progress.value = progressValue ?? 0;
-      status.textContent = text ?? "";
-    });
+      const progress = document.createElement("progress");
+      progress.max = 1;
+      progress.value = 0;
+      progress.style.width = "120px";
+      progress.style.display = "none";
+      bar.appendChild(progress);
 
-    document.body.appendChild(bar);
-  },
+      const status = document.createElement("span");
+      status.textContent = "";
+      bar.appendChild(status);
+
+      window.addEventListener("webllm:model-progress", (ev: any) => {
+        const { progress: p, text } = ev.detail;
+        progress.style.display = p > 0 && p < 1 ? "inline-block" : "none";
+        progress.value = p ?? 0;
+        status.textContent = text ?? "";
+      });
+
+      document.body.appendChild(bar);
+    }
+  }
 };
 
 const plugins: JupyterFrontEndPlugin<any>[] = [httpChatKernelPlugin];
 
 export default plugins;
+
+// --- manual MF shim for static usage ---
+if (typeof window !== "undefined") {
+  const scope = "@wiki3ai/lite-kernel";
+  const moduleFactories: Record<string, () => any> = {
+    "./index": () => ({ default: plugins }),
+    "./extension": () => ({ default: plugins })
+  };
+
+  window._JUPYTERLAB = window._JUPYTERLAB || {};
+
+  if (!window._JUPYTERLAB[scope]) {
+    window._JUPYTERLAB[scope] = {
+      get: (module: string) => {
+        const factory = moduleFactories[module];
+        if (!factory) {
+          return Promise.reject(new Error(`[lite-kernel] Unknown module: ${module}`));
+        }
+        return Promise.resolve(factory);
+      },
+      init: (shareScope: Record<string, unknown> | undefined) => {
+        const scopeData = shareScope ?? {};
+        const globalShare = window.__JUPYTERLITE_SHARED_SCOPE__ ||= {};
+        Object.assign(globalShare, scopeData);
+        console.log("[lite-kernel] Module federation shim init() with shared scope keys", Object.keys(scopeData));
+        return Promise.resolve();
+      }
+    };
+
+      console.log(`[lite-kernel] Registered manual Module Federation shim on window._JUPYTERLAB scope='${scope}'`);
+  }
+}

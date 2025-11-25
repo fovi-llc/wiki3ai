@@ -39,7 +39,7 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.331c54cebc0fc95ddc4b.js",
+        "load": "index.js",
         "name": "@wiki3ai/lite-kernel"
       },
       {

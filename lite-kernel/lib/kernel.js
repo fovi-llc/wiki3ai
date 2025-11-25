@@ -1,15 +1,11 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HttpLiteKernel = void 0;
-exports.createHttpLiteKernel = createHttpLiteKernel;
 // lite-kernel/src/kernel.ts
-const kernel_1 = require("@jupyterlite/kernel");
-const ChatHttpKernel_js_1 = require("./ChatHttpKernel.js");
-class HttpLiteKernel extends kernel_1.BaseKernel {
+import { BaseKernel } from "@jupyterlite/kernel";
+import { ChatHttpKernel } from "./ChatHttpKernel.js";
+export class HttpLiteKernel extends BaseKernel {
     constructor(options) {
         super(options);
         const model = options.model;
-        this.chat = new ChatHttpKernel_js_1.ChatHttpKernel({ model });
+        this.chat = new ChatHttpKernel({ model });
     }
     async executeRequest(content) {
         const code = String(content.code ?? "");
@@ -105,7 +101,6 @@ class HttpLiteKernel extends kernel_1.BaseKernel {
     async commMsg(_content) { }
     async commClose(_content) { }
 }
-exports.HttpLiteKernel = HttpLiteKernel;
-function createHttpLiteKernel(options) {
+export function createHttpLiteKernel(options) {
     return new HttpLiteKernel(options);
 }
