@@ -113,14 +113,13 @@ const container = {
 
             const targetName =
               this.initialModelOverride ?? globalModel ?? DEFAULT_WEBLLM_MODEL;
-
             if (this.model && this.modelName === targetName) {
               return;
             }
 
             this.modelName = targetName;
             this.model = webLLM(this.modelName, {
-              initProgressCallback: (report) => {
+              initProgressCallback: (report: any) => {
                 if (typeof window !== "undefined") {
                   window.dispatchEvent(
                     new CustomEvent("webllm:model-progress", { detail: report })
@@ -145,7 +144,7 @@ const container = {
               throw new Error("Browser does not support WebLLM / WebGPU.");
             }
             if (availability === "downloadable" || availability === "downloading") {
-              await this.model.createSessionWithProgress((report) => {
+              await this.model.createSessionWithProgress((report: any) => {
                 if (typeof window !== "undefined") {
                   window.dispatchEvent(
                     new CustomEvent("webllm:model-progress", { detail: report })

@@ -22,33 +22,33 @@ export class HttpLiteKernel extends BaseKernel {
     const code = String(content.code ?? "");
     try {
       const reply = await this.chat.send(code);
-      this.publishExecuteResult(
+      (this as any).publishExecuteResult(
         {
           data: { "text/plain": reply },
           metadata: {},
-          execution_count: this.executionCount,
+          execution_count: (this as any).executionCount,
         },
-        this.parentHeader
+        (this as any).parentHeader
       );
       return {
         status: "ok",
-        execution_count: this.executionCount,
+        execution_count: (this as any).executionCount,
         payload: [],
         user_expressions: {},
       };
     } catch (err: any) {
       const message = err?.message ?? String(err);
-      this.publishExecuteError(
+      (this as any).publishExecuteError(
         {
           ename: "Error",
           evalue: message,
           traceback: [],
         },
-        this.parentHeader
+        (this as any).parentHeader
       );
       return {
         status: "error",
-        execution_count: this.executionCount,
+        execution_count: (this as any).executionCount,
         ename: "Error",
         evalue: message,
         traceback: [],

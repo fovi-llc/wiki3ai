@@ -1,28 +1,76 @@
 {
-  "name": "lite-kernel",
-  "version": "1.0.0",
-  "type": "module",
-  "main": "dist/index.js",
-  "scripts": {
-    "build:ts": "tsc --project tsconfig.json",
-    "build": "npm run build:ts && esbuild ./lib/federation.js --bundle --format=iife --outfile=dist/index.js",
-    "clean": "rm -rf lib dist"
-  },
-  "dependencies": {
-    "@built-in-ai/web-llm": "0.3.1",
-    "ai": "5.0.98",
-    "@jupyterlite/kernel": "0.6.4",
-    "@jupyterlab/application": "4.4.5",
-    "@jupyterlab/coreutils": "6.4.5",
-    "@jupyterlab/services": "7.4.5"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "esbuild": "^0.20.0",
-    "typescript": "^5.0.0"
-  },
+  "name": "@wiki3ai/lite-kernel",
+  "version": "0.1.0",
+  "description": "Custom kernel for Wiki3AI JupyterLite",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "lib/**/*.{d.ts,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "static/**/*.{css,eot,gif,html,jpg,js,js.map,json,png,svg,woff2,ttf}",
+    "style/**/*.{css,eot,gif,html,jpg,json,png,svg,woff2,ttf}"
+  ],
   "jupyterlab": {
     "extension": true,
-    "outputDir": "dist"
+    "outputDir": "./labextension",
+    "sharedPackages": {
+      "@jupyterlab/application": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@jupyterlab/apputils": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@jupyterlab/services": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@jupyterlab/ui-components": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@jupyterlite/kernel": {
+        "bundled": false,
+        "singleton": true
+      },
+      "@lumino/widgets": {
+        "bundled": false,
+        "singleton": true
+      },
+      "react": {
+        "bundled": false,
+        "singleton": true
+      },
+      "react-dom": {
+        "bundled": false,
+        "singleton": true
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc && jupyter labextension build .",
+    "clean": "rimraf lib",
+    "prepare": "npm run clean && npm run build",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@jupyterlab/builder": "^4.2.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "rimraf": "^3.0.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@built-in-ai/web-llm": "^0.3.1",
+    "@jupyterlab/application": "^4.2.0",
+    "@jupyterlab/apputils": "^4.2.0",
+    "@jupyterlab/services": "^6.5.0",
+    "@jupyterlab/ui-components": "^4.2.0",
+    "@jupyterlite/kernel": "^0.3.0",
+    "@lumino/widgets": "^1.37.0",
+    "@mlc-ai/web-llm": "^0.2.48",
+    "ai": "^5.0.101",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   }
 }
