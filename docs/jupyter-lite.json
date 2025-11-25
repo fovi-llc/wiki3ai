@@ -1,4 +1,12 @@
 {
+  "LiteBuildConfig": {
+    "federated_extensions": [
+      {
+        "extension": "./lite-kernel",
+        "name": "lite-kernel"
+      }
+    ]
+  },
   "jupyter-config-data": {
     "appName": "JupyterLite",
     "appUrl": "./lab",
@@ -7,6 +15,12 @@
     "defaultKernelName": "python",
     "faviconUrl": "./lab/favicon.ico",
     "federated_extensions": [
+      {
+        "extension": "./extension",
+        "load": "static/remoteEntry.7b426e34c9bd9f45e6dc.js",
+        "name": "@jupyter-notebook/lab-extension",
+        "style": "./style"
+      },
       {
         "extension": "./extension",
         "load": "static/remoteEntry.9077b3d2deaffb329dfc.js",
@@ -25,7 +39,7 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.0df40a18a78d697004b1.js",
+        "load": "static/remoteEntry.331c54cebc0fc95ddc4b.js",
         "name": "@wiki3ai/lite-kernel"
       },
       {
@@ -321,6 +335,9 @@
         "pipliteUrls": [
           "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=6428e372c283ca4b67a641295c5d9c8abeed5cf341b24ffe41b313fcdcaf9be4"
         ]
+      },
+      "@jupyterlite/pyolite-kernel-extension:kernel": {
+        "pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"
       }
     }
   },

@@ -8,6 +8,11 @@
     }
   },
   "LiteBuildConfig": {
-    "federated_extensions": ["./lite-kernel"]
+    "federated_extensions": [
+      {
+        "name": "lite-kernel",
+        "extension": "./lite-kernel"
+      }
+    ]
   }
 }
