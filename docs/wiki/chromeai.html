@@ -4,6 +4,91 @@
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>chromeai</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<style>
+    :root { color-scheme: light dark; }
+    .jp-Button, .jp-Button:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid var(--jp-border-color2);
+      background: var(--jp-layout-color2);
+      color: inherit;
+      text-decoration: none;
+      font-size: var(--jp-ui-font-size1, 14px);
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    .jp-Button:hover,
+    .jp-Button:focus {
+      border-color: var(--jp-brand-color1);
+      text-decoration: none;
+    }
+    .jp-Button:focus-visible {
+      outline: 2px solid var(--jp-brand-color1);
+      outline-offset: 2px;
+    }
+    button.jp-Button {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    body.jp-mod-light,
+    body.jp-mod-dark {
+      background: var(--jp-layout-color0);
+      color: var(--jp-ui-font-color1);
+    }
+    .wiki-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--jp-layout-color1);
+      border-bottom: 1px solid var(--jp-border-color2);
+    }
+    .wiki-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+    .wiki-toolbar-title {
+      font-weight: 600;
+      font-size: var(--jp-ui-font-size2, 16px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .wiki-toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .wiki-main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+    .wiki-share-success {
+      box-shadow: 0 0 0 2px var(--jp-success-color1);
+    }
+    .wiki-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+  </style>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7509,8 +7594,20 @@ a.anchor-link {
   }
 </style>
 <!-- End of mermaid configuration --></head>
-<body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<main>
+<body class="jp-Notebook jp-mod-light" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
+<div aria-label="Notebook actions" class="wiki-toolbar" role="toolbar">
+<div class="wiki-toolbar-left">
+<a class="jp-Button" href="/">home</a>
+<span class="wiki-toolbar-title" title="Chrome AI Built-in Prompt API Demo">Chrome AI Built-in Prompt API Demo</span>
+</div>
+<div aria-label="File actions" class="wiki-toolbar-actions" role="group">
+<a class="jp-Button" href="/notebooks/index.html?path=chromeai.ipynb" rel="noopener noreferrer" target="_blank">edit</a>
+<a class="jp-Button" href="/lab/index.html?path=chromeai.ipynb" rel="noopener noreferrer" target="_blank">lab</a>
+<a aria-label="Download" class="jp-Button" download="" href="/files/chromeai.ipynb" title="Download">down</a>
+<button aria-label="Copy share link" class="jp-Button" data-share="/wiki/chromeai.html" type="button">share</button>
+</div>
+</div>
+<main class="wiki-main">
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=b8e3c8f1-3a4d-4f4c-9c2e-d5e5f5e5f5f5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7663,5 +7760,52 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </main>
+<div aria-live="polite" class="wiki-sr-only" id="wiki-share-status"></div>
 </body>
+<script>
+(function() {
+  const body = document.body;
+  const status = document.getElementById('wiki-share-status');
+  const applyTheme = (isDark) => {
+    body.classList.toggle('jp-mod-dark', isDark);
+    body.classList.toggle('jp-mod-light', !isDark);
+    body.setAttribute('data-jp-theme-light', String(!isDark));
+    body.setAttribute('data-jp-theme-name', isDark ? 'JupyterLab Dark' : 'JupyterLab Light');
+  };
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyTheme(media.matches);
+  if (media.addEventListener) {
+    media.addEventListener('change', (event) => applyTheme(event.matches));
+  } else if (media.addListener) {
+    media.addListener((event) => applyTheme(event.matches));
+  }
+  const announce = (message) => {
+    if (!status) {
+      return;
+    }
+    status.textContent = message;
+    window.setTimeout(() => { status.textContent = ''; }, 1500);
+  };
+  body.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-share]');
+    if (!trigger) {
+      return;
+    }
+    event.preventDefault();
+    const shareTarget = trigger.getAttribute('data-share') || window.location.pathname;
+    const url = new URL(shareTarget, window.location.origin).toString();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        trigger.classList.add('wiki-share-success');
+        window.setTimeout(() => trigger.classList.remove('wiki-share-success'), 1500);
+        announce('Link copied to clipboard.');
+      }).catch(() => {
+        window.prompt('Copy this link', url);
+      });
+    } else {
+      window.prompt('Copy this link', url);
+    }
+  });
+})();
+</script>
 </html>

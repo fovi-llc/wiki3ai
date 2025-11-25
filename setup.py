@@ -6,7 +6,10 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        "jupyterlite_wiki_addon": ["templates/wiki/*.j2"],
+        "jupyterlite_wiki_addon": [
+            "templates/wiki/*.j2",
+            "templates/wiki/conf.json",
+        ],
     },
     entry_points={
         "jupyterlite.addon.v0": [

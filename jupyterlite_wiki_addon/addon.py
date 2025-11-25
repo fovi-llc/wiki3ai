@@ -50,10 +50,11 @@ class WikiPageAddon(BaseAddon):
                 print("[WikiPageAddon] No notebooks found to convert")
                 return
             
-            html_exporter = HTMLExporter(template_name='lab')
             template_dir = Path(__file__).parent / "templates"
-            html_exporter.template_paths = [str(template_dir)] + list(html_exporter.template_paths)
-            html_exporter.template_name = 'wiki'
+            html_exporter = HTMLExporter(
+                template_name='wiki',
+                extra_template_basedirs=[str(template_dir)],
+            )
             behavior_script = self._behavior_script()
             index_entries = []
             
