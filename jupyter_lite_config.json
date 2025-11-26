@@ -2,7 +2,7 @@
   "LiteBuildConfig": {
     "output_dir": "docs",
     "federated_extensions": [
-      "lite-kernel/dist"
+      "lite-kernel"
     ]
   },
   "piplite_urls": [

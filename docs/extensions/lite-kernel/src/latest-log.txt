@@ -1,0 +1,548 @@
+favicon.ico:1  GET http://localhost:8000/favicon.ico 404 (Not Found)
+index.js:48776 [lite-kernel/federation] Setting up Module Federation container
+index.js:49075 [lite-kernel/federation] Registered Module Federation container for scope: lite-kernel
+bootstrap.js:170 TypeError: Cannot read properties of undefined (reading 'init')
+    at bootstrap.js:145:19
+    at async bootstrap.js:162:24
+    at async Promise.allSettled (index 4)
+    at async bootstrap.js:160:35
+(anonymous) @ bootstrap.js:170
+(anonymous) @ bootstrap.js:167
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 No satisfying version (^4.4.9) of shared module @jupyterlab/docregistry found in shared scope default.
+Available versions: 4.4.5 from _JUPYTERLAB.CORE_OUTPUT
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+b @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+511 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/rendermime (required ^4.4.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+763 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/application (required ^4.4.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+339 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/translation (required ^4.4.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+344 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 6.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/coreutils (required ^6.4.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+374 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 4.5.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/apputils (required ^4.5.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+729 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/ui-components (required ^4.4.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+805 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+h @ consumes:80
+m @ consumes:45
+(anonymous) @ consumes:125
+(anonymous) @ consumes:85
+91531 @ consumes:207
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ sharing:156
+h @ consumes:80
+(anonymous) @ consumes:129
+(anonymous) @ consumes:85
+36831 @ consumes:169
+(anonymous) @ consumes:684
+w.f.consumes @ consumes:667
+(anonymous) @ ensure chunk:6
+w.e @ ensure chunk:5
+(anonymous) @ bootstrap.js:176
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+remoteEntry.7b426e34c9bd9f45e6dc.js:1 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/notebook (required ^4.4.9)
+c @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+s @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+479 @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.f.consumes @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+(anonymous) @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+x.e @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+./extension @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+n @ remoteEntry.7b426e34c9bd9f45e6dc.js:1
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/settingregistry (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/settingregistry @ consumes:130
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/console (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/console @ consumes:131
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/notebook (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/notebook @ consumes:132
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/mainmenu (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/mainmenu @ consumes:133
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/rendermime (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/rendermime @ consumes:134
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/logconsole (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/logconsole @ consumes:135
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 No satisfying version (^4.4.6) of shared module @jupyterlab/outputarea found in shared scope default.
+Available versions: 4.4.5 from _JUPYTERLAB.CORE_OUTPUT
+warn @ consumes:70
+(anonymous) @ consumes:91
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/outputarea @ consumes:140
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 7.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/services (required ^7.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/services @ consumes:141
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+consumes:70 Unsatisfied version 4.4.5 from _JUPYTERLAB.CORE_OUTPUT of shared singleton module @jupyterlab/translation (required ^4.4.6)
+warn @ consumes:70
+(anonymous) @ consumes:110
+(anonymous) @ consumes:77
+webpack/sharing/consume/default/@jupyterlab/translation @ consumes:142
+(anonymous) @ consumes:214
+__webpack_require__.f.consumes @ consumes:195
+(anonymous) @ ensure chunk:6
+__webpack_require__.e @ ensure chunk:5
+./extension @ container-entry:6
+get @ container-entry:13
+a @ index.js:44
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+index.js:49 Failed to create module: package: @wiki3ai/lite-kernel; module: ./extension
+a @ index.js:49
+(anonymous) @ index.js:76
+l @ index.js:73
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+index.js:692 TypeError: Cannot read properties of undefined (reading 'get')
+    at a (index.js:44:53)
+    at index.js:76:39
+    at Array.forEach (<anonymous>)
+    at l (index.js:73:14)
+    at bootstrap.js:177:9
+(anonymous) @ index.js:692
+l @ index.js:686
+await in l
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
+service-worker-manager.js:144 Registering new JupyterLite ServiceWorker http://localhost:8000/service-worker.js?enableCache=false
+service-worker-manager.js:147 JupyterLite ServiceWorker was sucessfully registered
+index.js:729 Disabling terminals plugin because they are not available on the server
+activate @ index.js:69
+(anonymous) @ index.js:458
+Promise.then
+activatePlugin @ index.js:458
+(anonymous) @ index.js:494
+activatePlugins @ index.js:492
+start @ index.es6.js:248
+l @ index.js:729
+await in l
+(anonymous) @ bootstrap.js:177
+await in (anonymous)
+54931 @ bootstrap.js:148
+w @ bootstrap:19
+(anonymous) @ startup:4
+w.O @ chunk loaded:23
+(anonymous) @ startup:5
+(anonymous) @ bundle.js?_=ddd04df:1
