@@ -2,14 +2,10 @@
   "LiteBuildConfig": {
     "output_dir": "docs",
     "federated_extensions": [
-      "lite-kernel/dist"
+      "lite-kernel"
     ]
   },
-  "piplite_urls": [
-    "files/pypi"
-  ],
   "pyodide_packages": [
-    "micropip",
-    "files/pypi/w/wiki3_ai/wiki3_ai-0.1.0-py3-none-any.whl"
+    "micropip"
   ]
 }

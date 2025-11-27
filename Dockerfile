@@ -15,20 +15,28 @@ COPY . /app
 
 
 # brew install nodejs npm
+
 # pip install uv
-# uv sync --upgrade-package wiki3-ai
+# rm .jupyterlite.doit.db 
+# uv build lite-kernel/
+# pip install lite-kernel/
+# jupyter labextension list
+# jupyter lab build
+# uv run jupyter lite build
+# uv run jupyter lite serve 
+
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
 # rm -rf docs
 # cd python-ai
 # uv build
 # cd ..
-# mkdir -p pypi/w/wiki3_ai
-# cp python-ai/dist/wiki3_ai-*-py3-none-any.whl pypi
+# uv run jupyter lab build
 # npm --prefix lite-kernel install
 # npm --prefix lite-kernel run build
-# uv run jupyter lite build
-# uv run jupyter lite serve 
+# jupyter labextension install lite-kernel
+# mkdir -p pypi/w/wiki3_ai
+# cp python-ai/dist/wiki3_ai-*-py3-none-any.whl pypi
 
 # https://panel.holoviz.org/how_to/wasm/jupyterlite.html
 # jupyter lite build --config jupyter_lite_config.json

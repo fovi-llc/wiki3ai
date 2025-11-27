@@ -8,9 +8,9 @@ dependencies = [
     "anywidget==0.9.21",
     "ipywidgets",
     "jupyterlab",
-    "jupyterlite",
-    "jupyterlite-core",
-    "jupyterlite-pyodide-kernel",
+    "jupyterlite>=0.7.0",
+    "jupyterlite-core>=0.7.0",
+    "jupyterlite-pyodide-kernel>=0.7.0",
     "jupyter-server",
     "matplotlib",
     "notebook",
@@ -27,5 +27,12 @@ dev = [
     "jupyterlab",
 ]
 
-[tool.uv.sources]
-wiki3-ai = { path = "python-ai", editable = true }
+[project.entry-points."jupyterlite.addon.v0"]
+wiki = "jupyterlite_wiki_addon.addon:WikiPageAddon"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["jupyterlite_wiki_addon"]
