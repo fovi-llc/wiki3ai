@@ -18,12 +18,12 @@ COPY . /app
 
 # pip install uv
 # rm .jupyterlite.doit.db 
-# uv build lite-kernel/
+# uv build lite-kernel/   # don't think needed - the pip install does this
 # uv pip install lite-kernel/
 # uv pip install .
 # jupyter labextension list
-# jupyter lab build
-# jupyter lite build
+# jupyter lab build # not sure if needed
+# jupyter lite build  # not needed
 # jupyter lite serve 
 
 # uv sync --locked --all-extras --dev
