@@ -1,5 +1,11 @@
 FROM python:3.13-slim
 
+ARG JUPYTER_PORT=8000
+ENV JUPYTER_PORT=${JUPYTER_PORT}
+
+ARG APP_DIR=/app
+ENV APP_DIR=${APP_DIR}
+
 RUN apt-get update && apt-get install -y \
     curl \
     git \
@@ -10,16 +16,14 @@ RUN apt-get update && apt-get install -y \
 RUN pip install -U jupyterlite==0.7.0rc2 anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab==4.5.0 
 # RUN pip install nbconvert nbformat
 
-# WORKDIR /app
-COPY . .
+WORKDIR ${APP_DIR}
+COPY . ${APP_DIR}
 
 RUN pip install lite-kernel/ \
     && pip install . \
     && jupyter lab build \
+    && rm -rf docs .jupyterlite.doit.db\
     && jupyter lite build
-
-ARG JUPYTER_PORT=8000
-ENV JUPYTER_PORT=${JUPYTER_PORT}
 
 # brew install nodejs npm
 
