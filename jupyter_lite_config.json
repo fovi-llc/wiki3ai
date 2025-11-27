@@ -1,15 +1,23 @@
 {
   "LiteBuildConfig": {
-    "output_dir": "docs",
-    "federated_extensions": [
-      "lite-kernel"
-    ]
+    "output_dir": "docs"
   },
-  "piplite_urls": [
-    "files/pypi"
-  ],
+  "jupyter-lite-schema-version": 0,
+  "jupyter-config-data": {
+    "appName": "Wiki3.ai",
+    "appVersion": "0.2.0",
+    "appUrl": "./wiki",
+    "baseUrl": "./",
+    "defaultKernelName": "python",
+    "defaultUrl": "./wiki/index.html",
+    "faviconUrl": "./lab/favicon.ico",
+    "litePluginSettings": {
+      "@jupyterlite/pyolite-kernel-extension:kernel": {
+        "pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"
+      }
+    }
+  },
   "pyodide_packages": [
-    "micropip",
-    "files/pypi/w/wiki3_ai/wiki3_ai-0.1.0-py3-none-any.whl"
+    "micropip"
   ]
 }

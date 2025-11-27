@@ -1,12 +1,4 @@
 {
-  "LiteBuildConfig": {
-    "federated_extensions": [
-      {
-        "extension": "./lite-kernel",
-        "name": "lite-kernel"
-      }
-    ]
-  },
   "jupyter-config-data": {
     "appName": "Wiki3.ai",
     "appUrl": "./wiki",
@@ -34,12 +26,6 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.b4a1f7d763389f060524.js",
-        "name": "@pyviz/jupyterlab_pyviz",
-        "style": "./style"
-      },
-      {
-        "extension": "./extension",
         "load": "./static/remoteEntry.7e3ac003.js",
         "name": "anywidget"
       },
@@ -48,6 +34,11 @@
         "load": "static/remoteEntry.5cbb9d2323598fbda535.js",
         "name": "jupyterlab_pygments",
         "style": "./style"
+      },
+      {
+        "extension": "./extension",
+        "load": "index.js",
+        "name": "lite-kernel"
       }
     ],
     "fileTypes": {
@@ -433,16 +424,7 @@
         ]
       },
       "@jupyterlite/pyolite-kernel-extension:kernel": {
-        "loadPyodideOptions": {
-          "lockFileURL": "https://cdn.jsdelivr.net/pyodide/v0.29.0/full/pyodide-lock.json?from-lite-config=1",
-          "packages": [
-            "matplotlib",
-            "micropip",
-            "numpy",
-            "sqlite3",
-            "ssl"
-          ]
-        }
+        "pyodideUrl": "https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"
       }
     }
   },
