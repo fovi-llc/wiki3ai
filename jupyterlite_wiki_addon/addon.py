@@ -1,3 +1,4 @@
+from importlib.metadata import version
 from pathlib import Path
 import html
 import os
@@ -8,6 +9,10 @@ import nbformat
 from nbconvert import HTMLExporter
 from jupyterlite_core.addons.base import BaseAddon
 
+# Get version from package metadata - bump in pyproject.toml to force
+# regeneration of all wiki pages when templates or conversion logic changes
+__version__ = version("wiki3ai")
+
 class WikiPageAddon(BaseAddon):
     """Generate wiki pages from notebooks"""
     
@@ -16,7 +21,6 @@ class WikiPageAddon(BaseAddon):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self._template_dir = Path(__file__).parent / "templates"
-        self._notebook_template = self._template_dir / "wiki" / "index.html.j2"
         self._index_template = self._template_dir / "wiki_index.html.j2"
     
     def build(self, manager):
@@ -49,6 +53,16 @@ class WikiPageAddon(BaseAddon):
         
         wiki_dir.mkdir(exist_ok=True)
         
+        # Check if addon version changed - if so, clear old outputs to force rebuild
+        version_file = wiki_dir / ".wiki_addon_version"
+        old_version = version_file.read_text().strip() if version_file.exists() else None
+        
+        if old_version != __version__:
+            print(f"[WikiPageAddon] Version changed ({old_version} -> {__version__}), regenerating all pages")
+            for html_file in wiki_dir.glob("**/*.html"):
+                html_file.unlink()
+            version_file.write_text(__version__)
+        
         # Yield a task for each notebook
         all_output_files = []
         for notebook_path in notebooks:
@@ -59,7 +73,7 @@ class WikiPageAddon(BaseAddon):
             yield self.task(
                 name=f"convert:{rel_path.as_posix()}",
                 doc=f"convert {rel_path} to HTML",
-                file_dep=[notebook_path, self._notebook_template],
+                file_dep=[notebook_path],
                 targets=[output_file],
                 actions=[
                     (self._convert_notebook, [notebook_path, output_file, files_dir, output_dir]),
