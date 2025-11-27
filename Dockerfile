@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -U jupyterlite anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab panel watchfiles "wiki3-ai>=0.5.1"
+RUN pip install -U jupyterlite==0.7.0rc2 anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab==4.5.0 "wiki3-ai>=0.5.1"
 # RUN pip install nbconvert nbformat
 
 WORKDIR /app
@@ -19,11 +19,11 @@ COPY . /app
 # pip install uv
 # rm .jupyterlite.doit.db 
 # uv build lite-kernel/
-# pip install lite-kernel/
+# uv pip install lite-kernel/
 # jupyter labextension list
 # jupyter lab build
-# uv run jupyter lite build
-# uv run jupyter lite serve 
+# jupyter lite build
+# jupyter lite serve 
 
 # uv sync --locked --all-extras --dev
 # uv run jupyter lab build
