@@ -20,6 +20,7 @@ COPY . /app
 # rm .jupyterlite.doit.db 
 # uv build lite-kernel/
 # uv pip install lite-kernel/
+# uv pip install .
 # jupyter labextension list
 # jupyter lab build
 # jupyter lite build

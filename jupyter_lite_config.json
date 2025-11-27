@@ -2,7 +2,7 @@
   "LiteBuildConfig": {
     "output_dir": "docs",
     "federated_extensions": [
-      "lite-kernel"
+      "lite-kernel/lite_kernel/labextension"
     ]
   },
   "pyodide_packages": [
