@@ -7,12 +7,19 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -U jupyterlite==0.7.0rc2 anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab==4.5.0 "wiki3-ai>=0.5.1"
+RUN pip install -U jupyterlite==0.7.0rc2 anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab==4.5.0 
 # RUN pip install nbconvert nbformat
 
-WORKDIR /app
-COPY . /app
+# WORKDIR /app
+COPY . .
 
+RUN pip install lite-kernel/ \
+    && pip install . \
+    && jupyter lab build \
+    && jupyter lite build
+
+ARG JUPYTER_PORT=8000
+ENV JUPYTER_PORT=${JUPYTER_PORT}
 
 # brew install nodejs npm
 
@@ -44,5 +51,5 @@ COPY . /app
 
 # RUN jupyter lite build
 
-EXPOSE 8000
-# CMD ["jupyter", "lite", "serve", "--port", "8000"]
+EXPOSE ${JUPYTER_PORT}
+CMD ["jupyter", "lite", "serve", "--port", "${JUPYTER_PORT}"]
