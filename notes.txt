@@ -1,0 +1,5 @@
+// index.js:778 Uploader widget not found
+const notifyUploadPlugin = {
+    id: '@jupyterlab/filebrowser-extension:notify-upload'
+
+

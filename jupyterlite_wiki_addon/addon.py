@@ -3,6 +3,7 @@ import html
 import os
 from urllib.parse import quote
 
+from jinja2 import Environment, FileSystemLoader
 import nbformat
 from nbconvert import HTMLExporter
 from jupyterlite_core.addons.base import BaseAddon
@@ -10,11 +11,25 @@ from jupyterlite_core.addons.base import BaseAddon
 class WikiPageAddon(BaseAddon):
     """Generate wiki pages from notebooks"""
     
-    __all__ = ["post_build"]
+    __all__ = ["build", "post_build"]
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         print(f"[WikiPageAddon] Initializing addon")
+    
+    def build(self, manager):
+        """Copy static assets to output directory"""
+        template_dir = Path(__file__).parent / "templates"
+        src = template_dir / "wiki_behavior.js"
+        dest = manager.output_dir / "static" / "wiki_behavior.js"
+        
+        yield self.task(
+            name="copy:wiki_behavior.js",
+            doc="copy wiki behavior script to static",
+            actions=[
+                (self.copy_one, [src, dest]),
+            ],
+        )
     
     def post_build(self, manager):
         """Generate wiki pages after build"""
@@ -55,7 +70,7 @@ class WikiPageAddon(BaseAddon):
                 template_name='wiki',
                 extra_template_basedirs=[str(template_dir)],
             )
-            behavior_script = self._behavior_script()
+            
             index_entries = []
             
             for notebook_path in notebooks:
@@ -107,7 +122,7 @@ class WikiPageAddon(BaseAddon):
                                 },
                             ],
                         },
-                        "wiki_behavior_script": behavior_script,
+                        "wiki_behavior_script_url": "/static/wiki_behavior.js",
                     }
 
                     body, _ = html_exporter.from_notebook_node(nb, resources=resources)
@@ -142,10 +157,12 @@ class WikiPageAddon(BaseAddon):
         """Generate an index page listing all notebooks"""
         try:
             relative_root = Path(os.path.relpath(output_dir, wiki_dir))
-            head_assets = self._head_assets(relative_root)
-            behavior_script = self._behavior_script()
+            theme_base = relative_root / "build" / "themes" / "@jupyterlab"
+            light_css = (theme_base / "theme-light-extension" / "index.css").as_posix()
+            dark_css = (theme_base / "theme-dark-extension" / "index.css").as_posix()
 
-            items_html = []
+            # Prepare template entries
+            template_entries = []
             for entry in sorted(entries, key=lambda item: item['rel_path'].as_posix()):
                 rel_path = entry['rel_path']
                 rel_display = html.escape(rel_path.as_posix())
@@ -154,57 +171,33 @@ class WikiPageAddon(BaseAddon):
                 rel_path_url = quote(rel_path.as_posix(), safe='/')
                 static_path = entry['static_output']
                 static_href = '/' + quote(static_path.as_posix(), safe='/')
-                edit_href = f"/notebooks/index.html?path={rel_path_url}"
-                lab_href = f"/lab/index.html?path={rel_path_url}"
-                download_href = f"/files/{rel_path_url}"
                 title_attr = html.escape(entry['title']) if entry.get('title') else rel_display
 
-                items_html.append(
-                    (
-                        "        <li class=\"wiki-row\" role=\"listitem\">\n"
-                        "          <div class=\"wiki-actions\" role=\"group\" aria-label=\"Actions\">\n"
-                        f"            <a class=\"jp-Button wiki-action-button\" href=\"{html_href}\">open</a>\n"
-                        f"            <a class=\"jp-Button wiki-action-button\" href=\"{edit_href}\" target=\"_blank\" rel=\"noopener noreferrer\">edit</a>\n"
-                        f"            <a class=\"jp-Button wiki-action-button\" href=\"{lab_href}\" target=\"_blank\" rel=\"noopener noreferrer\">lab</a>\n"
-                        f"            <a class=\"jp-Button wiki-action-button\" href=\"{download_href}\" download aria-label=\"Download\" title=\"Download\">down</a>\n"
-                        f"            <button type=\"button\" class=\"jp-Button wiki-action-button\" data-share=\"{static_href}\" aria-label=\"Copy share link\">share</button>\n"
-                        "          </div>\n"
-                        f"          <span class=\"wiki-name\"><a href=\"{html_href}\" title=\"{title_attr}\">{rel_display}</a></span>\n"
-                        "        </li>\n"
-                    )
-                )
+                template_entries.append({
+                    'html_href': html_href,
+                    'edit_href': f"/notebooks/index.html?path={rel_path_url}",
+                    'lab_href': f"/lab/index.html?path={rel_path_url}",
+                    'download_href': f"/files/{rel_path_url}",
+                    'static_href': static_href,
+                    'title_attr': title_attr,
+                    'rel_display': rel_display,
+                })
 
-            list_markup = ''.join(items_html)
+            # Load and render Jinja2 template
+            template_dir = Path(__file__).parent / "templates"
+            env = Environment(
+                loader=FileSystemLoader(str(template_dir)),
+                autoescape=True,
+            )
+            template = env.get_template("wiki_index.html.j2")
 
-            index_html = (
-                "<!DOCTYPE html>\n"
-                "<html lang=\"en\">\n"
-                "<head>\n"
-                "  <meta charset=\"utf-8\" />\n"
-                "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n"
-                "  <title>Wiki Index</title>\n"
-                f"{head_assets}"
-                "</head>\n"
-                "<body class=\"jp-mod-light\" data-jp-theme-light=\"true\" data-jp-theme-name=\"JupyterLite Light\">\n"
-                "  <div class=\"wiki-toolbar\" role=\"toolbar\" aria-label=\"Wiki navigation\">\n"
-                "    <div class=\"wiki-toolbar-left\">\n"
-                "      <a class=\"jp-Button wiki-home\" href=\"/\">home</a>\n"
-                "      <span class=\"wiki-toolbar-title\">Wiki3.ai index</span>\n"
-                "    </div>\n"
-                "    <div class=\"wiki-toolbar-actions\" role=\"group\" aria-label=\"Global actions\">\n"
-                "      <a class=\"jp-Button wiki-action-button\" href=\"/tree/index.html\">Files</a>\n"
-                "      <a class=\"jp-Button wiki-action-button\" href=\"/lab/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">lab</a>\n"
-                "    </div>\n"
-                "  </div>\n"
-                "  <main class=\"wiki-main\">\n"
-                "    <ul class=\"wiki-list\" role=\"list\">\n"
-                f"{list_markup}"
-                "    </ul>\n"
-                "  </main>\n"
-                f"  {self._share_status_html()}\n"
-                f"  {behavior_script}"
-                "</body>\n"
-                "</html>\n"
+            index_html = template.render(
+                title="Wiki Index",
+                toolbar_title="Wiki3.ai index",
+                light_css=light_css,
+                dark_css=dark_css,
+                entries=template_entries,
+                behavior_script_url="/static/wiki_behavior.js",
             )
 
             index_file = wiki_dir / "index.html"
@@ -232,181 +225,3 @@ class WikiPageAddon(BaseAddon):
             return notebook_path.stem.replace('-', ' ').replace('_', ' ').title()
         except Exception:
             return notebook_path.stem
-
-    def _head_assets(self, relative_root: Path) -> str:
-        """Return shared theme links and minimal styles."""
-        theme_base = relative_root / "build" / "themes" / "@jupyterlab"
-        light_css = (theme_base / "theme-light-extension" / "index.css").as_posix()
-        dark_css = (theme_base / "theme-dark-extension" / "index.css").as_posix()
-        return (
-            f"  <link rel=\"stylesheet\" href=\"{light_css}\" media=\"(prefers-color-scheme: light), (prefers-color-scheme: no-preference)\" />\n"
-            f"  <link rel=\"stylesheet\" href=\"{dark_css}\" media=\"(prefers-color-scheme: dark)\" />\n"
-            "  <style>\n"
-            "    :root { color-scheme: light dark; }\n"
-            "    body { margin: 0; }\n"
-            "    body.jp-mod-light, body.jp-mod-dark { background: var(--jp-layout-color0); color: var(--jp-ui-font-color1); }\n"
-            "    .jp-Button, .jp-Button:visited {\n"
-            "      display: inline-flex;\n"
-            "      align-items: center;\n"
-            "      justify-content: center;\n"
-            "      gap: 0.25rem;\n"
-            "      padding: 0.25rem 0.75rem;\n"
-            "      border-radius: 4px;\n"
-            "      border: 1px solid var(--jp-border-color2);\n"
-            "      background: var(--jp-layout-color2);\n"
-            "      color: inherit;\n"
-            "      text-decoration: none;\n"
-            "      font-size: var(--jp-ui-font-size1, 14px);\n"
-            "      line-height: 1.4;\n"
-            "      cursor: pointer;\n"
-            "    }\n"
-            "    .jp-Button:hover, .jp-Button:focus {\n"
-            "      border-color: var(--jp-brand-color1);\n"
-            "      text-decoration: none;\n"
-            "    }\n"
-            "    .jp-Button:focus-visible {\n"
-            "      outline: 2px solid var(--jp-brand-color1);\n"
-            "      outline-offset: 2px;\n"
-            "    }\n"
-            "    button.jp-Button {\n"
-            "      appearance: none;\n"
-            "      -webkit-appearance: none;\n"
-            "    }\n"
-            "    .wiki-toolbar {\n"
-            "      position: sticky;\n"
-            "      top: 0;\n"
-            "      z-index: 1000;\n"
-            "      display: flex;\n"
-            "      align-items: center;\n"
-            "      justify-content: space-between;\n"
-            "      gap: 1rem;\n"
-            "      padding: 0.75rem 1rem;\n"
-            "      background: var(--jp-layout-color1);\n"
-            "      border-bottom: 1px solid var(--jp-border-color2);\n"
-            "    }\n"
-            "    .wiki-toolbar-left {\n"
-            "      display: flex;\n"
-            "      align-items: center;\n"
-            "      gap: 0.75rem;\n"
-            "      min-width: 0;\n"
-            "    }\n"
-            "    .wiki-toolbar-title {\n"
-            "      font-weight: 600;\n"
-            "      font-size: var(--jp-ui-font-size2, 16px);\n"
-            "      white-space: nowrap;\n"
-            "      overflow: hidden;\n"
-            "      text-overflow: ellipsis;\n"
-            "    }\n"
-            "    .wiki-toolbar-actions {\n"
-            "      display: flex;\n"
-            "      flex-wrap: wrap;\n"
-            "      gap: 0.5rem;\n"
-            "      align-items: center;\n"
-            "    }\n"
-            "    .wiki-main {\n"
-            "      max-width: 960px;\n"
-            "      margin: 0 auto;\n"
-            "      padding: 1rem 1.5rem;\n"
-            "    }\n"
-            "    .wiki-list {\n"
-            "      list-style: none;\n"
-            "      margin: 0;\n"
-            "      padding: 0;\n"
-            "    }\n"
-            "    .wiki-row {\n"
-            "      display: grid;\n"
-            "      grid-template-columns: auto 1fr;\n"
-            "      gap: 1rem;\n"
-            "      align-items: center;\n"
-            "      padding: 0.5rem 0;\n"
-            "      border-bottom: 1px solid var(--jp-border-color2);\n"
-            "    }\n"
-            "    .wiki-name {\n"
-            "      min-width: 0;\n"
-            "    }\n"
-            "    .wiki-name a {\n"
-            "      color: var(--jp-content-link-color, inherit);\n"
-            "      text-decoration: none;\n"
-            "      word-break: break-all;\n"
-            "    }\n"
-            "    .wiki-name a:hover { text-decoration: underline; }\n"
-            "    .wiki-action-button { text-transform: lowercase; }\n"
-            "    .wiki-share-success {\n"
-            "      box-shadow: 0 0 0 2px var(--jp-success-color1);\n"
-            "    }\n"
-            "    .wiki-sr-only {\n"
-            "      position: absolute;\n"
-            "      width: 1px;\n"
-            "      height: 1px;\n"
-            "      padding: 0;\n"
-            "      margin: -1px;\n"
-            "      overflow: hidden;\n"
-            "      clip: rect(0, 0, 0, 0);\n"
-            "      border: 0;\n"
-            "    }\n"
-            "    .wiki-actions {\n"
-            "      display: inline-flex;\n"
-            "      flex-wrap: wrap;\n"
-            "      gap: 0.5rem;\n"
-            "      align-items: center;\n"
-            "    }\n"
-            "    .wiki-toolbar + * {\n"
-            "      padding-top: 0.75rem;\n"
-            "    }\n"
-            "  </style>\n"
-        )
-
-    def _share_status_html(self) -> str:
-        """Hidden live region for announcing share actions."""
-        return '<div id="wiki-share-status" class="wiki-sr-only" aria-live="polite"></div>'
-
-    def _behavior_script(self) -> str:
-        """Return the inline script that powers theme toggles and share buttons."""
-        return (
-            "<script>\n"
-            "(function() {\n"
-            "  const body = document.body;\n"
-            "  const status = document.getElementById('wiki-share-status');\n"
-            "  const applyTheme = (isDark) => {\n"
-            "    body.classList.toggle('jp-mod-dark', isDark);\n"
-            "    body.classList.toggle('jp-mod-light', !isDark);\n"
-            "    body.setAttribute('data-jp-theme-light', String(!isDark));\n"
-            "    body.setAttribute('data-jp-theme-name', isDark ? 'JupyterLab Dark' : 'JupyterLab Light');\n"
-            "  };\n"
-            "  const media = window.matchMedia('(prefers-color-scheme: dark)');\n"
-            "  applyTheme(media.matches);\n"
-            "  if (media.addEventListener) {\n"
-            "    media.addEventListener('change', (event) => applyTheme(event.matches));\n"
-            "  } else if (media.addListener) {\n"
-            "    media.addListener((event) => applyTheme(event.matches));\n"
-            "  }\n"
-            "  const announce = (message) => {\n"
-            "    if (!status) {\n"
-            "      return;\n"
-            "    }\n"
-            "    status.textContent = message;\n"
-            "    window.setTimeout(() => { status.textContent = ''; }, 1500);\n"
-            "  };\n"
-            "  body.addEventListener('click', (event) => {\n"
-            "    const trigger = event.target.closest('[data-share]');\n"
-            "    if (!trigger) {\n"
-            "      return;\n"
-            "    }\n"
-            "    event.preventDefault();\n"
-            "    const shareTarget = trigger.getAttribute('data-share') || window.location.pathname;\n"
-            "    const url = new URL(shareTarget, window.location.origin).toString();\n"
-            "    if (navigator.clipboard && navigator.clipboard.writeText) {\n"
-            "      navigator.clipboard.writeText(url).then(() => {\n"
-            "        trigger.classList.add('wiki-share-success');\n"
-            "        window.setTimeout(() => trigger.classList.remove('wiki-share-success'), 1500);\n"
-            "        announce('Link copied to clipboard.');\n"
-            "      }).catch(() => {\n"
-            "        window.prompt('Copy this link', url);\n"
-            "      });\n"
-            "    } else {\n"
-            "      window.prompt('Copy this link', url);\n"
-            "    }\n"
-            "  });\n"
-            "})();\n"
-            "</script>\n"
-        )

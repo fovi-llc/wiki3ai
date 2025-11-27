@@ -124,5 +124,5 @@
 
 {% block footer_js %}
   {{ super() }}
-  {{ resources.wiki_behavior_script | safe }}
+  <script src="{{ resources.wiki_behavior_script_url }}"></script>
 {% endblock footer_js %}
