@@ -1,0 +1,43 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2025-11-27T10:05:59.732450Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-27T07:01:17Z",
+      "mimetype": "text/html",
+      "name": "index.html",
+      "path": "wiki/index.html",
+      "size": 2706,
+      "type": "file",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-11-27T10:05:59.731653Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-27T07:01:17Z",
+      "mimetype": "text/html",
+      "name": "about.html",
+      "path": "wiki/about.html",
+      "size": 1001,
+      "type": "file",
+      "writable": true
+    }
+  ],
+  "created": "2025-11-27T10:05:59.732171Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2025-11-27T10:05:59.732171Z",
+  "mimetype": null,
+  "name": "wiki",
+  "path": "wiki",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

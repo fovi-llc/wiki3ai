@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wiki Index</title>
+  <link rel="stylesheet" href="../build/themes/@jupyterlab/theme-light-extension/index.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)" />
+  <link rel="stylesheet" href="../build/themes/@jupyterlab/theme-dark-extension/index.css" media="(prefers-color-scheme: dark)" />
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin: 0; }
+    body.jp-mod-light, body.jp-mod-dark { background: var(--jp-layout-color0); color: var(--jp-ui-font-color1); }
+    .jp-Button, .jp-Button:visited {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid var(--jp-border-color2);
+      background: var(--jp-layout-color2);
+      color: inherit;
+      text-decoration: none;
+      font-size: var(--jp-ui-font-size1, 14px);
+      line-height: 1.4;
+      cursor: pointer;
+    }
+    .jp-Button:hover, .jp-Button:focus {
+      border-color: var(--jp-brand-color1);
+      text-decoration: none;
+    }
+    .jp-Button:focus-visible {
+      outline: 2px solid var(--jp-brand-color1);
+      outline-offset: 2px;
+    }
+    button.jp-Button {
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    .wiki-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      background: var(--jp-layout-color1);
+      border-bottom: 1px solid var(--jp-border-color2);
+    }
+    .wiki-toolbar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-width: 0;
+    }
+    .wiki-toolbar-title {
+      font-weight: 600;
+      font-size: var(--jp-ui-font-size2, 16px);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .wiki-toolbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .wiki-main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+    }
+    .wiki-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .wiki-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--jp-border-color2);
+    }
+    .wiki-name {
+      min-width: 0;
+    }
+    .wiki-name a {
+      color: var(--jp-content-link-color, inherit);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .wiki-name a:hover { text-decoration: underline; }
+    .wiki-action-button { text-transform: lowercase; }
+    .wiki-share-success {
+      box-shadow: 0 0 0 2px var(--jp-success-color1);
+    }
+    .wiki-sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    .wiki-actions {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      align-items: center;
+    }
+    .wiki-toolbar + * {
+      padding-top: 0.75rem;
+    }
+  </style>
+</head>
+<body class="jp-mod-light" data-jp-theme-light="true" data-jp-theme-name="JupyterLite Light">
+  <div class="wiki-toolbar" role="toolbar" aria-label="Wiki navigation">
+    <div class="wiki-toolbar-left">
+      <a class="jp-Button wiki-home" href="/">home</a>
+      <span class="wiki-toolbar-title">Wiki3.ai index</span>
+    </div>
+    <div class="wiki-toolbar-actions" role="group" aria-label="Global actions">
+      <a class="jp-Button wiki-action-button" href="/tree/index.html">Files</a>
+      <a class="jp-Button wiki-action-button" href="/lab/index.html" target="_blank" rel="noopener noreferrer">lab</a>
+    </div>
+  </div>
+  <main class="wiki-main">
+    <ul class="wiki-list" role="list">
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="chromeai.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=chromeai.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=chromeai.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/chromeai.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/chromeai.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="chromeai.html" title="Chrome AI Built-in Prompt API Demo">chromeai.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="demo.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=demo.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=demo.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/demo.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/demo.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="demo.html" title="Chrome Built-in AI Demo in JupyterLab and JupyterLite Python Notebook">demo.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/anywidget%20copy.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/anywidget%20copy.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/anywidget%20copy.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/anywidget%20copy.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/anywidget%20copy.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/anywidget%20copy.html" title="Create a Jupyter Widget with anywidget">notebooks/anywidget copy.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/anywidget.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/anywidget.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/anywidget.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/anywidget.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/anywidget.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/anywidget.html" title="Create a Jupyter Widget with anywidget">notebooks/anywidget.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/example.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/example.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/example.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/example.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/example.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/example.html" title="WebLLM + Pyodide Integration Example">notebooks/example.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/foo.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/foo.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/foo.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/foo.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/foo.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/foo.html" title="Foo">notebooks/foo.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/prompt.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/prompt.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/prompt.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/prompt.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/prompt.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/prompt.html" title="Prompt">notebooks/prompt.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/test.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/test.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/test.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/test.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/test.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/test.html" title="Chrome AI Built-in Prompt API Demo">notebooks/test.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/webllm-comet.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/webllm-comet.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/webllm-comet.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/webllm-comet.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/webllm-comet.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/webllm-comet.html" title="Webllm Comet">notebooks/webllm-comet.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/webllm-javascript.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/webllm-javascript.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/webllm-javascript.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/webllm-javascript.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/webllm-javascript.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/webllm-javascript.html" title="WebLLM with JavaScript Kernel">notebooks/webllm-javascript.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/webllm-micropip-local.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/webllm-micropip-local.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/webllm-micropip-local.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/webllm-micropip-local.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/webllm-micropip-local.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/webllm-micropip-local.html" title="Installing WebLLM in Pyodide with Micropip">notebooks/webllm-micropip-local.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="notebooks/webllm-micropip.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=notebooks/webllm-micropip.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=notebooks/webllm-micropip.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/notebooks/webllm-micropip.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/notebooks/webllm-micropip.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="notebooks/webllm-micropip.html" title="Installing WebLLM in Pyodide with Micropip">notebooks/webllm-micropip.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="prompt_ai.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=prompt_ai.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=prompt_ai.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/prompt_ai.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/prompt_ai.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="prompt_ai.html" title="Chrome Built-in AI Demo in JupyterLab and JupyterLite Python Notebook">prompt_ai.ipynb</a></span>
+        </li>
+        <li class="wiki-row" role="listitem">
+          <div class="wiki-actions" role="group" aria-label="Actions">
+            <a class="jp-Button wiki-action-button" href="webllm.html">open</a>
+            <a class="jp-Button wiki-action-button" href="/notebooks/index.html?path=webllm.ipynb" target="_blank" rel="noopener noreferrer">edit</a>
+            <a class="jp-Button wiki-action-button" href="/lab/index.html?path=webllm.ipynb" target="_blank" rel="noopener noreferrer">lab</a>
+            <a class="jp-Button wiki-action-button" href="/files/webllm.ipynb" download aria-label="Download" title="Download">down</a>
+            <button type="button" class="jp-Button wiki-action-button" data-share="/wiki/webllm.html" aria-label="Copy share link">share</button>
+          </div>
+          <span class="wiki-name"><a href="webllm.html" title="Webllm">webllm.ipynb</a></span>
+        </li>
+    </ul>
+  </main>
+  <div id="wiki-share-status" class="wiki-sr-only" aria-live="polite"></div>
+  <script>
+(function() {
+  const body = document.body;
+  const status = document.getElementById('wiki-share-status');
+  const applyTheme = (isDark) => {
+    body.classList.toggle('jp-mod-dark', isDark);
+    body.classList.toggle('jp-mod-light', !isDark);
+    body.setAttribute('data-jp-theme-light', String(!isDark));
+    body.setAttribute('data-jp-theme-name', isDark ? 'JupyterLab Dark' : 'JupyterLab Light');
+  };
+  const media = window.matchMedia('(prefers-color-scheme: dark)');
+  applyTheme(media.matches);
+  if (media.addEventListener) {
+    media.addEventListener('change', (event) => applyTheme(event.matches));
+  } else if (media.addListener) {
+    media.addListener((event) => applyTheme(event.matches));
+  }
+  const announce = (message) => {
+    if (!status) {
+      return;
+    }
+    status.textContent = message;
+    window.setTimeout(() => { status.textContent = ''; }, 1500);
+  };
+  body.addEventListener('click', (event) => {
+    const trigger = event.target.closest('[data-share]');
+    if (!trigger) {
+      return;
+    }
+    event.preventDefault();
+    const shareTarget = trigger.getAttribute('data-share') || window.location.pathname;
+    const url = new URL(shareTarget, window.location.origin).toString();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(() => {
+        trigger.classList.add('wiki-share-success');
+        window.setTimeout(() => trigger.classList.remove('wiki-share-success'), 1500);
+        announce('Link copied to clipboard.');
+      }).catch(() => {
+        window.prompt('Copy this link', url);
+      });
+    } else {
+      window.prompt('Copy this link', url);
+    }
+  });
+})();
+</script>
+</body>
+</html>

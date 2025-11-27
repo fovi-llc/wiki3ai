@@ -1,9 +1,6 @@
 {
   "LiteBuildConfig": {
-    "output_dir": "docs",
-    "federated_extensions": [
-      "lite-kernel/lite_kernel/labextension"
-    ]
+    "output_dir": "docs"
   },
   "pyodide_packages": [
     "micropip"
