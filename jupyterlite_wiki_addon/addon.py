@@ -15,17 +15,20 @@ class WikiPageAddon(BaseAddon):
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        print(f"[WikiPageAddon] Initializing addon")
+        self._template_dir = Path(__file__).parent / "templates"
+        self._notebook_template = self._template_dir / "wiki" / "index.html.j2"
+        self._index_template = self._template_dir / "wiki_index.html.j2"
     
     def build(self, manager):
         """Copy static assets to output directory"""
-        template_dir = Path(__file__).parent / "templates"
-        src = template_dir / "wiki_behavior.js"
+        src = self._template_dir / "wiki_behavior.js"
         dest = manager.output_dir / "static" / "wiki_behavior.js"
         
         yield self.task(
             name="copy:wiki_behavior.js",
             doc="copy wiki behavior script to static",
+            file_dep=[src],
+            targets=[dest],
             actions=[
                 (self.copy_one, [src, dest]),
             ],
@@ -33,183 +36,175 @@ class WikiPageAddon(BaseAddon):
     
     def post_build(self, manager):
         """Generate wiki pages after build"""
-        print("[WikiPageAddon] post_build called")
-        yield dict(
-            name="wiki:generate",
-            actions=[(self.generate_wiki_pages, [])],
+        output_dir = Path(manager.output_dir)
+        files_dir = output_dir / "files"
+        wiki_dir = output_dir / "wiki"
+        
+        if not files_dir.exists():
+            return
+        
+        notebooks = list(files_dir.rglob("*.ipynb"))
+        if not notebooks:
+            return
+        
+        wiki_dir.mkdir(exist_ok=True)
+        
+        # Yield a task for each notebook
+        all_output_files = []
+        for notebook_path in notebooks:
+            rel_path = notebook_path.relative_to(files_dir)
+            output_file = wiki_dir / rel_path.with_suffix('.html')
+            all_output_files.append(output_file)
+            
+            yield self.task(
+                name=f"convert:{rel_path.as_posix()}",
+                doc=f"convert {rel_path} to HTML",
+                file_dep=[notebook_path, self._notebook_template],
+                targets=[output_file],
+                actions=[
+                    (self._convert_notebook, [notebook_path, output_file, files_dir, output_dir]),
+                ],
+            )
+        
+        # Yield task for index page (depends on all notebook outputs)
+        index_file = wiki_dir / "index.html"
+        yield self.task(
+            name="generate:index",
+            doc="generate wiki index page",
+            file_dep=[self._index_template] + all_output_files,
+            targets=[index_file],
+            actions=[
+                (self._generate_index_page, [wiki_dir, files_dir, output_dir]),
+            ],
         )
     
-    def generate_wiki_pages(self):
-        """Generate HTML wiki pages from notebooks"""
-        print("[WikiPageAddon] Generating wiki pages...")
+    def _convert_notebook(self, notebook_path, output_file, files_dir, output_dir):
+        """Convert a single notebook to HTML"""
+        output_file.parent.mkdir(parents=True, exist_ok=True)
         
-        try:
-            output_dir = Path(self.manager.output_dir)
-            files_dir = output_dir / "files"
-            wiki_dir = output_dir / "wiki"
-            
-            print(f"[WikiPageAddon] Output dir: {output_dir}")
-            print(f"[WikiPageAddon] Files dir: {files_dir}")
-            print(f"[WikiPageAddon] Wiki dir: {wiki_dir}")
-            
-            wiki_dir.mkdir(exist_ok=True)
-            
-            if not files_dir.exists():
-                print(f"[WikiPageAddon] Files directory doesn't exist: {files_dir}")
-                return
-            
-            notebooks = list(files_dir.rglob("*.ipynb"))
-            print(f"[WikiPageAddon] Found {len(notebooks)} notebooks")
+        with open(notebook_path, 'r', encoding='utf-8') as f:
+            nb = nbformat.read(f, as_version=4)
+        
+        notebook_title = self._extract_notebook_title(nb, notebook_path)
+        rel_path = notebook_path.relative_to(files_dir)
+        static_output = output_file.relative_to(output_dir)
+        rel_path_url = quote(rel_path.as_posix(), safe='/')
+        
+        html_exporter = HTMLExporter(
+            template_name='wiki',
+            extra_template_basedirs=[str(self._template_dir)],
+        )
+        
+        resources = {
+            "metadata": {"name": notebook_path.stem},
+            "wiki_toolbar": {
+                "title": notebook_title,
+                "home_href": "/",
+                "actions": [
+                    {
+                        "kind": "link",
+                        "label": "edit",
+                        "href": f"/notebooks/index.html?path={rel_path_url}",
+                        "new_tab": True,
+                        "download": False,
+                    },
+                    {
+                        "kind": "link",
+                        "label": "lab",
+                        "href": f"/lab/index.html?path={rel_path_url}",
+                        "new_tab": True,
+                        "download": False,
+                    },
+                    {
+                        "kind": "link",
+                        "label": "down",
+                        "href": f"/files/{rel_path_url}",
+                        "new_tab": False,
+                        "download": True,
+                    },
+                    {
+                        "kind": "button",
+                        "label": "share",
+                        "share_href": '/' + quote(static_output.as_posix(), safe='/'),
+                        "aria_label": "Copy share link",
+                    },
+                ],
+            },
+            "wiki_behavior_script_url": "/static/wiki_behavior.js",
+        }
 
-            if not notebooks:
-                print("[WikiPageAddon] No notebooks found to convert")
-                return
+        body, _ = html_exporter.from_notebook_node(nb, resources=resources)
+        with open(output_file, 'w', encoding='utf-8') as f:
+            f.write(body)
+        
+        print(f"[WikiPageAddon] Generated: {output_file}")
+    
+    def _generate_index_page(self, wiki_dir, files_dir, output_dir):
+        """Generate an index page listing all notebooks"""
+        relative_root = Path(os.path.relpath(output_dir, wiki_dir))
+        theme_base = relative_root / "build" / "themes" / "@jupyterlab"
+        light_css = (theme_base / "theme-light-extension" / "index.css").as_posix()
+        dark_css = (theme_base / "theme-dark-extension" / "index.css").as_posix()
+
+        # Scan for all HTML files in wiki_dir (excluding index.html)
+        html_files = [f for f in wiki_dir.rglob("*.html") if f.name != "index.html"]
+        
+        # Build entries from the HTML files
+        template_entries = []
+        for html_file in sorted(html_files, key=lambda f: f.relative_to(wiki_dir).as_posix()):
+            html_rel_path = html_file.relative_to(wiki_dir)
+            # Corresponding notebook path
+            nb_rel_path = html_rel_path.with_suffix('.ipynb')
+            notebook_path = files_dir / nb_rel_path
             
-            template_dir = Path(__file__).parent / "templates"
-            html_exporter = HTMLExporter(
-                template_name='wiki',
-                extra_template_basedirs=[str(template_dir)],
-            )
-            
-            index_entries = []
-            
-            for notebook_path in notebooks:
-                print(f"[WikiPageAddon] Processing: {notebook_path}")
-                
+            # Extract title from notebook if it exists
+            title = nb_rel_path.stem.replace('-', ' ').replace('_', ' ').title()
+            if notebook_path.exists():
                 try:
                     with open(notebook_path, 'r', encoding='utf-8') as f:
                         nb = nbformat.read(f, as_version=4)
-                    
-                    notebook_title = self._extract_notebook_title(nb, notebook_path)
-                    rel_path = notebook_path.relative_to(files_dir)
-                    output_file = wiki_dir / rel_path.with_suffix('.html')
-                    output_file.parent.mkdir(parents=True, exist_ok=True)
-                    
-                    static_output = output_file.relative_to(output_dir)
-                    rel_path_url = quote(rel_path.as_posix(), safe='/')
-                    resources = {
-                        "metadata": {"name": notebook_path.stem},
-                        "wiki_toolbar": {
-                            "title": notebook_title,
-                            "home_href": "/",
-                            "actions": [
-                                {
-                                    "kind": "link",
-                                    "label": "edit",
-                                    "href": f"/notebooks/index.html?path={rel_path_url}",
-                                    "new_tab": True,
-                                    "download": False,
-                                },
-                                {
-                                    "kind": "link",
-                                    "label": "lab",
-                                    "href": f"/lab/index.html?path={rel_path_url}",
-                                    "new_tab": True,
-                                    "download": False,
-                                },
-                                {
-                                    "kind": "link",
-                                    "label": "down",
-                                    "href": f"/files/{rel_path_url}",
-                                    "new_tab": False,
-                                    "download": True,
-                                },
-                                {
-                                    "kind": "button",
-                                    "label": "share",
-                                    "share_href": '/' + quote(static_output.as_posix(), safe='/'),
-                                    "aria_label": "Copy share link",
-                                },
-                            ],
-                        },
-                        "wiki_behavior_script_url": "/static/wiki_behavior.js",
-                    }
-
-                    body, _ = html_exporter.from_notebook_node(nb, resources=resources)
-                    with open(output_file, 'w', encoding='utf-8') as f:
-                        f.write(body)
-                    
-                    print(f"[WikiPageAddon] Generated: {output_file}")
-
-                    index_entries.append(
-                        dict(
-                            rel_path=rel_path,
-                            html_rel_path=rel_path.with_suffix('.html'),
-                            static_output=static_output,
-                            title=notebook_title,
-                        )
-                    )
-                    
-                except Exception as e:
-                    print(f"[WikiPageAddon] Error processing {notebook_path}: {e}")
+                    title = self._extract_notebook_title(nb, notebook_path)
+                except Exception:
+                    pass
             
-            # Generate index page
-            self._generate_index_page(wiki_dir, index_entries, output_dir)
-            
-            print(f"[WikiPageAddon] Wiki generation complete!")
-            
-        except Exception as e:
-            print(f"[WikiPageAddon] Error in generate_wiki_pages: {e}")
-            import traceback
-            traceback.print_exc()
-    
-    def _generate_index_page(self, wiki_dir, entries, output_dir):
-        """Generate an index page listing all notebooks"""
-        try:
-            relative_root = Path(os.path.relpath(output_dir, wiki_dir))
-            theme_base = relative_root / "build" / "themes" / "@jupyterlab"
-            light_css = (theme_base / "theme-light-extension" / "index.css").as_posix()
-            dark_css = (theme_base / "theme-dark-extension" / "index.css").as_posix()
+            rel_display = html.escape(nb_rel_path.as_posix())
+            html_href = quote(html_rel_path.as_posix(), safe='/')
+            rel_path_url = quote(nb_rel_path.as_posix(), safe='/')
+            static_output = html_file.relative_to(output_dir)
+            static_href = '/' + quote(static_output.as_posix(), safe='/')
+            title_attr = html.escape(title)
 
-            # Prepare template entries
-            template_entries = []
-            for entry in sorted(entries, key=lambda item: item['rel_path'].as_posix()):
-                rel_path = entry['rel_path']
-                rel_display = html.escape(rel_path.as_posix())
-                html_rel = entry['html_rel_path']
-                html_href = quote(html_rel.as_posix(), safe='/')
-                rel_path_url = quote(rel_path.as_posix(), safe='/')
-                static_path = entry['static_output']
-                static_href = '/' + quote(static_path.as_posix(), safe='/')
-                title_attr = html.escape(entry['title']) if entry.get('title') else rel_display
+            template_entries.append({
+                'html_href': html_href,
+                'edit_href': f"/notebooks/index.html?path={rel_path_url}",
+                'lab_href': f"/lab/index.html?path={rel_path_url}",
+                'download_href': f"/files/{rel_path_url}",
+                'static_href': static_href,
+                'title_attr': title_attr,
+                'rel_display': rel_display,
+            })
 
-                template_entries.append({
-                    'html_href': html_href,
-                    'edit_href': f"/notebooks/index.html?path={rel_path_url}",
-                    'lab_href': f"/lab/index.html?path={rel_path_url}",
-                    'download_href': f"/files/{rel_path_url}",
-                    'static_href': static_href,
-                    'title_attr': title_attr,
-                    'rel_display': rel_display,
-                })
+        # Load and render Jinja2 template
+        env = Environment(
+            loader=FileSystemLoader(str(self._template_dir)),
+            autoescape=True,
+        )
+        template = env.get_template("wiki_index.html.j2")
 
-            # Load and render Jinja2 template
-            template_dir = Path(__file__).parent / "templates"
-            env = Environment(
-                loader=FileSystemLoader(str(template_dir)),
-                autoescape=True,
-            )
-            template = env.get_template("wiki_index.html.j2")
+        index_html = template.render(
+            title="Wiki Index",
+            toolbar_title="Wiki3.ai index",
+            light_css=light_css,
+            dark_css=dark_css,
+            entries=template_entries,
+            behavior_script_url="/static/wiki_behavior.js",
+        )
 
-            index_html = template.render(
-                title="Wiki Index",
-                toolbar_title="Wiki3.ai index",
-                light_css=light_css,
-                dark_css=dark_css,
-                entries=template_entries,
-                behavior_script_url="/static/wiki_behavior.js",
-            )
-
-            index_file = wiki_dir / "index.html"
-            with open(index_file, 'w', encoding='utf-8') as f:
-                f.write(index_html)
-            
-            print(f"[WikiPageAddon] Generated index page: {index_file}")
-            
-        except Exception as e:
-            print(f"[WikiPageAddon] Error generating index page: {e}")
-            import traceback
-            traceback.print_exc()
+        index_file = wiki_dir / "index.html"
+        with open(index_file, 'w', encoding='utf-8') as f:
+            f.write(index_html)
+        
+        print(f"[WikiPageAddon] Generated index page: {index_file}")
 
     def _extract_notebook_title(self, nb, notebook_path):
         """Best effort to pull a title from the notebook."""
