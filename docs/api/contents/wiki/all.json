@@ -2,7 +2,7 @@
   "content": [
     {
       "content": null,
-      "created": "2025-11-28T10:38:42.859674Z",
+      "created": "2025-11-28T18:24:09.380905Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -16,7 +16,7 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T10:38:42.858865Z",
+      "created": "2025-11-28T18:24:09.379543Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -29,11 +29,11 @@
       "writable": true
     }
   ],
-  "created": "2025-11-28T10:38:42.859374Z",
+  "created": "2025-11-28T18:24:09.380496Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-11-28T10:38:42.859374Z",
+  "last_modified": "2025-11-28T18:24:09.380496Z",
   "mimetype": null,
   "name": "wiki",
   "path": "wiki",
