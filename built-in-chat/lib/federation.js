@@ -1,7 +1,7 @@
 // built-in-chat/src/federation.ts
 // Module Federation container for JupyterLite
 import { streamText } from "ai";
-import { chromeAI } from "@built-in-ai/core";
+import { builtInAI } from "@built-in-ai/core";
 console.log("[built-in-chat/federation] Setting up Module Federation container");
 const scope = "@wiki3-ai/built-in-chat";
 let sharedScope = null;
@@ -72,9 +72,7 @@ const container = {
                 // Define Chrome built-in AI Chat kernel inline (browser-only)
                 class ChatHttpKernel {
                     constructor(opts = {}) {
-                        this.model = chromeAI({
-                        // Chrome's built-in AI doesn't require model specification
-                        });
+                        this.model = builtInAI();
                         console.log("[ChatHttpKernel] Using Chrome built-in AI");
                     }
                     async send(prompt) {

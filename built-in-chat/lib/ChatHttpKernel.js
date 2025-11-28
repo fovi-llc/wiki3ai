@@ -1,13 +1,10 @@
 // built-in-chat/src/ChatHttpKernel.ts
 // Browser-side chat kernel that uses Chrome's built-in AI via @built-in-ai/core
 import { streamText } from "ai";
-import { chromeAI } from "@built-in-ai/core";
+import { builtInAI } from "@built-in-ai/core";
 export class ChatHttpKernel {
     constructor(opts = {}) {
-        this.model = chromeAI({
-        // Chrome's built-in AI doesn't require model specification
-        // but we can pass options if needed in the future
-        });
+        this.model = builtInAI();
         console.log("[ChatHttpKernel] Using Chrome built-in AI");
     }
     async send(prompt) {

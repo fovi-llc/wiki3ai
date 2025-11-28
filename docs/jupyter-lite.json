@@ -26,6 +26,11 @@
       },
       {
         "extension": "./extension",
+        "load": "index.js",
+        "name": "@wiki3-ai/built-in-chat"
+      },
+      {
+        "extension": "./extension",
         "load": "./static/remoteEntry.7e3ac003.js",
         "name": "anywidget"
       },

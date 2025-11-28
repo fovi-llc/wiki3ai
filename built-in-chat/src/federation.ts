@@ -2,7 +2,7 @@
 // Module Federation container for JupyterLite
 
 import { streamText } from "ai";
-import { chromeAI } from "@built-in-ai/core";
+import { builtInAI } from "@built-in-ai/core";
 import { BUILTIN_AI_MODELS, DEFAULT_BUILTIN_AI_MODEL } from "./models.js";
 
 declare const window: any;
@@ -93,12 +93,10 @@ const container = {
 
         // Define Chrome built-in AI Chat kernel inline (browser-only)
         class ChatHttpKernel {
-          private model: ReturnType<typeof chromeAI>;
+          private model: ReturnType<typeof builtInAI>;
 
           constructor(opts: any = {}) {
-            this.model = chromeAI({
-              // Chrome's built-in AI doesn't require model specification
-            });
+            this.model = builtInAI();
             console.log("[ChatHttpKernel] Using Chrome built-in AI");
           }
 
@@ -110,7 +108,7 @@ const container = {
               throw new Error("Browser does not support Chrome built-in AI.");
             }
             if (availability === "downloadable" || availability === "downloading") {
-              await this.model.createSessionWithProgress((report) => {
+              await this.model.createSessionWithProgress((report: any) => {
                 if (typeof window !== "undefined") {
                   window.dispatchEvent(
                     new CustomEvent("builtinai:model-progress", { detail: report })
