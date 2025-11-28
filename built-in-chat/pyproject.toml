@@ -1,6 +1,6 @@
 [project]
 name = "built-in-chat"
-version = "0.1.0"
+version = "0.1.2"
 description = "Built-in AI Chat kernel for JupyterLite using Chrome's built-in AI"
 readme = "README.md"
 requires-python = ">=3.11"

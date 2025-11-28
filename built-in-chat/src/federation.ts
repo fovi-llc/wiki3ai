@@ -100,7 +100,7 @@ const container = {
             console.log("[ChatHttpKernel] Using Chrome built-in AI");
           }
 
-          async send(prompt: string): Promise<string> {
+          async send(prompt: string, onChunk?: (chunk: string) => void): Promise<string> {
             console.log("[ChatHttpKernel] Sending prompt to Chrome built-in AI:", prompt);
 
             const availability = await this.model.availability();
@@ -125,6 +125,9 @@ const container = {
             let reply = "";
             for await (const chunk of result.textStream) {
               reply += chunk;
+              if (onChunk) {
+                onChunk(chunk);
+              }
             }
 
             console.log("[ChatHttpKernel] Got reply from Chrome built-in AI:", reply);
@@ -145,18 +148,16 @@ const container = {
           async executeRequest(content: any): Promise<any> {
             const code = String(content.code ?? "");
             try {
-              const reply = await this.chat.send(code);
-              // @ts-ignore
-              this.publishExecuteResult(
-                {
-                  data: { "text/plain": reply },
-                  metadata: {},
-                  // @ts-ignore
-                  execution_count: this.executionCount,
-                },
+              // Stream each chunk as it arrives using the stream() method for stdout
+              await this.chat.send(code, (chunk: string) => {
                 // @ts-ignore
-                this.parentHeader
-              );
+                this.stream(
+                  { name: "stdout", text: chunk },
+                  // @ts-ignore
+                  this.parentHeader
+                );
+              });
+
               return {
                 status: "ok",
                 // @ts-ignore

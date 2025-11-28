@@ -28687,7 +28687,7 @@ Run 'npx vercel link' to link your project, then 'vc env pull' to fetch the toke
               this.model = (0, import_core8.builtInAI)();
               console.log("[ChatHttpKernel] Using Chrome built-in AI");
             }
-            async send(prompt) {
+            async send(prompt, onChunk) {
               console.log("[ChatHttpKernel] Sending prompt to Chrome built-in AI:", prompt);
               const availability = await this.model.availability();
               if (availability === "unavailable") {
@@ -28707,6 +28707,9 @@ Run 'npx vercel link' to link your project, then 'vc env pull' to fetch the toke
               let reply = "";
               for await (const chunk of result.textStream) {
                 reply += chunk;
+                if (onChunk) {
+                  onChunk(chunk);
+                }
               }
               console.log("[ChatHttpKernel] Got reply from Chrome built-in AI:", reply);
               return reply;
@@ -28721,17 +28724,13 @@ Run 'npx vercel link' to link your project, then 'vc env pull' to fetch the toke
             async executeRequest(content) {
               const code = String(content.code ?? "");
               try {
-                const reply = await this.chat.send(code);
-                this.publishExecuteResult(
-                  {
-                    data: { "text/plain": reply },
-                    metadata: {},
+                await this.chat.send(code, (chunk) => {
+                  this.stream(
+                    { name: "stdout", text: chunk },
                     // @ts-ignore
-                    execution_count: this.executionCount
-                  },
-                  // @ts-ignore
-                  this.parentHeader
-                );
+                    this.parentHeader
+                  );
+                });
                 return {
                   status: "ok",
                   // @ts-ignore

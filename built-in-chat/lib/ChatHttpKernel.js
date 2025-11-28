@@ -7,7 +7,13 @@ export class ChatHttpKernel {
         this.model = builtInAI();
         console.log("[ChatHttpKernel] Using Chrome built-in AI");
     }
-    async send(prompt) {
+    /**
+     * Send a prompt and stream the response.
+     * @param prompt The user prompt
+     * @param onChunk Optional callback invoked for each chunk of text as it arrives
+     * @returns The full response text
+     */
+    async send(prompt, onChunk) {
         const availability = await this.model.availability();
         if (availability === "unavailable") {
             throw new Error("Browser does not support Chrome built-in AI.");
@@ -26,6 +32,9 @@ export class ChatHttpKernel {
         let reply = "";
         for await (const chunk of result.textStream) {
             reply += chunk;
+            if (onChunk) {
+                onChunk(chunk);
+            }
         }
         return reply;
     }
