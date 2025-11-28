@@ -2,15 +2,15 @@
   "content": [
     {
       "content": null,
-      "created": "2025-11-28T19:14:44.487211Z",
+      "created": "2025-11-28T21:09:48.764456Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-28T19:06:56Z",
+      "last_modified": "2025-11-28T19:53:05Z",
       "mimetype": null,
       "name": "prompt_ai.ipynb",
       "path": "prompt_ai.ipynb",
-      "size": 28637,
+      "size": 28384,
       "type": "notebook",
       "writable": true
     },
@@ -58,15 +58,15 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T19:14:44.471509Z",
+      "created": "2025-11-28T21:09:48.760823Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-28T19:06:56Z",
+      "last_modified": "2025-11-28T19:46:04Z",
       "mimetype": null,
       "name": "about.ipynb",
       "path": "about.ipynb",
-      "size": 4017,
+      "size": 4707,
       "type": "notebook",
       "writable": true
     },
@@ -81,6 +81,20 @@
       "name": "webllm.ipynb",
       "path": "webllm.ipynb",
       "size": 103618,
+      "type": "notebook",
+      "writable": true
+    },
+    {
+      "content": null,
+      "created": "2025-11-28T21:09:48.762205Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2025-11-28T21:09:09Z",
+      "mimetype": null,
+      "name": "lite-kernel.ipynb",
+      "path": "lite-kernel.ipynb",
+      "size": 6382,
       "type": "notebook",
       "writable": true
     },
@@ -113,11 +127,11 @@
       "writable": true
     }
   ],
-  "created": "2025-11-28T19:14:44.492486Z",
+  "created": "2025-11-28T21:09:48.763948Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-11-28T19:14:44.492486Z",
+  "last_modified": "2025-11-28T21:09:48.763948Z",
   "mimetype": null,
   "name": "",
   "path": "",

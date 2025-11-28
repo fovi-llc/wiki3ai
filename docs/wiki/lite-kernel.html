@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>about</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>lite-kernel</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style>
     :root { color-scheme: light dark; }
     .jp-Button, .jp-Button:visited {
@@ -7598,43 +7598,124 @@ a.anchor-link {
 <div aria-label="Notebook actions" class="wiki-toolbar" role="toolbar">
 <div class="wiki-toolbar-left">
 <a class="jp-Button" href="/">home</a>
-<span class="wiki-toolbar-title" title="[Wiki3.ai](https://wiki3.ai/)">[Wiki3.ai](https://wiki3.ai/)</span>
+<span class="wiki-toolbar-title" title="Using the `HTTP Chat (ACP)` kernel to run built-in-ai LLMs as JupyterLite kernels">Using the `HTTP Chat (ACP)` kernel to run built-in-ai LLMs as JupyterLite kernels</span>
 </div>
 <div aria-label="File actions" class="wiki-toolbar-actions" role="group">
-<a class="jp-Button" href="/notebooks/index.html?path=about.ipynb" rel="noopener noreferrer" target="_blank">edit</a>
-<a class="jp-Button" href="/lab/index.html?path=about.ipynb" rel="noopener noreferrer" target="_blank">lab</a>
-<a aria-label="Download" class="jp-Button" download="" href="/files/about.ipynb" title="Download">down</a>
-<button aria-label="Copy share link" class="jp-Button" data-share="/wiki/about.html" type="button">share</button>
+<a class="jp-Button" href="/notebooks/index.html?path=lite-kernel.ipynb" rel="noopener noreferrer" target="_blank">edit</a>
+<a class="jp-Button" href="/lab/index.html?path=lite-kernel.ipynb" rel="noopener noreferrer" target="_blank">lab</a>
+<a aria-label="Download" class="jp-Button" download="" href="/files/lite-kernel.ipynb" title="Download">down</a>
+<button aria-label="Copy share link" class="jp-Button" data-share="/wiki/lite-kernel.html" type="button">share</button>
 </div>
 </div>
 <main class="wiki-main">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=431195ea-1b49-49a8-8152-48930d84db3d">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4565d21d-54c3-4b69-8eed-aac3503e3323">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Wiki3.ai"><a href="https://wiki3.ai/">Wiki3.ai</a><a class="anchor-link" href="#Wiki3.ai">¶</a></h1><ul>
-<li><a href="https://wiki3.ai/">Wiki3.ai</a> is <code>like Wikipedia but Web3 and built by and for AI</code></li>
-<li><a href="https://en.wikipedia.org/wiki/Web3">Web3</a> means local-first and that's more critical than ever in the age of AI.</li>
-<li>In order to build the <a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a>, that is to say a <a href="https://en.wikipedia.org/wiki/World_Wide_Web">WWW</a> that machines have full understanding and ability to operate in, we're gonna need to run all the data on the internet through LLMs many times.  This is a large undertaking and for there to be an alternative to proprietary solutions behind corporate moats, the rest of us need to work collectively to build this <a href="https://en.wikipedia.org/wiki/Knowledge_graph">Knowledge Graph</a> for verifable and trustworthy AI.</li>
-<li>Wiki3.ai is a work-in-progress towards a fully-functional PoC.</li>
-</ul>
-<h2 id="%22Three-Clicks%22-to-Use,-Edit/Run,-and-Publish">"Three Clicks" to Use, Edit/Run, and Publish<a class="anchor-link" href="#%22Three-Clicks%22-to-Use,-Edit/Run,-and-Publish">¶</a></h2><p>Our priorities are on immediate access and ease of use from the very first visit.</p>
-<ul>
-<li>One click to useful information.  Clicking on a link to a <a href="https://wiki3.ai/">Wiki3.ai</a> page should land you in a useful experience.</li>
-<li>A second click to edit.  If you're on a Wiki3.ai page then you can change it by clicking once again.  The source content and the tools to run, edit, verify, save, and download run in your browser.  That includes running the LLMs and agents that process the data and generate content.</li>
-<li>And a third click to publish.  If you want to contribute your content to Wiki3.ai or anywhere else, you can do so with just another click.  Of course if you want to control how it is stored and syndicated in ways other than Wiki3.ai's defaults, then that takes some minimal steps for connecting to the service of your choice in the usual fasion.</li>
-</ul>
-<h2 id="Means">Means<a class="anchor-link" href="#Means">¶</a></h2><p><a href="https://wiki3.ai/">Wiki3.ai</a> is a <a href="https://en.wikipedia.org/wiki/WikiWikiWeb">WikiWikiWeb</a> site like that created by Ward Cunninigham as the original at <a href="https://wiki.c2.com/?WikiWikiWeb">wiki.c2.com</a>.  Our primary form of content is as Jupyter notebooks which are then rendered to static HTML using W3C standards for Semantic Web annotations.  The notebooks have full support for plain text, Markdown, and code in many languages.  The JupyterLite platform is the editing and publishing environment.</p>
-<h3 id="JupyterEverywhere"><a href="https://JupyterEverywhere.org">JupyterEverywhere</a><a class="anchor-link" href="#JupyterEverywhere">¶</a></h3><p>A JupyterLite variant that already demonstrates the no fuss UX we want for Wiki3.ai is <a href="https://JupyterEverywhere.org">JupyterEverywhere.org</a> at <a href="https://JupyterEverywhere.org">https://JupyterEverywhere.org</a>.  It is a rethemed and repackaged version of JupyterLite specifically designed to support computational education in K-12 environments.  Among other things that means local-first, no account creation required or expected, and one click publishing.</p>
-<h2 id="Source">Source<a class="anchor-link" href="#Source">¶</a></h2><p>The <a href="https://wiki3.ai/">Wiki3.ai</a> site repo is currently on GitHub at <a href="https://github.com/fovi-llc/wiki3-ai-site">https://github.com/fovi-llc/wiki3-ai-site</a>.  It includes a DevContainer and Dockerfile which enables it to be run with pretty much any Docker/OCI system, including a few clicks to being live on GitHub Codespaces.</p>
-<p>While the source is readily available, it is not necessary to run it to use Wiki3.ai.  The tools for using it are in your browser and served as a static web site.  No cloud services are required, until if and when you decide to publish on the web, and in which case you can choose whatever method works for you.</p>
-<h2 id="License">License<a class="anchor-link" href="#License">¶</a></h2><p>The <a href="https://wiki3.ai/">Wiki3.ai</a> site itself is <a href="https://spdx.org/licenses/AGPL-3.0-or-later.html">AGPL v3</a> but the libraries it uses are primarily BSD 3-clause, Apache v2, or MIT.  Of course the primary OS is Linux which is GPL v3.</p>
+<h2 id="Using-the-HTTP-Chat-(ACP)-kernel-to-run-built-in-ai-LLMs-as-JupyterLite-kernels">Using the <code>HTTP Chat (ACP)</code> kernel to run built-in-ai LLMs as JupyterLite kernels<a class="anchor-link" href="#Using-the-HTTP-Chat-(ACP)-kernel-to-run-built-in-ai-LLMs-as-JupyterLite-kernels">¶</a></h2><p>The <code>HTTP Chat (ACP)</code> kernel (name change TBD) is derived from a JupyterLite kernel implemented by <a href="https://www.linkedin.com/in/aleksandar-s-486829128/">Aleksandar Sekulovski</a> at <a href="https://github.com/aleks-s10/agent-client-kernel/tree/main/lite-kernel">https://github.com/aleks-s10/agent-client-kernel/tree/main/lite-kernel</a>.  This version currently lives at <a href="https://github.com/fovi-llc/wiki3-ai-site/tree/main/lite-kernel">https://github.com/fovi-llc/wiki3-ai-site/tree/main/lite-kernel</a> with Python installer by <a href="https://www.linkedin.com/in/jamespaulwhite/">Jim White</a> and Copilot.  It will be moving to its own repo RSN.</p>
+<p>It is a TS/JS kernel that wraps <code>@built-in-ai/web-llm</code> from <a href="https://github.com/jakobhoeg/built-in-ai">https://github.com/jakobhoeg/built-in-ai</a> which is an <a href="https://ai-sdk.dev/">AI SDK model provider</a> for open-source models (using WebLLM) running directly in the browser by <a href="https://www.linkedin.com/in/jakob-hoeg-moerk/">Jakob Hoeg Mørk</a>.</p>
+<h3 id="%F0%9F%9A%A7-Under-Construction-%F0%9F%9A%A7">🚧 Under Construction 🚧<a class="anchor-link" href="#%F0%9F%9A%A7-Under-Construction-%F0%9F%9A%A7">¶</a></h3><p>Watch this space for a kernel using <code>@built-in-ai/core</code> which wraps the Chrome/Edge built-in AI Prompt API (<a href="https://developer.chrome.com/docs/ai/built-in">https://developer.chrome.com/docs/ai/built-in</a>).</p>
+<p>This version is a PoC towards a Zed Agent Client Protocol (ACP) kernel which not only runs local-first LLMs but also agents (including coding agents).</p>
+<p>Example using the default, a "small" LLM: <a href="https://huggingface.co/mlc-ai/SmolLM2-360M-Instruct-q4f16_1-MLC">SmolLM2-360M-Instruct-q4f16_1-MLC</a> which is 360M parameters quantized to 4bit and is 130MB.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ff666179-5a78-479b-8b2b-b39528b8451c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8ea433e2-a113-4b48-b2aa-9b62e13119e3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-markdown"><pre><span></span>how sweet would a rose smell by another name?
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Sure, I can certainly help with that. 'Rose'?  A rose fragrance encounters!</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=97fcdbdb-5283-4585-acec-1af597b9e904">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Switched to <a href="https://huggingface.co/mlc-ai/gemma-2-2b-it-q4f16_1-MLC">gemma-2-2b-it-q4f16_1-MLC</a>.  This takes a while to download and run.  Watch the developer console and/or network tabs to track progress.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=019018d0-fe63-4150-8548-4e39b2c052d6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-markdown"><pre><span></span>how do i build a skyscraper of straw?
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Building a skyscraper out of straw is a fun and challenging idea! While it's not exactly practical for a real-world skyscraper, let's explore the concept and the challenges involved:
+
+**Understanding the Challenges**
+
+* **Strength and Stability:** Straw is generally flexible and not very strong. It's not a good choice for a skyscraper's structural support. Straw bales are often used for temporary structures or agricultural purposes, but not for permanent, high-rise buildings. 
+* **Weight and Density:** Straw bales are relatively lightweight but their density is low. To create a stable structure that can withstand wind and gravity, you'd need to arrange them in a very specific and dense manner. 
+* **Fire Safety:** Straw is a flammable material.  This is a major safety concern and would require extensive fireproofing measures.
+* **Scale and Design:** Constructing a skyscraper out of straw would require a massive amount of straw bales and specialized construction techniques.  You'd also need to develop innovative design approaches to create a functional and aesthetically pleasing structure.
+
+**Possible Approaches**
+
+* **Modern Straw-Based Construction:** While a traditional skyscraper is unlikely, there are modern innovations using straw bales in construction. These include:
+    * **Straw-bale housing:** Straw bales can be used for building walls and partitions, offering good insulation and fire resistance.
+    * **Straw-bale insulation:** Straw bales can be used for insulation in walls and roofs. 
+    * **Straw-bale construction for temporary structures:** Straw bale structures are often used for agricultural shelters, temporary housing, and farm buildings.
+
+* **Imagining the Possibilities:**  If we're thinking more about a theoretical skyscraper, here are some potential ideas:
+    * **Straw-based composite material:**  Engineers could explore combining straw with other materials to create a stronger, more durable structure. 
+    * **Structural support:** You'd need to develop innovative ways to provide structural support. This could involve:
+        * **Reinforcing with steel or other materials**
+        * **Using a core of concrete or a strong plastic material**
+        * **Developing a self-supporting straw structure** 
+    * **Sustainable design:**  Straw-based skyscrapers could be designed with sustainability in mind.
+
+**Important Notes:**
+
+* **It's not practical for real-world skyscrapers.** The challenges are too significant.
+* **Research and innovation are key!** If you're interested in exploring this concept further, you can learn more about straw-based construction and innovative materials and design. 
+
+Let me know if you'd like to explore more about specific aspects of this! 
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f06f0903-9f7d-4a60-9633-d68c9d19cdea">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7642,7 +7723,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span> 
+<div class="highlight hl-markdown"><pre><span></span> 
 </pre></div>
 </div>
 </div>
