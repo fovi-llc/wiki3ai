@@ -21,7 +21,7 @@
       },
       {
         "extension": "./extension",
-        "load": "static/remoteEntry.a117bd216cefa0b341fe.js",
+        "load": "static/remoteEntry.3745c44cbbd62cec9a73.js",
         "name": "@jupyterlite/pyodide-kernel-extension"
       },
       {
@@ -42,16 +42,6 @@
       }
     ],
     "fileTypes": {
-      "avi": {
-        "extensions": [
-          ".avi"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "video/x-msvideo"
-        ],
-        "name": "avi"
-      },
       "css": {
         "extensions": [
           ".css"
@@ -81,16 +71,6 @@
           "text/plain"
         ],
         "name": "fasta"
-      },
-      "flac": {
-        "extensions": [
-          ".flac"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "audio/flac"
-        ],
-        "name": "flac"
       },
       "geojson": {
         "extensions": [
@@ -199,16 +179,6 @@
         ],
         "name": "json"
       },
-      "jupyterlab_workspace": {
-        "extensions": [
-          ".jupyterlab-workspace"
-        ],
-        "fileFormat": "json",
-        "mimeTypes": [
-          "application/json"
-        ],
-        "name": "jupyterlab_workspace"
-      },
       "manifest": {
         "extensions": [
           ".manifest"
@@ -229,56 +199,6 @@
           "text/markdown"
         ],
         "name": "md"
-      },
-      "mkv": {
-        "extensions": [
-          ".mkv"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "video/x-matroska"
-        ],
-        "name": "mkv"
-      },
-      "mov": {
-        "extensions": [
-          ".mov"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "video/quicktime"
-        ],
-        "name": "mov"
-      },
-      "mp3": {
-        "extensions": [
-          ".mp3"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "audio/mpeg"
-        ],
-        "name": "mp3"
-      },
-      "mp4": {
-        "extensions": [
-          ".mp4"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "video/mp4"
-        ],
-        "name": "mp4"
-      },
-      "ogg": {
-        "extensions": [
-          ".ogg"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "audio/ogg"
-        ],
-        "name": "ogg"
       },
       "pdf": {
         "extensions": [
@@ -361,26 +281,6 @@
         ],
         "name": "wasm"
       },
-      "wav": {
-        "extensions": [
-          ".wav"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "audio/wav"
-        ],
-        "name": "wav"
-      },
-      "webm": {
-        "extensions": [
-          ".webm"
-        ],
-        "fileFormat": "base64",
-        "mimeTypes": [
-          "video/webm"
-        ],
-        "name": "webm"
-      },
       "wheel": {
         "extensions": [
           ".whl"
@@ -420,7 +320,7 @@
     "litePluginSettings": {
       "@jupyterlite/pyodide-kernel-extension:kernel": {
         "pipliteUrls": [
-          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=783d01f64a330ecbbd82318ba2fde8842bc8eece502b821b8c0f57cacdde5cdc"
+          "./extensions/@jupyterlite/pyodide-kernel-extension/static/pypi/all.json?sha256=6428e372c283ca4b67a641295c5d9c8abeed5cf341b24ffe41b313fcdcaf9be4"
         ]
       },
       "@jupyterlite/pyolite-kernel-extension:kernel": {

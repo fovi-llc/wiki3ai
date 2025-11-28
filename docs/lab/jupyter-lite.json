@@ -4,7 +4,6 @@
     "appUrl": "/lab",
     "settingsUrl": "../build/schemas",
     "showLoadingIndicator": true,
-    "themesUrl": "./build/themes",
-    "mode": "multiple-document"
+    "themesUrl": "./build/themes"
   }
 }
