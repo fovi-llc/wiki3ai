@@ -1,38 +1,36 @@
-import { WEBLLM_MODELS, DEFAULT_WEBLLM_MODEL } from "./models.js";
-import { HttpLiteKernel } from "./kernel.js";
-console.log("[lite-kernel] entrypoint loaded");
+import { BuiltInChatKernel } from "./kernel.js";
+console.log("[built-in-chat] entrypoint loaded");
 /**
- * JupyterLite / JupyterLab plugin that registers our HTTP-backed kernel.
+ * JupyterLite / JupyterLab plugin that registers our Chrome built-in AI chat kernel.
  */
-const httpChatKernelPlugin = {
-    id: "http-chat-kernel:plugin",
+const builtInChatKernelPlugin = {
+    id: "@wiki3-ai/built-in-chat:plugin",
     autoStart: true,
-    // ❌ remove `requires: [IKernelSpecs]`,
     activate: (app) => {
-        console.log("[http-chat-kernel] Activating plugin");
+        console.log("[built-in-chat] Activating plugin");
         // Grab kernelspecs from the app's serviceManager
         const anyApp = app;
         const kernelspecs = anyApp.serviceManager?.kernelspecs;
         if (!kernelspecs || typeof kernelspecs.register !== "function") {
-            console.warn("[http-chat-kernel] kernelspecs.register is not available; kernel will not be registered.", kernelspecs);
+            console.warn("[built-in-chat] kernelspecs.register is not available; kernel will not be registered.", kernelspecs);
             return;
         }
         kernelspecs.register({
-            id: "http-chat",
+            id: "built-in-chat",
             spec: {
-                name: "http-chat",
-                display_name: "HTTP Chat (ACP)",
+                name: "built-in-chat",
+                display_name: "Built-in AI Chat",
                 language: "python", // purely cosmetic; syntax highlighting
                 argv: [],
                 resources: {}
             },
             create: (options) => {
-                console.log("[http-chat-kernel] Creating HttpLiteKernel instance", options);
-                return new HttpLiteKernel(options);
+                console.log("[built-in-chat] Creating BuiltInChatKernel instance", options);
+                return new BuiltInChatKernel(options);
             }
         });
-        console.log("[http-chat-kernel] Kernel spec 'http-chat' registered");
-        // --- WebLLM model selector + progress bar ---
+        console.log("[built-in-chat] Kernel spec 'built-in-chat' registered");
+        // --- Progress bar for model loading ---
         if (typeof document !== "undefined") {
             const bar = document.createElement("div");
             bar.style.position = "fixed";
@@ -48,25 +46,8 @@ const httpChatKernelPlugin = {
             bar.style.gap = "4px";
             bar.style.alignItems = "center";
             const label = document.createElement("span");
-            label.textContent = "WebLLM model:";
+            label.textContent = "Built-in AI:";
             bar.appendChild(label);
-            const select = document.createElement("select");
-            const saved = window.localStorage.getItem("webllm:modelId") ?? DEFAULT_WEBLLM_MODEL;
-            WEBLLM_MODELS.forEach((id) => {
-                const opt = document.createElement("option");
-                opt.value = id;
-                opt.textContent = id;
-                if (id === saved)
-                    opt.selected = true;
-                select.appendChild(opt);
-            });
-            // expose current model globally so ChatHttpKernel can read it
-            window.webllmModelId = saved;
-            select.onchange = () => {
-                window.webllmModelId = select.value;
-                window.localStorage.setItem("webllm:modelId", select.value);
-            };
-            bar.appendChild(select);
             const progress = document.createElement("progress");
             progress.max = 1;
             progress.value = 0;
@@ -76,7 +57,7 @@ const httpChatKernelPlugin = {
             const status = document.createElement("span");
             status.textContent = "";
             bar.appendChild(status);
-            window.addEventListener("webllm:model-progress", (ev) => {
+            window.addEventListener("builtinai:model-progress", (ev) => {
                 const { progress: p, text } = ev.detail;
                 progress.style.display = p > 0 && p < 1 ? "inline-block" : "none";
                 progress.value = p ?? 0;
@@ -86,11 +67,11 @@ const httpChatKernelPlugin = {
         }
     }
 };
-const plugins = [httpChatKernelPlugin];
+const plugins = [builtInChatKernelPlugin];
 export default plugins;
 // --- manual MF shim for static usage ---
 if (typeof window !== "undefined") {
-    const scope = "@wiki3ai/lite-kernel";
+    const scope = "@wiki3-ai/built-in-chat";
     const moduleFactories = {
         "./index": () => ({ default: plugins }),
         "./extension": () => ({ default: plugins })
@@ -101,7 +82,7 @@ if (typeof window !== "undefined") {
             get: (module) => {
                 const factory = moduleFactories[module];
                 if (!factory) {
-                    return Promise.reject(new Error(`[lite-kernel] Unknown module: ${module}`));
+                    return Promise.reject(new Error(`[built-in-chat] Unknown module: ${module}`));
                 }
                 return Promise.resolve(factory);
             },
@@ -109,10 +90,10 @@ if (typeof window !== "undefined") {
                 const scopeData = shareScope ?? {};
                 const globalShare = window.__JUPYTERLITE_SHARED_SCOPE__ || (window.__JUPYTERLITE_SHARED_SCOPE__ = {});
                 Object.assign(globalShare, scopeData);
-                console.log("[lite-kernel] Module federation shim init() with shared scope keys", Object.keys(scopeData));
+                console.log("[built-in-chat] Module federation shim init() with shared scope keys", Object.keys(scopeData));
                 return Promise.resolve();
             }
         };
-        console.log(`[lite-kernel] Registered manual Module Federation shim on window._JUPYTERLAB scope='${scope}'`);
+        console.log(`[built-in-chat] Registered manual Module Federation shim on window._JUPYTERLAB scope='${scope}'`);
     }
 }

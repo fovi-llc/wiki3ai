@@ -1,7 +1,7 @@
-// lite-kernel/src/kernel.ts
+// built-in-chat/src/kernel.ts
 import { BaseKernel } from "@jupyterlite/kernel";
 import { ChatHttpKernel } from "./ChatHttpKernel.js";
-export class HttpLiteKernel extends BaseKernel {
+export class BuiltInChatKernel extends BaseKernel {
     constructor(options) {
         super(options);
         const model = options.model;
@@ -43,7 +43,7 @@ export class HttpLiteKernel extends BaseKernel {
         return {
             status: "ok",
             protocol_version: "5.3",
-            implementation: "http-lite-kernel",
+            implementation: "built-in-chat-kernel",
             implementation_version: "0.1.0",
             language_info: {
                 name: "markdown",
@@ -51,7 +51,7 @@ export class HttpLiteKernel extends BaseKernel {
                 mimetype: "text/markdown",
                 file_extension: ".md",
             },
-            banner: "HTTP-backed LLM chat kernel",
+            banner: "Chrome Built-in AI chat kernel",
             help_links: [],
         };
     }
@@ -101,6 +101,6 @@ export class HttpLiteKernel extends BaseKernel {
     async commMsg(_content) { }
     async commClose(_content) { }
 }
-export function createHttpLiteKernel(options) {
-    return new HttpLiteKernel(options);
+export function createBuiltInChatKernel(options) {
+    return new BuiltInChatKernel(options);
 }

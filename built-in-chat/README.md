@@ -1,17 +1,17 @@
-# lite-kernel
+# @wiki3-ai/built-in-chat
 
-HTTP Chat kernel for JupyterLite with WebLLM support.
+Built-in AI Chat kernel for JupyterLite using Chrome's built-in AI.
 
 ## Installation
 
 ```bash
-pip install lite-kernel
+pip install built-in-chat
 ```
 
 Or for development:
 
 ```bash
-cd lite-kernel
+cd built-in-chat
 pip install -e .
 ```
 

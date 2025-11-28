@@ -1,11 +1,11 @@
 import { BaseKernel, IKernel } from "@jupyterlite/kernel";
 type KernelOptions = IKernel.IOptions & {
     /**
-     * Optional WebLLM model identifier to pass through to ChatHttpKernel.
+     * Optional model identifier to pass through to ChatHttpKernel.
      */
     model?: string;
 };
-export declare class HttpLiteKernel extends BaseKernel {
+export declare class BuiltInChatKernel extends BaseKernel {
     private chat;
     constructor(options: KernelOptions);
     executeRequest(content: any): Promise<any>;
@@ -21,5 +21,5 @@ export declare class HttpLiteKernel extends BaseKernel {
     commMsg(_content: any): Promise<void>;
     commClose(_content: any): Promise<void>;
 }
-export declare function createHttpLiteKernel(options: KernelOptions): IKernel;
+export declare function createBuiltInChatKernel(options: KernelOptions): IKernel;
 export {};
