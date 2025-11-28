@@ -11,7 +11,7 @@ from jupyterlite_core.addons.base import BaseAddon
 
 # Get version from package metadata - bump in pyproject.toml to force
 # regeneration of all wiki pages when templates or conversion logic changes
-__version__ = version("wiki3ai")
+__version__ = version("wiki3-ai-site")
 
 class WikiPageAddon(BaseAddon):
     """Generate wiki pages from notebooks"""
