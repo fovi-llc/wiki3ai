@@ -1,4 +1,4 @@
-FROM python:3.13-slim
+FROM python:3.13
 
 ARG JUPYTER_PORT=8000
 ENV JUPYTER_PORT=${JUPYTER_PORT}
@@ -13,16 +13,19 @@ RUN apt-get update && apt-get install -y \
     npm \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -U jupyterlite==0.7.0rc2 anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab==4.5.0 
+# RUN pip install --upgrade pip \
+# && pip install -Ur jupyterlite==0.7.0rc2 anywidget==0.9.21 ipywidgets jupyterlite-pyodide-kernel jupyter-server jupyterlab==4.5.0 
+
 # RUN pip install nbconvert nbformat
 
 WORKDIR ${APP_DIR}
 COPY . ${APP_DIR}
 
-RUN pip install lite-kernel/ \
-    && pip install . \
-    && jupyter lab build \
-    && rm -rf docs .jupyterlite.doit.db\
+RUN pip install --upgrade pip \
+    && pip install uv \
+    && uv pip install --system . \
+    && uv pip install --system lite-kernel/ \
+    && rm -rf docs .jupyterlite.doit.db \
     && jupyter lite build
 
 # brew install nodejs npm

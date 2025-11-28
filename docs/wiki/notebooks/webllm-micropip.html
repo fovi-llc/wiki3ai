@@ -7626,7 +7626,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Install WebLLM-related packages via micropip</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Install WebLLM-related packages via micropip</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">micropip</span>
 
 <span class="c1"># Install JavaScript interop helpers</span>
@@ -7646,7 +7646,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Load WebLLM from CDN</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load WebLLM from CDN</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pyodide</span><span class="w"> </span><span class="kn">import</span> <span class="n">js</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
 
@@ -7683,7 +7683,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Create a Python wrapper for WebLLM</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a Python wrapper for WebLLM</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">PyodideWebLLM</span><span class="p">:</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="kc">None</span>
@@ -7752,7 +7752,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Load the model (this may take a few minutes for first download)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load the model (this may take a few minutes for first download)</span>
 <span class="k">await</span> <span class="n">llm</span><span class="o">.</span><span class="n">load_model</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Ready to chat!"</span><span class="p">)</span>
 </pre></div>
@@ -7768,7 +7768,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Chat example</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Chat example</span>
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">llm</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span><span class="s2">"Explain what Pyodide is in simple terms"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Response:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
@@ -7785,7 +7785,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Text completion example</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Text completion example</span>
 <span class="n">response</span> <span class="o">=</span> <span class="k">await</span> <span class="n">llm</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="s2">"The advantages of running Python in the browser are:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Completion:"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
@@ -7802,7 +7802,7 @@ a.anchor-link {
 <div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-python"><pre><span></span><span class="c1"># Interactive chat function</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Interactive chat function</span>
 <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">interactive_chat</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">"""Simple interactive chat with WebLLM"""</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"🤖 WebLLM Chat - Type 'quit' to exit"</span><span class="p">)</span>

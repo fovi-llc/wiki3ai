@@ -7711,7 +7711,7 @@ Note: you may need to restart the kernel to use updated packages.
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
 <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>&lt;wiki3_ai.language_model.LanguageModelWidget object at 0xffff948678c0&gt;</pre>
+<pre>&lt;wiki3_ai.language_model.LanguageModelWidget object at 0xffffa4d5f620&gt;</pre>
 </div>
 </div>
 </div>
@@ -7754,17 +7754,29 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Check if the API is available</span>
 <span class="k">await</span> <span class="n">LanguageModel</span><span class="o">.</span><span class="n">availability</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>'available'</pre>
 </div>
 </div>
 </div>
@@ -7780,12 +7792,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">params</span> <span class="o">=</span> <span class="k">await</span> <span class="n">LanguageModel</span><span class="o">.</span><span class="n">params</span><span class="p">()</span>
@@ -7804,6 +7816,31 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Default temperature: 1
+Max temperature: 2
+Default top-K: 3
+Max top-K: 128
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'defaultTopK': 3,
+ 'maxTopK': 128,
+ 'defaultTemperature': 1,
+ 'maxTemperature': 2}</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -7815,17 +7852,29 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">lm</span> <span class="o">=</span> <span class="k">await</span> <span class="n">LanguageModel</span><span class="o">.</span><span class="n">create</span><span class="p">()</span>
 <span class="n">lm</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>&lt;wiki3_ai.language_model.LanguageModel at 0xffffa43ad550&gt;</pre>
 </div>
 </div>
 </div>
@@ -7841,18 +7890,37 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Send a prompt</span>
 <span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">lm</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="s2">"Write a haiku about Python programming."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Code flows, clean and bright,
+Indentation's gentle guide,
+Logic takes its form. 
+
+
+
+
+</pre>
 </div>
 </div>
 </div>
@@ -7868,12 +7936,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a session with a system prompt</span>
@@ -7896,17 +7964,75 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>```python
+import csv
+
+with open('your_file.csv', 'r') as file:
+    reader = csv.reader(file)
+    for row in reader:
+        print(row)
+```
+
+**Explanation:**
+
+1. **`import csv`**: Imports the `csv` module.
+2. **`with open('your_file.csv', 'r') as file:`**: Opens the CSV file in read mode (`'r'`).  The `with` statement ensures the file is properly closed afterwards.  Replace `'your_file.csv'` with your actual filename.
+3. **`reader = csv.reader(file)`**: Creates a `csv.reader` object to iterate over the rows.
+4. **`for row in reader:`**: Loops through each row in the CSV file.
+5. **`print(row)`**: Prints each row as a list of strings.
+
+
+
+For more complex CSVs (with headers or different delimiters), explore `csv.DictReader` and other options in the `csv` module.
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="k">await</span> <span class="n">assistant_session</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="s2">"Please return just the code to read a CSV file in Python.  Include detailed comments."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>```python
+import csv
+
+# Open the CSV file in read mode ('r').  The 'with' statement ensures proper file closing.
+with open('your_file.csv', 'r') as file:
+    # Create a CSV reader object to iterate over the rows.
+    reader = csv.reader(file)
+    # Iterate through each row in the CSV file.
+    for row in reader:
+        # Print the current row.  Each row is a list of strings representing the values.
+        print(row)
+```
+
+</pre>
 </div>
 </div>
 </div>
@@ -7922,12 +8048,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Response: "</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">)</span>
@@ -7939,18 +8065,120 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Response: Why did the computer get glasses? 
+
+Because it needed to improve its website! 
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">async</span> <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">assistant_session</span><span class="o">.</span><span class="n">prompt_streaming</span><span class="p">(</span><span class="s2">"Read me a long poem please."</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Okay, here's a long poem I've crafted. It's about a journey through a fantastical, ever-changing landscape.  It’s meant to evoke imagery and a sense of wonder.  It's a bit abstract, but hopefully, you'll find something to enjoy!
+
+**The Shifting Sands of Aethel**
+
+From slumber deep, where starlight softly sleeps,
+A traveler awoke, where twilight gently creeps.
+No map he held, no compass to guide,
+Just whispers carried on a wind-swept tide.
+He stepped forth then, into Aethel's embrace,
+A land of wonder, a timeless, mystic space.
+
+The ground beneath, a shifting, golden sand,
+That flowed and molded at a whim of hand.
+Crystalline towers, kissed by amethyst skies,
+Reflected hues in his questioning eyes.
+The sun, a pearl, in a nebula's gleam,
+Painted the landscape of a waking dream.
+
+He journeyed onward, through forests of jade,
+Where luminous flora in silent dances swayed.
+Giant mushrooms, with caps of emerald light,
+Cast shadows dancing in the endless night.
+Creatures of myth, with wings of spun gold,
+Glanced from the branches, stories untold.
+
+A river of silver, a winding, cool grace,
+Reflected the stars in its shimmering trace.
+Whispers of voices, on the water did flow,
+Of ancient secrets, and long, long ago.
+He drank from its depths, a refreshing delight,
+And felt Aethel’s magic ignite in the night.
+
+He climbed mountains sculpted of obsidian stone,
+Where echoing winds sang a haunting monotone.
+And found ancient carvings, of beings long past,
+Whose wisdom lingered, eternally to last.
+Symbols of power, and knowledge profound,
+Whispered of cycles, that endlessly wound.
+
+Through valleys of silence, and deserts of fire,
+He faced his own shadows, fueled by desire.
+To understand Aethel, its mysteries deep,
+And secrets it guarded while mortals did sleep.
+He battled illusions, and fears held within,
+And found strength blooming where weakness had been.
+
+Then, a shimmering portal, a gateway of light,
+Appeared in the distance, a glorious sight.
+A swirling vortex of colors untold,
+A path to new wonders, both brave and bold.
+He hesitated, at the portal's embrace,
+A choice to be made, in this mystical place.
+
+To step through the gateway, to leave Aethel behind,
+Or remain in this wonder, a treasure to find.
+He closed his eyes, and with a resolute breath,
+Embarked on a journey, defying even death.
+For Aethel’s magic, had woven its spell,
+A story unending, that he knew so well.
+
+And though the landscape forever would change,
+The traveler carried Aethel's vibrant range.
+A memory etched, in the heart of his soul,
+A journey completed, making him whole.
+For Aethel's essence, a part he would keep,
+Within the slumber, and within the deep.
+
+
+
+I hope you enjoyed that! It's quite lengthy, but I tried to create something evocative. Let me know if you’d like me to try writing something different!
+
+
+
+
+</pre>
 </div>
 </div>
 </div>
@@ -7966,12 +8194,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># First message</span>
@@ -7983,18 +8211,94 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Assistant: A list comprehension is a concise way to create new lists based on existing iterables (like lists, tuples, or ranges). It's a more compact and often faster alternative to using a `for` loop to build a list.
+
+**Basic Syntax:**
+
+```python
+new_list = [expression for item in iterable if condition]
+```
+
+*   **`expression`**:  What you want to put into the new list. It can involve the `item`.
+*   **`item`**:  Represents each element in the `iterable`.
+*   **`iterable`**: The sequence (list, tuple, range, string, etc.) you're iterating over.
+*   **`condition`** (optional):  A filter; only items that meet the condition will be included in the new list.
+
+
+
+**Example:**
+
+```python
+# Create a list of squares of numbers from 0 to 9
+squares = [x**2 for x in range(10)] 
+print(squares)  # Output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Create a list of even numbers from 0 to 19
+even_numbers = [x for x in range(20) if x % 2 == 0]
+print(even_numbers) # Output: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18]
+
+# Create a list of uppercase vowels from a string
+text = "Hello World"
+vowels = [char.upper() for char in text if char in "aeiou"]
+print(vowels) # Output: ['E', 'O', 'O']
+```
+
+In essence, list comprehensions provide a more readable and often more efficient way to create lists compared to traditional `for` loops. They're a powerful feature of Python!
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Follow-up message (the assistant remembers the context)</span>
 <span class="n">result2</span> <span class="o">=</span> <span class="k">await</span> <span class="n">assistant_session</span><span class="o">.</span><span class="n">prompt</span><span class="p">(</span><span class="s2">"Can you show me an example?"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Assistant:"</span><span class="p">,</span> <span class="n">result2</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Assistant: ```python
+# Example: Create a list of the first 5 even numbers
+
+# Without list comprehension (using a loop):
+even_numbers_loop = []
+for i in range(10):  # Iterate from 0 to 9
+  if i % 2 == 0:  # Check if the number is even
+    even_numbers_loop.append(i)
+
+print(f"Even numbers (loop): {even_numbers_loop}")
+
+# With list comprehension:
+even_numbers_comprehension = [i for i in range(10) if i % 2 == 0]
+
+print(f"Even numbers (comprehension): {even_numbers_comprehension}")
+```
+
+This code demonstrates how the same task (creating a list of even numbers) can be achieved using both a `for` loop and a list comprehension. The list comprehension is more concise and often considered more Pythonic. Both will produce the same output: `[0, 2, 4, 6, 8]`.
+</pre>
 </div>
 </div>
 </div>
@@ -8010,12 +8314,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current usage: </span><span class="si">{</span><span class="n">assistant_session</span><span class="o">.</span><span class="n">input_usage</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">assistant_session</span><span class="o">.</span><span class="n">input_quota</span><span class="si">}</span><span class="s2"> tokens"</span><span class="p">)</span>
@@ -8024,6 +8328,21 @@ Note: you may need to restart the kernel to use updated packages.
 <span class="n">usage</span> <span class="o">=</span> <span class="k">await</span> <span class="n">assistant_session</span><span class="o">.</span><span class="n">measure_input_usage</span><span class="p">(</span><span class="s2">"What is machine learning?"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">This prompt would use approximately </span><span class="si">{</span><span class="n">usage</span><span class="si">}</span><span class="s2"> tokens"</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Current usage: 1826/9216 tokens
+
+This prompt would use approximately 13 tokens
+</pre>
 </div>
 </div>
 </div>
@@ -8039,12 +8358,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
@@ -8074,6 +8393,20 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Sentiment: positive
+Score: 0.95
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8085,12 +8418,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Start a story</span>
@@ -8118,6 +8451,56 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>=== Branch 1 ===
+Once upon a time, there was a dragon named Zephyr. Now, Zephyr wasn't like the other dragons. Oh no. He didn't hoard gold or breathe scorching flames. Instead, he breathed bubbles. Big, iridescent bubbles that shimmered with all the colors of a rainbow. And he didn’t roar, he hummed. A low, melodic hum that resonated through the mountains and coaxed wildflowers to bloom even in the harshest winters.
+
+He lived not in a dark, forbidding cave, but in a hidden valley filled with sparkling waterfalls and fields of glowing moss. He wasn’t fierce or intimidating; in fact, Zephyr was terribly shy. He preferred observing the tiny creatures of the valley – the bumble-winged beetles, the gossiping glow-worms, and the mischievous sprites who loved to tangle his tail in vines. He’d gently puff bubbles towards them, each one containing a fleeting image – a sunrise, a laughing child, a field of ripe berries. 
+
+The villagers in the nearby hamlet of Oakhaven whispered stories of the “Bubble Dragon,” dismissing him as a silly legend. They’d heard tales of a terrifying beast, but Zephyr’s gentleness was a secret, known only to the valley’s inhabitants. He worried he wouldn't fit in, that his bubbly nature was somehow…wrong. 
+
+One day, a terrible drought fell upon Oakhaven. The river withered, the crops browned, and the villagers grew desperate. Their well, the source of their life, was drying up faster and faster. The village elder declared that only a legendary artifact, the Sunstone, could restore the water, but it was hidden deep within the Shadow Peaks, a place rumored to be cursed.
+
+Fear choked the village. No one dared to venture into the Shadow Peaks. But Zephyr, watching their plight from his valley, felt a pang of empathy. He knew, somehow, that he was meant to help. Without hesitation, Zephyr spread his iridescent wings and flew towards Oakhaven. 
+
+“I’ll find the Sunstone,” he hummed, his voice a gentle melody that calmed the worried villagers. He didn’t boast or threaten; he simply offered his help. The villagers, hesitant at first, watched as Zephyr soared into the ominous Shadow Peaks. 
+
+Throughout his journey, Zephyr proved to be remarkably friendly and helpful. He used his bubbles to light his way through the darkest tunnels, creating shimmering paths that illuminated the perilous terrain. He gently nudged loose rocks from the path of smaller creatures, ensuring their safe passage. He even shared bubbles filled with soothing images of lush meadows and flowing streams with the frightened mountain goats, calming their nerves and gaining their trust. 
+
+He wasn't a warrior, but he was resourceful, kind, and utterly determined to help. He wasn’t looking for glory; he simply wanted to alleviate the suffering of the villagers of Oakhaven. He was, quite simply, the most helpful dragon anyone had ever heard of. His journey had begun, and it was far more than just saving a village; it was about discovering the true power hidden within a heart of bubbles – a power of kindness, compassion, and unwavering helpfulness.
+
+
+
+=== End of 1 ===
+=== Branch 2 ===
+Once upon a time, there was a dragon named Ignis. He wasn't like the gentle dragons of legend. Ignis *was* legend – the legend of the Obsidian Fury. He was fierce, terrifying, and feared throughout the scorched lands of the Dragon's Tooth Mountains. His scales were the color of volcanic glass, reflecting the inferno that constantly simmered within him. Smoke curled from his nostrils, smelling not of wildflowers, but of sulfur and burnt earth.
+
+Ignis didn't hum. He roared. A deafening, earth-shattering roar that could crack mountains and send tremors through the very ground. And he didn't breathe bubbles. He breathed fire. Rivers of molten fury that consumed everything in their path. He guarded a hoard of gold – not for its beauty, but for the power it represented. Each glittering coin fueled his rage, each jeweled crown stoked his ambition.
+
+He lived in a vast, volcanic cave deep within the Dragon's Tooth Mountains, a lair choked with the bones of those who dared trespass. He wasn’t shy; he reveled in fear. Villages trembled at the mere whisper of his name. Knights vowed to slay him, kings offered vast treasures for his demise, and mages concocted powerful spells to bind him. All to no avail. Ignis remained untouchable, a terrifying force of nature.
+
+The villagers of Silverstream, nestled in the valley below, had lived under his shadow for generations. They offered him tribute – livestock, crops, sometimes even people – hoping to appease his wrath and avoid being incinerated. They knew him only as a monster, a destroyer. They’d built their lives around his fear, their days dictated by the unpredictable whims of the Obsidian Fury.
+
+One year, the drought came early and fiercely. The river Silverstream dwindled, the crops withered, and the people of Silverstream starved. They offered Ignis their last precious treasures – their ancestral carvings, their finest pottery – hoping for mercy. But Ignis, fueled by the dwindling hope of the villagers, only roared louder, a sound that echoed with cold indifference. He didn’t crave their treasures; he craved their despair. He saw their fear as a delicious meal.
+
+But this year, a young woman named Lyra refused to offer tribute. She was a healer, and she believed that appeasement only fueled Ignis's hunger. She ventured to the mouth of his cave, not with offerings, but with a simple plea – not for mercy, but for understanding. She spoke of the suffering in Silverstream, the desperate hunger, the dying children. 
+
+Ignis, used to only fear and tribute, paused. The sound of pleading, of genuine sorrow, resonated within him in a way he’d never experienced. He hadn't expected compassion. He hadn't anticipated a voice that didn't tremble, that didn't beg, but that simply…spoke. And in that moment, a flicker of something unfamiliar stirred within the Obsidian Fury. Perhaps even a dragon, no matter how fierce, could feel a spark of something beyond destruction. His journey had begun, and it was about more than just terror; it was about confronting the emptiness within his heart.
+
+
+
+=== End of 2 ===
+</pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
@@ -8129,12 +8512,12 @@ Note: you may need to restart the kernel to use updated packages.
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">await</span> <span class="n">lm</span><span class="o">.</span><span class="n">destroy</span><span class="p">()</span>
@@ -8145,6 +8528,19 @@ Note: you may need to restart the kernel to use updated packages.
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"✅ All sessions destroyed"</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>✅ All sessions destroyed
+</pre>
 </div>
 </div>
 </div>
