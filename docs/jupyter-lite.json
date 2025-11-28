@@ -26,6 +26,12 @@
       },
       {
         "extension": "./extension",
+        "load": "static/remoteEntry.b4a1f7d763389f060524.js",
+        "name": "@pyviz/jupyterlab_pyviz",
+        "style": "./style"
+      },
+      {
+        "extension": "./extension",
         "load": "./static/remoteEntry.7e3ac003.js",
         "name": "anywidget"
       },
