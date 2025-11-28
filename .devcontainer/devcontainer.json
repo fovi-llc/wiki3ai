@@ -5,16 +5,17 @@
     },
     // "remoteUser": "root",
     "forwardPorts": [
-        8000
+        8888
     ],
     "portsAttributes": {
-        "8000": {
+        "8888": {
             "label": "JupyterLite",
             "requireLocalPort": true
         }
     },
     "containerEnv": {
-        "JUPYTER_PORT": "8000"
+        "JUPYTER_PORT": "8888",
+        "APP_DIR": "/workspaces/wiki3-ai-site"
         // "GRANT_SUDO": "yes"
         // "RESTARTABLE": "yes"
     }
