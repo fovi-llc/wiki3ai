@@ -2,7 +2,7 @@
   "content": [
     {
       "content": null,
-      "created": "2025-11-28T10:26:34.127162Z",
+      "created": "2025-11-28T10:38:42.853064Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -16,7 +16,7 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T10:26:34.118065Z",
+      "created": "2025-11-28T10:38:42.841875Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -30,11 +30,11 @@
     },
     {
       "content": null,
-      "created": "2025-11-27T20:52:25.225790Z",
+      "created": "2025-11-28T10:38:42.859374Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-27T20:52:25.225790Z",
+      "last_modified": "2025-11-28T10:38:42.859374Z",
       "mimetype": null,
       "name": "wiki",
       "path": "wiki",
@@ -44,11 +44,11 @@
     },
     {
       "content": null,
-      "created": "2025-11-27T20:52:25.222598Z",
+      "created": "2025-11-28T10:38:42.856111Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-27T20:52:25.222598Z",
+      "last_modified": "2025-11-28T10:38:42.856111Z",
       "mimetype": null,
       "name": "utils",
       "path": "utils",
@@ -58,7 +58,7 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T10:32:26.239248Z",
+      "created": "2025-11-28T10:38:42.839905Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -72,7 +72,7 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T10:32:26.241906Z",
+      "created": "2025-11-28T10:38:42.857376Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -86,7 +86,7 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T10:26:34.116325Z",
+      "created": "2025-11-28T10:38:42.840978Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
@@ -100,11 +100,11 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T10:26:34.124248Z",
+      "created": "2025-11-28T10:38:42.851743Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-28T10:26:34.124248Z",
+      "last_modified": "2025-11-28T10:38:42.851743Z",
       "mimetype": null,
       "name": "notebooks",
       "path": "notebooks",
@@ -113,11 +113,11 @@
       "writable": true
     }
   ],
-  "created": "2025-11-28T10:32:26.241358Z",
+  "created": "2025-11-28T10:38:42.858178Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-11-28T10:32:26.241358Z",
+  "last_modified": "2025-11-28T10:38:42.858178Z",
   "mimetype": null,
   "name": "",
   "path": "",
