@@ -24,6 +24,7 @@ COPY . ${APP_DIR}
 RUN pip install --upgrade pip \
     && pip install uv \
     && uv pip install --system . \
+    && uv pip install --system built-in-chat/ \
     && uv pip install --system lite-kernel/ \
     && rm -rf docs .jupyterlite.doit.db \
     && jupyter lite build
