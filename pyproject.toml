@@ -15,7 +15,9 @@ dependencies = [
     "notebook",
     "numpy",
     "pandas",
+    "panel",
     "tornado",
+    "watchfiles",
 ]
 
 [project.optional-dependencies]
