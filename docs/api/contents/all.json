@@ -2,15 +2,15 @@
   "content": [
     {
       "content": null,
-      "created": "2025-11-28T23:57:22.440689Z",
+      "created": "2025-11-29T00:44:33.616848Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-28T22:53:36Z",
+      "last_modified": "2025-11-29T00:43:12Z",
       "mimetype": null,
       "name": "built-in-chat.ipynb",
       "path": "built-in-chat.ipynb",
-      "size": 6805,
+      "size": 8581,
       "type": "notebook",
       "writable": true
     },
@@ -100,15 +100,15 @@
     },
     {
       "content": null,
-      "created": "2025-11-28T23:57:22.441606Z",
+      "created": "2025-11-29T00:44:33.618083Z",
       "format": null,
       "hash": null,
       "hash_algorithm": null,
-      "last_modified": "2025-11-28T19:06:56Z",
+      "last_modified": "2025-11-29T00:39:29Z",
       "mimetype": null,
       "name": "chromeai.ipynb",
       "path": "chromeai.ipynb",
-      "size": 4959,
+      "size": 4800,
       "type": "notebook",
       "writable": true
     },
@@ -127,11 +127,11 @@
       "writable": true
     }
   ],
-  "created": "2025-11-28T23:57:22.461687Z",
+  "created": "2025-11-29T00:44:33.617607Z",
   "format": "json",
   "hash": null,
   "hash_algorithm": null,
-  "last_modified": "2025-11-28T23:57:22.461687Z",
+  "last_modified": "2025-11-29T00:44:33.617607Z",
   "mimetype": null,
   "name": "",
   "path": "",
